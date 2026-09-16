@@ -37,3 +37,14 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
 - 备注:agent 纠正了蓝图中两处假设——mathlib 的 round 是向上取整
   (非 half-to-even);le_or_lt 在本版本不存在(用 lt_or_ge)。
 - 归属:该情形为 Wills 1967(文献中 "k=2 动跑者"),Lean 首次形式化。
+
+## 2026-09-16 目标升级:LRC n=5(4 动跑者,阈值 1/5)
+
+- 用户拍板做 n=5。开工前先规划:Phase 0 文献深挖(Bienia et al.
+  简化证明 / Cusick-Pomerance 1984 原始计算机辅助证明)+ n=4/n=5
+  全证明助手查重终检,两个 subagent 后台运行中。
+- mathlib 基础设施盘点(v4.34.0):
+  * 有:Dirichlet 逼近(单实数版 exists_int_int_abs_mul_sub_le)、
+    连分数/渐近分数、Int.ceil/fract/round 全套、AddCircle 基础
+  * 无:同步 Dirichlet 逼近(多维 pigeonhole)、三距离定理
+    (Steinhaus)、Kronecker/Weyl 密度定理——同步逼近大概率要自证
