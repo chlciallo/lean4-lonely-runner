@@ -1,68 +1,25 @@
-/-
-Copyright (c) 2026 Research07 contributors. All rights reserved.
-Released under Apache 2.0 license as described in the file LICENSE.
-Authors: Research07 contributors
--/
-import Research07.LRC3.Circ
+import Research07.LRC5.Discrete
 
 /-!
-# Discrete infrastructure for the five-runner case
-
-Modular-arithmetic layer for the Barajas–Serra proof (arXiv:0710.4495, §2–3)
-of the lonely runner conjecture for four integer speeds. Fix `p = 5`,
-`m = max ν₅(D)`, `N = 5^{m+1}`.
-
-* `residN x N = x % N`, `absModN x N = min (x%N, N − x%N)` — circular
-  distance to `0` in `ℤ/N`.
-* `level D j` — elements of `D` with `padicValNat 5 d = j`.
-* `qdig m x : ZMod 5` — leading base-5 digit of `x`'s residue mod `5^{m+1}`.
-* `runit x : ZMod 5` — unit part of `x` mod 5.
-* `multLow m j = {1 + k·5^{m−j}}`, `multTop = {1,2,3,4}` — the multiplier
-  families `Λ_{j,5}` of the paper.
-
-Key facts (paper eqs. (2),(3),(4),(5)): low multipliers preserve residues of
-higher-level elements and cyclically shift the leading digit of same-level
-elements; the goodness condition `|x|_N ≥ 5^m` is the digit condition
-`qdig ∈ {1,2,3}` for non-top elements and is automatic for top-level ones.
+Scratch development for Discrete.lean proofs.
 -/
 
-/-- Residue of `x` modulo `N` in `{0, …, N−1}`. -/
-def residN (x N : ℕ) : ℕ := x % N
+set_option linter.unusedVariables false
 
-/-- Circular distance from `x` to `0` in `ℤ/N`: `min (x%N, N − x%N)`. -/
-def absModN (x N : ℕ) : ℕ := min (x % N) (N - x % N)
-
-/-- The `j`-th 5-adic level of `D`: elements with `padicValNat 5 d = j`. -/
-def level (D : Finset ℕ) (j : ℕ) : Finset ℕ :=
-  D.filter fun d => padicValNat 5 d = j
-
-/-- Leading base-5 digit of `x % 5^{m+1}`, valued in `ZMod 5`. -/
-def qdig (m x : ℕ) : ZMod 5 := (↑((x % 5 ^ (m + 1)) / 5 ^ m) : ZMod 5)
-
-/-- Unit part of `x` modulo 5: the trailing nonzero base-5 digit. -/
-def runit (x : ℕ) : ZMod 5 := (↑(x / 5 ^ padicValNat 5 x) : ZMod 5)
-
-/-- Multiplier family `Λ_{j,5}` for `j < m`: `{1 + k·5^{m−j} : k ∈ range 5}`. -/
-def multLow (m j : ℕ) : Finset ℕ :=
-  (Finset.range 5).image fun k => 1 + k * 5 ^ (m - j)
-
-/-- Multiplier family `Λ_{m,5}`: `{1,2,3,4}`. -/
-def multTop : Finset ℕ := {1, 2, 3, 4}
-
-/-- The quotient `x / 5^{ν₅ x}` is the `divMaxPow` unit part of `x`. -/
+/-- `x / 5 ^ ν₅(x)` is the `divMaxPow` unit part. -/
 private theorem div_pow_padicValNat (x : ℕ) :
     x / 5 ^ padicValNat 5 x = Nat.divMaxPow x 5 := by
   have h := congrArg (· / 5 ^ padicValNat 5 x) (Nat.divMaxPow_mul_pow_padicValNat 5 x)
   rw [Nat.mul_div_cancel _ (Nat.pow_pos (by norm_num))] at h
   exact h.symm
 
-/-- The unit part of a positive integer is a nonzero residue. -/
-theorem runit_ne_zero {x : ℕ} (hx : 0 < x) : runit x ≠ 0 := by
+-- 1
+example {x : ℕ} (hx : 0 < x) : runit x ≠ 0 := by
   unfold runit
   rw [div_pow_padicValNat, Ne, ZMod.natCast_eq_zero_iff]
   exact Nat.not_dvd_divMaxPow (by norm_num) (Nat.ne_of_gt hx)
 
-/-- Multiplication by a `5`-unit preserves the `5`-adic valuation. -/
+/-- `5 ∤ a` implies `ν₅(a·b) = ν₅(b)`. -/
 private theorem padicValNat_mul_unit {a b : ℕ} (ha : a ≠ 0) (hb : b ≠ 0)
     (h5 : ¬ 5 ∣ a) : padicValNat 5 (a * b) = padicValNat 5 b := by
   have hu : ¬ 5 ∣ Nat.divMaxPow b 5 := Nat.not_dvd_divMaxPow (by norm_num) hb
@@ -87,9 +44,8 @@ private theorem padicValNat_mul_unit {a b : ℕ} (ha : a ≠ 0) (hb : b ≠ 0)
   rw [h2, padicValNat_base_pow_mul (by norm_num) (Nat.mul_ne_zero ha hu0), hv0,
     Nat.zero_add]
 
-/-- Elements at the top level stay at distance `≥ 5^m` under unit multipliers
-(their residue is `c·5^m` with `c ∈ {1,…,4}`, and `min c (5−c) ≥ 1`). -/
-theorem absModN_top_ge {m d lam : ℕ} (hd : padicValNat 5 d = m) (hpos : 0 < d)
+-- 2
+example {m d lam : ℕ} (hd : padicValNat 5 d = m) (hpos : 0 < d)
     (hlam : ¬ 5 ∣ lam) :
     5 ^ m ≤ absModN (lam * d) (5 ^ (m + 1)) := by
   have hd0 : d ≠ 0 := Nat.ne_of_gt hpos
@@ -119,9 +75,7 @@ theorem absModN_top_ge {m d lam : ℕ} (hd : padicValNat 5 d = m) (hpos : 0 < d)
   rw [hr, pow_succ']
   interval_cases c <;> omega
 
-/-- Digit characterization of `|y|_N ≥ 5^m` for `ν₅(y) < m`: writing
-`r = y % 5^{m+1} = e·5^m + f`, the residue `f = y % 5^m` is nonzero (else
-`5^m ∣ y`), so the `e = 4, f = 0` boundary is impossible. -/
+-- helper for 3: digit characterization of |y|_N ≥ 5^m for ν₅(y) < m
 private theorem absModN_ge_iff_digit {m y : ℕ} (hval : padicValNat 5 y < m)
     (hy : y ≠ 0) :
     5 ^ m ≤ absModN y (5 ^ (m + 1)) ↔
@@ -142,8 +96,7 @@ private theorem absModN_ge_iff_digit {m y : ℕ} (hval : padicValNat 5 y < m)
     Nat.mod_mod_of_dvd y (by rw [hE]; exact Nat.pow_dvd_pow 5 (by omega))
   have hndvd : ¬ 5 ^ m ∣ y := by
     intro h
-    have : m ≤ padicValNat 5 y :=
-      (Nat.pow_dvd_iff_le_padicValNat (by norm_num) hy).mp h
+    have : m ≤ padicValNat 5 y := (Nat.pow_dvd_iff_le_padicValNat (by norm_num) hy).mp h
     omega
   have hf_ne : f ≠ 0 := by
     rw [hfy, hE, Ne, ← Nat.dvd_iff_mod_eq_zero]
@@ -155,12 +108,9 @@ private theorem absModN_ge_iff_digit {m y : ℕ} (hval : padicValNat 5 y < m)
   rw [hqval, hN]
   interval_cases e <;> omega
 
-/-- For non-top elements `ν₅(d) < m` and unit multipliers, the distance
-condition `|λd|_N ≥ 5^m` is equivalent to the digit condition
-`qdig (λd) ∈ {1,2,3}`. The boundary residue `4·5^m` is excluded since it
-would have 5-adic valuation `m`. -/
-theorem absModN_ge_iff_qdig {m d lam : ℕ} (hd : padicValNat 5 d < m)
-    (hpos : 0 < d) (hlam : ¬ 5 ∣ lam) :
+-- 3
+example {m d lam : ℕ} (hd : padicValNat 5 d < m) (hpos : 0 < d)
+    (hlam : ¬ 5 ∣ lam) :
     5 ^ m ≤ absModN (lam * d) (5 ^ (m + 1)) ↔
       1 ≤ (qdig m (lam * d)).val ∧ (qdig m (lam * d)).val ≤ 3 := by
   have hlam0 : lam ≠ 0 := fun h => hlam (h ▸ dvd_zero 5)
@@ -171,9 +121,8 @@ theorem absModN_ge_iff_qdig {m d lam : ℕ} (hd : padicValNat 5 d < m)
   · rw [hval]; exact hd
   · exact Nat.mul_ne_zero hlam0 hd0
 
-/-- Preservation identity (paper eq. (2)): a multiplier from `Λ_{j,5}` leaves
-the residue of any element at level `> j` unchanged modulo `5^{m+1}`. -/
-theorem residN_multLow {m j k x : ℕ} (hjm : j < m) (hx : j < padicValNat 5 x) :
+-- 4
+example {m j k x : ℕ} (hjm : j < m) (hx : j < padicValNat 5 x) :
     (1 + k * 5 ^ (m - j)) * x % 5 ^ (m + 1) = x % 5 ^ (m + 1) := by
   have hx0 : x ≠ 0 := by
     rintro rfl
@@ -188,23 +137,21 @@ theorem residN_multLow {m j k x : ℕ} (hjm : j < m) (hx : j < padicValNat 5 x) 
   obtain ⟨z, hz⟩ := hdvd2
   rw [hz, Nat.add_mul_mod_self_left]
 
-/-- Pulling `5^j` out of a residue mod `5^{m+1}` for `j ≤ m + 1`. -/
+-- helpers for 5/6
 private theorem mod_pow_mul {j m : ℕ} (h : j ≤ m + 1) (v : ℕ) :
     (5 ^ j * v) % 5 ^ (m + 1) = 5 ^ j * (v % 5 ^ (m + 1 - j)) := by
   conv_lhs => rw [show 5 ^ (m + 1) = 5 ^ j * 5 ^ (m + 1 - j) by
     rw [← pow_add]; congr 1; omega]
   exact Nat.mul_mod_mul_left _ _ _
 
-/-- Pulling `5^j` out of a division by `5^m` for `j ≤ m`. -/
 private theorem div_pow_mul {j m : ℕ} (h : j ≤ m) (s : ℕ) :
     (5 ^ j * s) / 5 ^ m = s / 5 ^ (m - j) := by
   conv_lhs => rw [show 5 ^ m = 5 ^ j * 5 ^ (m - j) by
     rw [← pow_add]; congr 1; omega]
   exact Nat.mul_div_mul_left _ _ (Nat.pow_pos (by norm_num))
 
-/-- Shift identity (paper eq. (3)): a `Λ_{j,5}`-multiplier shifts the leading
-digit of a level-`j` element by `k · runit x`. -/
-theorem qdig_multLow {m j k x : ℕ} (hjm : j < m) (hx : padicValNat 5 x = j) :
+-- 5
+example {m j k x : ℕ} (hjm : j < m) (hx : padicValNat 5 x = j) :
     qdig m ((1 + k * 5 ^ (m - j)) * x) = qdig m x + (k : ZMod 5) * runit x := by
   rcases eq_or_ne x 0 with rfl | hx0
   · simp [qdig, runit]
@@ -240,9 +187,8 @@ theorem qdig_multLow {m j k x : ℕ} (hjm : j < m) (hx : padicValNat 5 x = j) :
   push_cast
   ring
 
-/-- Top-level identity: multiplying a level-`m` element by `l` scales its
-digit by `l`. -/
-theorem qdig_multTop {m l x : ℕ} (hx : padicValNat 5 x = m) :
+-- 6
+example {m l x : ℕ} (hx : padicValNat 5 x = m) :
     qdig m (l * x) = (l : ZMod 5) * runit x := by
   rcases eq_or_ne x 0 with rfl | hx0
   · simp [qdig, runit]
@@ -262,8 +208,7 @@ theorem qdig_multTop {m l x : ℕ} (hx : padicValNat 5 x = m) :
   rw [hqL, hrunit, ← Nat.cast_mul, ZMod.natCast_eq_natCast_iff']
   exact Nat.mod_mod _ _
 
-/-- Division of a sum: `(a + b)/c = a/c + b/c + carry` with
-`carry = (a%c + b%c)/c`. -/
+-- helper for 7: division of a sum picks up a carry
 private theorem add_div_carry (a b c : ℕ) (hc : 0 < c) :
     (a + b) / c = a / c + b / c + (a % c + b % c) / c := by
   have h1 : a + b = a % c + b % c + c * (a / c + b / c) := by
@@ -274,17 +219,15 @@ private theorem add_div_carry (a b c : ℕ) (hc : 0 < c) :
   rw [h1, Nat.add_mul_div_left _ _ hc]
   ring
 
-/-- `qdig` as a cast of a natural division: `qdig m y = ↑(y / 5^m)` since
-`y % 5^{m+1} / 5^m = (y / 5^m) % 5`. -/
+-- qdig via cast of division
 private theorem qdig_eq_cast_div (m y : ℕ) :
-    qdig m y = (↑(y / 5 ^ m) : ZMod 5) := by
+    qdig m y = ((y / 5 ^ m : ℕ) : ZMod 5) := by
   unfold qdig
   rw [pow_succ, Nat.mod_mul_right_div_self, ZMod.natCast_eq_natCast_iff']
   exact Nat.mod_mod _ _
 
-/-- Carry bound (paper eq. (5)): the leading digit of `(j+1)·x` differs from
-`qdig (j·x) + qdig x` by a carry of at most `1`. -/
-theorem qdig_add_one (m j x : ℕ) :
+-- 7
+example (m j x : ℕ) :
     (qdig m ((j + 1) * x) - qdig m (j * x) - qdig m x).val ≤ 1 := by
   rw [qdig_eq_cast_div, qdig_eq_cast_div, qdig_eq_cast_div]
   have hkey : (j + 1) * x / 5 ^ m = j * x / 5 ^ m + x / 5 ^ m +
@@ -307,8 +250,8 @@ theorem qdig_add_one (m j x : ℕ) :
     omega
   exact le_trans (Nat.mod_le _ _) hcarry
 
-/-- Sign flip preserves the circular distance: `|N − x % N|_N = |x|_N`. -/
-theorem absModN_neg {x N : ℕ} (hN : 0 < N) (hx : x % N ≠ 0) :
+-- 8
+example {x N : ℕ} (hN : 0 < N) (hx : x % N ≠ 0) :
     absModN (N - x % N) N = absModN x N := by
   have hr : x % N < N := Nat.mod_lt _ hN
   have hr0 : 0 < x % N := Nat.pos_of_ne_zero hx
@@ -317,8 +260,8 @@ theorem absModN_neg {x N : ℕ} (hN : 0 < N) (hx : x % N ≠ 0) :
   unfold absModN
   rw [h1, h2, min_comm]
 
-/-- Bridge: for `t = λ/N`, `circ (t·d) = |λd|_N / N`. -/
-theorem circ_mul_div_eq_absModN (lam d N : ℕ) (hN : 0 < N) :
+-- 9
+example (lam d N : ℕ) (hN : 0 < N) :
     circ ((lam * d : ℝ) / N) = (absModN (lam * d) N : ℝ) / N := by
   have hNR : (0:ℝ) < N := Nat.cast_pos.mpr hN
   have hdiv : (lam * d : ℝ) / (N : ℝ) =
@@ -378,9 +321,8 @@ theorem circ_mul_div_eq_absModN (lam d N : ℕ) (hN : 0 < N) :
     have hcast : ((N - r : ℕ) : ℝ) = (N : ℝ) - r := Nat.cast_sub (Nat.le_of_lt hrN)
     rw [hcast, sub_div, div_self (ne_of_gt hNR)]
 
-/-- Package: `|λd|_N ≥ 5^m` gives `circ (λd/5^{m+1}) ≥ 1/5`. -/
-theorem circ_ge_fifth {m lam d : ℕ}
-    (h : 5 ^ m ≤ absModN (lam * d) (5 ^ (m + 1))) :
+-- 10
+example {m lam d : ℕ} (h : 5 ^ m ≤ absModN (lam * d) (5 ^ (m + 1))) :
     (1 / 5 : ℝ) ≤ circ ((lam * d : ℝ) / (5 ^ (m + 1) : ℕ)) := by
   have hN : (0:ℝ) < ((5 ^ (m + 1) : ℕ) : ℝ) :=
     Nat.cast_pos.mpr (Nat.pow_pos (by norm_num))

@@ -69,3 +69,16 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   陈述全冻结并编译过。关键 lemma:filtered_multiplier(降层),
   absModN_ge_iff_qdig(边界),residual_case(ℤ₅ 追踪),lrc5_int。
 - 派 4 个 subagent_general 并行填充;验收=各文件零 sorry 编译。
+
+## 2026-09-17 n=5 整数+有理情形证毕(全量零 sorry)
+
+- W1 交付:Discrete.lean 10 个 sorry 全部由 in-flight agent 在会话结束前
+  移植完成,编译干净。W3 续作:residual_case 经 digit_chase(有限 ℤ₅
+  命题内核 decide)+ three_units 三分支落地;exists_multiplier4 按层数
+  二分调用 filtered_multiplier / residual_case。
+- lrc5_int:|D|≤4 → pad 至 4(新鲜值 >maxD)→ 除 gcd 得 gcd=1 →
+  exists_multiplier4 出 λ(5∤λ)→ t=λ/(g·5^{m+1}),circ_ge_fifth 收尾。
+- 终审:全量 build 8934 jobs 零错误;源码 sorry 扫描为空;
+  Audit.lean 四定理 axioms=[propext, Classical.choice, Quot.sound]。
+- lrc5_rel_rat / lonely_runner_five_rat 随之闭合——n=5 有理数版完成。
+- 剩余:全实数版 lonely_runner_five 仍需 BHK/Kronecker 归约(二期 M3)。

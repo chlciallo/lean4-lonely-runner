@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Research07 contributors
 -/
 import Research07.LRC3.Main
+import Research07.LRC5.Main
 
 /-!
 # Audit
@@ -14,3 +15,6 @@ a leftover `sorry`, or `Lean.ofReduceBool` from `native_decide`) shows up here.
 -/
 
 #print axioms lonely_runner_three
+#print axioms lrc5_int
+#print axioms lrc5_rel_rat
+#print axioms lonely_runner_five_rat

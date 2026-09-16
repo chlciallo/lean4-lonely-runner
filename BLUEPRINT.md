@@ -45,9 +45,13 @@ n=3（总共 3 个跑者，阈值 1/3）是 **Wills 1967** 证的——即"2 个
 
 | 包 | 文件 | 关键引理 | 依赖 | 状态 |
 |---|---|---|---|---|
-| W1 | LRC5/Discrete.lean | runit_ne_zero, absModN_top_ge, absModN_ge_iff_qdig, residN_multLow, qdig_multLow/Top, qdig_add_one, absModN_neg, circ_mul_div_eq_absModN, circ_ge_fifth | Circ API | 🔄 agent 7a2335ca |
-| W2 | LRC5/Filtering.lean | exists_k_all_good, filtered_multiplier | W1 陈述 | 🔄 agent e811a6f1 |
-| W3 | LRC5/IntCase.lean | residual_case, exists_multiplier4, lrc5_int | W1+W2 陈述 | 🔄 agent 688958c4 |
-| W4 | LRC5/Main.lean | lrc5_rel_rat, lonely_runner_five_rat | lrc5_int 陈述 + LRC3.Main | ✅ done |
+| W1 | LRC5/Discrete.lean | runit_ne_zero, absModN_top_ge, absModN_ge_iff_qdig, residN_multLow, qdig_multLow/Top, qdig_add_one, absModN_neg, circ_mul_div_eq_absModN, circ_ge_fifth | Circ API | ✅ done(10 sorry 全填,离散基础设施完备) |
+| W2 | LRC5/Filtering.lean | exists_k_all_good, filtered_multiplier | W1 陈述 | ✅ done(+正性假设修复) |
+| W3 | LRC5/IntCase.lean | residual_case(ℤ₅ 数字追踪,decide 内核判有限命题), three_units, exists_multiplier4(层数二分), lrc5_int(pad 至 4 + gcd 归约 + t=λ/(g·5^{m+1}) 桥接) | W1+W2 陈述 | ✅ done |
+| W4 | LRC5/Main.lean | lrc5_rel_rat, lonely_runner_five_rat | lrc5_int 陈述 + LRC3.Main | ✅ done(lrc5_int 落地后自动闭合) |
+
+**n=5 整数情形 + 有理数情形已证毕。** 终审:`Audit.lean` 中
+`lrc5_int` / `lrc5_rel_rat` / `lonely_runner_five_rat` 的 axioms 均为
+`[propext, Classical.choice, Quot.sound]`,无 sorryAx、无 ofReduceBool。
 
 二期 M3(未启动):BHK 归约(Kronecker 子环面 + LRC₄)→ lonely_runner_five 全实数版。
