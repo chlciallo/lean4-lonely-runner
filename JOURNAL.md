@@ -27,3 +27,13 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
 - 方法论：LeanMarathon 式 blueprint + 契约 subagent + CI 门控；
   验收 = 编译通过 + axioms 干净 + STATEMENT.md 保真审查。
 - 下一步：Phase 0，挖 k=3 最干净的经典证明文献。
+
+## 2026-09-16 Phase 3/4 完成 —— 定理证毕
+
+- 三 agent 全部交付:Circ(7 引理)、Covering+TwoMoving(覆盖/窗口/两动跑者)、
+  Main(桥接 + lonely_runner_three)。全量 build 零警告。
+- 终审:`#print axioms lonely_runner_three` = [propext, Classical.choice,
+  Quot.sound],无 sorryAx、无 ofReduceBool。证明为真。
+- 备注:agent 纠正了蓝图中两处假设——mathlib 的 round 是向上取整
+  (非 half-to-even);le_or_lt 在本版本不存在(用 lt_or_ge)。
+- 归属:该情形为 Wills 1967(文献中 "k=2 动跑者"),Lean 首次形式化。
