@@ -48,3 +48,15 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
     连分数/渐近分数、Int.ceil/fract/round 全套、AddCircle 基础
   * 无:同步 Dirichlet 逼近(多维 pigeonhole)、三距离定理
     (Steinhaus)、Kronecker/Weyl 密度定理——同步逼近大概率要自证
+
+## 2026-09-16 n=5 路线定稿
+
+- 查重终检:n=5 在所有证明助手中连陈述都无,干净空缺。
+  n=4 nuance:ElVec1o 隐含覆盖整数核但无打包定理、无实数归约。
+- 路线选定:Barajas–Serra 2008 (arXiv:0710.4495) §3 的 |D|=4 短证明
+  ——素数筛引理 + ℤ₅ 有限分情形,优于 Bienia 原文(自足一页)。
+- 关键设计:实数→整数归约不走 Kronecker(mathlib 没有),
+  走同步 Dirichlet + Bolzano–Weierstrass 紧性转移,初等可证。
+- ℤ₅ 分情形留了内核 decide 逃生舱(对应 Cusick–Pomerance 的
+  计算机检查,但走内核而非 native_decide)。
+- 计划全文见 PLAN_N5.md,等用户批准开工。
