@@ -60,3 +60,12 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
 - ℤ₅ 分情形留了内核 decide 逃生舱(对应 Cusick–Pomerance 的
   计算机检查,但走内核而非 native_decide)。
 - 计划全文见 PLAN_N5.md,等用户批准开工。
+
+## 2026-09-16 n=5 骨架冻结,4 路并行开工
+
+- dossier 修正:Dirichlet+紧性归约证伪(见证无界、边界本质)。
+  M1=整数定理锁定,M2=有理跑者,M3=实数归约推二期。
+- 骨架:LRC5/{Discrete,Filtering,IntCase,Main}.lean,17 sorry,
+  陈述全冻结并编译过。关键 lemma:filtered_multiplier(降层),
+  absModN_ge_iff_qdig(边界),residual_case(ℤ₅ 追踪),lrc5_int。
+- 派 4 个 subagent_general 并行填充;验收=各文件零 sorry 编译。

@@ -1,82 +1,77 @@
-# LRC n=5 形式化计划（Phase-0 文献回填完成，待批准）
+# LRC n=5 形式化计划 v2（已按 Phase-0 dossier 修正，M1+M2 锁定）
 
-## 目标定理
+## 范围锁定（用户批准）
 
-```lean
-theorem lonely_runner_five (v : Fin 5 → ℝ) (hv : Function.Injective v) :
-    ∀ i : Fin 5, ∃ t ≥ 0, ∀ j : Fin 5, j ≠ i →
-      (1/5 : ℝ) ≤ dist ((t * v i : ℝ) : UnitAddCircle) ((t * v j : ℝ) : UnitAddCircle)
-```
+- **M1（主交付）**：整数情形 `lrc5_int` —— 任意 ≤4 个互异正整数 D，
+  ∃t>0, ∀d∈D, circ(t·d) ≥ 1/5。文献里实际证的定理本身。
+- **M2（推论）**：有理数速度跑者版 `lonely_runner_five_rat`
+  (v : Fin 5 → ℚ 单射 ⇒ 各跑者孤独时刻)。Galilean + 通分。
+- **M3（二期，暂不启动）**：全实数版。需 BHK Lemma 8：
+  Kronecker–Perron 子环面密度 + n=4 情形黑箱。与 M1 解耦。
 
-## 选定路线：Barajas–Serra 2008 §3（arXiv:0710.4495）
+## ⚠️ 已修正的错误
 
-放弃 Bienia et al. 原文路线——B-S 论文把 n=5 写成素数筛引理的示范应用，
-全部对象是有限/离散的，几乎不需要分析工具。这是已知最干净的 n=5 证明。
+原方案"同步 Dirichlet + 紧性取极限"不成立：有理逼近的见证时刻
+落在 (0,q) 随 q→∞ 无界；位置极限点在轨道闭包但不对应有限时刻。
+边界 1/5 是本质的（紧实例 {1,2,3,4} 恰在边界）。→ 实数归约推给 M3。
 
-## 引理 DAG（三层）
+## 选定证明：Barajas–Serra 2008 §3（arXiv:0710.4495）
 
-```
-[L1 离散层]                                 [L2 组合层]              [L3 解析层]
-ZMod N 算术/残数 (x)_N, |x|_N          Prime Filtering Lemma      同步 Dirichlet
-ν₅, q(x)=⌊x/5^m⌋ mod 5, r₅(x)   →    (归纳下降证明)          →   (Q⁴ 鸽巢,自证)
-Λ_{j,5} 乘子族 + 作用公式 (2)(3)       Corollary 3                 circ Lipschitz 连续
-桥接:|λd|_N≥N/5 ⇒ circ(λd/N)≥1/5      ℤ₅ 分情形压缩(ℓ-长度)        Bolzano–Weierstrass
-```
+|D|=4、p=5、N=5^{m+1}、m=max ν₅。全部离散，无需计算机穷举
+（ℤ₅ 分情形是证明级符号演算；保留 decide 兜底）。
 
-**Phase A（整数情形主证明）**——对应 B-S §3:
-- A1. m=0 退化情形：所有 d 为 mod 5 单位,λ=1 即证（|x|₅≥1=N/5 自动）
-- A2. 若 |D₅(i)|≤2 ∀i<m:Corollary 3（禁集 F_d={0,4},|F|=2,∑≤4=p−1 ✓）
-- A3. 仅剩 |D₅(0)|=3 ∧ |D₅(m)|=1（鸽舍：D₅(0),D₅(m) 非空,|D|=4）
-- A4. A3 内部:乘 Λ₀,₅∪Λ_{m,5} 压缩 q(A) 避开 {0,4}——
-  两个子情形 |A_s|=3 / |A_s|=2,用公式 (4)(5)(6) 分情形
-  **逃生舱：此步量化空间本身有限(残类+q值 ∈ ℤ₅⁶),
-  组合论证若卡住,内核 `decide` 穷举兜底(= 诚实的机器验证,
-  对应 Cusick–Pomerance 当年的计算机检查,但走内核非 native_decide)**
-- A5. gcd 归约：D' = D/gcd,见证 t' → t = t'/g
-- A6. 汇总:`lrc5_int` — 任意 4 个互异正整数 D,∃t∈(0,1),∀d, circ(td)≥1/5
-  （含 ≤4 元集合的 padding:补互异大数即可）
+## 引理 DAG（dossier 逐条核实版）
 
-**Phase B（实数归约）**——绕开 Kronecker,走逼近+紧性：
-- B1. 同步 Dirichlet:∀Q, ∃q≤Q⁴, ∀i, ∃pᵢ, |aᵢ−pᵢ/q|<1/(qQ)
-  (四维鸽巢:把 {j·aᵢ mod 1}, j=0..Q⁴ 塞进 Q⁴ 个盒子)
-- B2. 对每步 s:取逼近 p⁽ˢ⁾ᵢ/q_s,s 大时 pᵢ≠0 且互异
-  （用 |aᵢ|>0、|aᵢ−aⱼ|>0 抗误差 1/(qQ)）
-- B3. 对 {|pᵢ|} 去重+padding 成 4 元 → 用 lrc5_int 得 t*_s∈(0,1)
-- B4. Bolzano–Weierstrass:t*_s→t̄;circ Lipschitz⇒circ(t̄aᵢ)≥1/5;
-  t̄=0 时 circ=0 矛盾 ⇒ t̄>0
+**Discrete.lean（W1）**——模 N 基础设施：
+- `residN x N = x % N`，`absModN x N = min (x%N) (N − x%N)`
+- `level D j` = ν₅=j 的元素；`qdig m x` = 最高位 5 进制数字 : ZMod 5
+- `runit x` = 单位部分 mod 5；`multLow m j = {1+k·5^{m−j}}`（j<m），`multTop={1,2,3,4}`
+- B4 边界引理：非顶层 ν₅(d)<m、λ 单位 ⇒ |λd|_N ≥ 5^m ⟺ qdig(λd)∈{1,2,3}
+  （边界点 4·5^m 不可能——ν₅ 论证，**不可省略**）
+- B5 顶层自动好：ν₅(d)=m、5∤λ ⇒ |λd|_N ≥ 5^m
+- B6 保持：ν₅(x)>j ⇒ ((1+k·5^{m−j})·x) % 5^{m+1} = x % 5^{m+1}
+- B7 移位：ν₅(x)=j ⇒ qdig((1+k·5^{m−j})x) = qdig x + k·runit x (in ZMod 5)
+- B7' 顶层：qdig(l·d) = l·runit d，l∈{1..4}
+- B7'' 进位界：qdig((j+1)x) ∈ qdig(jx)+qdig(x)+{0,1}
+- 桥接：circ(λd/N) = absModN(λd,N)/N（≥5^m ⇒ ≥1/5，t=λ/N）
 
-**Phase C（组装）**——复用 n=3 部件：
-- C1. dist_unitAddCircle_eq_circ + dist_eq_circ_abs(已有)
-- C2. Galilean:4 个相对速度 |vⱼ−vᵢ| 非零互异 ← hv 单射
-- C3. Fin 5 分情形 × 主定理 lonely_runner_five
+**Filtering.lean（W2）**——B8 特化版降层引理：
+- `filtered_multiplier`：i₀≤m，∀j<i₀, 2·|level j|≤4 ⇒ ∃λ，5∤λ，
+  层 ≥i₀ 残数原样保持，层 <i₀ 的 qdig(λd)∈{1,2,3}
+- 内部：降层归纳（处理层 i₀−1..0），每层 5 个 k 中坏者恰 2|D(j)|≤4<5
+  ⇒ 有 k 全局好（对 ℤ₅ 的 Finset 鸽巢）
 
-## 工作包划分（4 agent 并行）
+**IntCase.lean（W3）**——C1-C5 + 组装：
+- C1 层数二分：m=0 平凡（λ=1）；中层均 ≤2 → filtered_multiplier(i₀=m)；
+  残留 ⟹ |level 0|=3 ∧ |level m|=1（鸽舍：两非空+总4）
+- C2 归一化：元素可取负（(N−d) 替换，|λ(N−d)|_N=|λd|_N）⇒ 残类∈{1,2}；
+  鸽巢 ⇒ 主类 |A_s|∈{2,3}，剩余元素 r₅=±2s≠±s
+- C3 |A_s|=3 数字追踪：非 3-弧 3 子集单轨道 {0,2,3}；j=2 强制；
+  j=3 落入 {0,1,2}；共移入 {1,2,3}
+- C4 |A_s|=2 + 单子存活：2-弧化后有 ≥2 个好 k（差 (js)⁻¹），
+  单子坏 k 差 (js')⁻¹，s'≠±s ⇒ 必有幸存 k
+- C5 弧移位引理：ℓ≤3 的 ℤ₅ 子集可共移入 {1,2,3}
+- A5 gcd 归约：D/g，t'=t·g；A6 padding：|D|<4 补互异大数
+- `lrc5_int` 汇总（含桥接到 circ）
 
-| 包 | 文件 | 内容 | 预估 |
-|---|---|---|---|
-| W1 | `LRC5/Discrete.lean` | L1 全部 + (2)(3) 作用公式 | 中 |
-| W2 | `LRC5/Filtering.lean` | Prime Filtering + Cor 3 | **难**（归纳下降） |
-| W3 | `LRC5/CaseAnalysis.lean` | A3/A4 ℤ₅ 压缩 + A5/A6 整数情形汇总 | **最难**（decide 兜底） |
-| W4 | `LRC5/Approx.lean` + `Main5.lean` | Phase B 全部 + Phase C | 中（标准分析） |
+**Rational.lean（W4）**——M2：
+- `lrc5_rel_rat`：4 个非零有理相对速度 ⇒ ∃t>0 全 circ≥1/5
+  （公分母 c + 绝对值 + lrc5_int，t = c·t₀）
+- `lonely_runner_five_rat`：Fin 5 跑者版（succAbove 索引 + dist 桥）
 
-依赖序：W1 → W2,W3 可并行；W4 只需 lrc5_int 的**陈述**（骨架冻结后可同时开工）
+## 工作包（4 agent 并行，陈述冻结后互不阻塞）
 
-## 验证门（同 n=3）+ 新增
+W1 Discrete → W2 Filtering、W3 IntCase、W4 Rational 可全并行
+（下游只依赖冻结陈述）。M3 留作二期：需 Kronecker 子环面 + LRC₄。
 
-- 零 sorry/admit/axiom/native_decide/unsafe（decide 允许,ElVec1o 用了
-  native_decide——我们不让步,这是"内核级验证"的差异化声明）
-- `#print axioms lonely_runner_five` = 三标准公理
+## 验证门
 
-## 风险登记（更新）
+1. 零 sorry/admit/axiom/native_decide/unsafe（`decide` 允许——内核级）
+2. `#print axioms lrc5_int` 与 `lonely_runner_five_rat` = 三标准公理
+3. STATEMENT.md 保真审查（陈述 ≡ Wills 原始整数版）
 
-- R1 ℤ₅ 分情形在论文里是半页速写,有隐藏细节 → decide 兜底已设计
-- R2 同步 Dirichlet 的 Finset 鸽巢在 mathlib 里的 API 契合度 → 预案:
-  退到连续 pigeonhole 或直接构造性证明
-- R3 Prime Filtering 的"最小 r"归纳 → 预案：改写成强归纳/良基递归
-- R4 整体规模 ~1500-2500 行 → 里程碑切分:M1=整数情形过(最难),
-  M2=归约过,M3=组装过终审
+## 里程碑
 
-## 时间预估
-
-诚实估计：骨架+冻结 1 轮,填充 2-4 轮 agent 迭代,终审 1 轮。
-若 A4 走 decide 兜底则 W3 显著加速。
+M1 = `lrc5_int` 编译+审计过（最难，含 B8+C3/C4）
+M2 = `lonely_runner_five_rat` 过
+M3 = 二期（BHK 归约 + LRC₄ 黑箱）
