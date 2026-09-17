@@ -4,20 +4,121 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Research07 contributors
 -/
 import Mathlib
-import Research07.M3.Relations
-import Research07.M3.Subtorus
-import Research07.M3.FlowDense
 
 /-!
-# W8 — Orbit-closure density, `⊇` direction (FROZEN STATEMENT)
+# W8 scratch — develop `orbit_dense_annihilator` offline
 
-Every point of the annihilator subtorus is a limit of orbit points `t·u mod ℤⁿ`:
-pull `flow_orbit_dense` back through `subtorusMap` (basis of `kerSpanInt u`,
-coordinates `c` of `u` are `ℚ`-independent by `kernel_coords_linearIndependent`).
-Owned by agent W8 — fill the `sorry`s.
+Self-contained copy of the frozen signatures (defs verbatim; upstream theorems
+sorried) so the proof can be compiled while `Relations.lean` is mid-edit by W6.
 -/
 
 noncomputable section
+
+/-- The integer relation lattice of a real tuple. (copied from Relations.lean) -/
+def relLattice {n : ℕ} (u : Fin n → ℝ) : Submodule ℤ (Fin n → ℤ) :=
+  LinearMap.ker (Fintype.linearCombination ℤ u)
+
+/-- The kernel space `Ker(A)`. (copied) -/
+def kerSpan {n : ℕ} (u : Fin n → ℝ) : Submodule ℝ (Fin n → ℝ) where
+  carrier := {x | ∀ k ∈ relLattice u, ∑ i, (k i : ℝ) * x i = 0}
+  add_mem' := by
+    intro x y hx hy k hk
+    simp only [Pi.add_apply, mul_add, Finset.sum_add_distrib]
+    rw [hx k hk, hy k hk, add_zero]
+  zero_mem' := by
+    intro k _
+    simp
+  smul_mem' := by
+    intro c x hx k hk
+    simp only [Pi.smul_apply, smul_eq_mul, mul_left_comm]
+    rw [← Finset.mul_sum, hx k hk, mul_zero]
+
+/-- The rational points of `kerSpan u`. (copied) -/
+def kerSpanRat {n : ℕ} (u : Fin n → ℝ) : Submodule ℚ (Fin n → ℚ) where
+  carrier := {x | ∀ k ∈ relLattice u, ∑ i, k i * x i = 0}
+  add_mem' := by
+    intro x y hx hy k hk
+    simp only [Pi.add_apply, mul_add, Finset.sum_add_distrib]
+    rw [hx k hk, hy k hk, add_zero]
+  zero_mem' := by
+    intro k _
+    simp
+  smul_mem' := by
+    intro c x hx k hk
+    simp only [Pi.smul_apply, smul_eq_mul, mul_left_comm]
+    rw [← Finset.mul_sum, hx k hk, mul_zero]
+
+/-- `u` lies in its own kernel space. (copied, proved upstream) -/
+theorem mem_kerSpan_self {n : ℕ} (u : Fin n → ℝ) : u ∈ kerSpan u := by
+  intro k hk
+  rw [relLattice, LinearMap.mem_ker, Fintype.linearCombination_apply] at hk
+  simpa only [zsmul_eq_mul] using hk
+
+/-- The integer points of the kernel space. (copied) -/
+def kerSpanInt {n : ℕ} (u : Fin n → ℝ) : Submodule ℤ (Fin n → ℤ) where
+  carrier := {x | ∀ k ∈ relLattice u, ∑ i, k i * x i = 0}
+  add_mem' := by
+    intro x y hx hy k hk
+    simp only [Pi.add_apply, smul_eq_mul, mul_add, Finset.sum_add_distrib]
+    rw [hx k hk, hy k hk, add_zero]
+  zero_mem' := by
+    intro k _
+    simp
+  smul_mem' := by
+    intro c x hx k hk
+    simp only [Pi.smul_apply, smul_eq_mul, mul_left_comm]
+    rw [← Finset.mul_sum, hx k hk, mul_zero]
+
+/-- The annihilator subtorus. (copied) -/
+def annihilator {n : ℕ} (u : Fin n → ℝ) : Set (Fin n → UnitAddCircle) :=
+  {y | ∀ k ∈ relLattice u, ∑ i, (k i) • y i = 0}
+
+/-- The subtorus map of an integer matrix. (copied) -/
+def subtorusMap {n d : ℕ} (ρ : Fin d → Fin n → ℤ) :
+    (Fin d → UnitAddCircle) →+ (Fin n → UnitAddCircle) where
+  toFun x := fun i => ∑ ℓ, (ρ ℓ i) • x ℓ
+  map_zero' := by
+    ext i
+    simp
+  map_add' := by
+    intro x y
+    ext i
+    simp only [Pi.add_apply]
+    rw [← Finset.sum_add_distrib]
+    congr 1
+    ext ℓ
+    rw [zsmul_add]
+
+/-- `kerSpan u` is the `ℝ`-span of `kerSpanRat u` cast into `ℝ`. (W6, sorried) -/
+theorem kerSpan_eq_span_rat {n : ℕ} (u : Fin n → ℝ) :
+    kerSpan u = Submodule.span ℝ ((fun x : Fin n → ℚ => fun i => (x i : ℝ)) ''
+      (kerSpanRat u : Set (Fin n → ℚ))) := by
+  sorry
+
+/-- Minimality lemma. (W6, sorried) -/
+theorem kernel_coords_linearIndependent {n d : ℕ} (u : Fin n → ℝ) (ρ : Fin d → Fin n → ℚ)
+    (hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u → x ∈ Submodule.span ℚ (Set.range ρ))
+    (c : Fin d → ℝ) (hc : ∀ i, u i = ∑ ℓ, c ℓ * (ρ ℓ i : ℝ)) :
+    LinearIndependent ℚ c := by
+  sorry
+
+theorem subtorusMap_continuous {n d : ℕ} (ρ : Fin d → Fin n → ℤ) :
+    Continuous (subtorusMap ρ) := by
+  sorry
+
+theorem subtorusMap_range_eq_annihilator {n d : ℕ} (u : Fin n → ℝ) (ρ : Fin d → Fin n → ℤ)
+    (hspan : ∀ x : Fin n → ℤ, x ∈ kerSpanInt u →
+      x ∈ Submodule.span ℤ (Set.range ρ))
+    (hmem : ∀ ℓ, (ρ ℓ) ∈ kerSpanInt u)
+    (hinj : LinearIndependent ℤ ρ) :
+    Set.range (subtorusMap ρ) = annihilator u := by
+  sorry
+
+theorem flow_orbit_dense {d : ℕ} {c : Fin d → ℝ} (hc : LinearIndependent ℚ c) :
+    Dense (Set.range fun t : ℝ => fun i => ((t * c i : ℝ) : UnitAddCircle)) := by
+  sorry
+
+/-! ### W8 work below -/
 
 /-- The coercion `ℝ → UnitAddCircle` commutes with finite sums. -/
 private theorem coe_sum_unitAddCircle {ι : Type*} (s : Finset ι) (f : ι → ℝ) :
@@ -157,14 +258,14 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
   -- Step 4: pointwise identity of the orbit with the subtorus map.
   have hdense : Dense (Set.range fun t : ℝ =>
       fun i => ((t * c i : ℝ) : UnitAddCircle)) := flow_orbit_dense hLI
-  have hρQcast : ∀ ℓ : Fin d, ∀ i : Fin n, (ρQ ℓ i : ℝ) = (ρ ℓ i : ℝ) :=
-    fun ℓ i => Rat.cast_intCast _
   have hpt : ∀ t : ℝ,
       subtorusMap ρ (fun ℓ => ((t * c ℓ : ℝ) : UnitAddCircle)) =
         fun i => ((t * u i : ℝ) : UnitAddCircle) := by
     intro t
     funext i
     show (∑ ℓ, (ρ ℓ i) • ((t * c ℓ : ℝ) : UnitAddCircle)) = _
+    have hρQcast : ∀ ℓ : Fin d, ∀ i : Fin n, (ρQ ℓ i : ℝ) = (ρ ℓ i : ℝ) :=
+      fun ℓ i => Rat.cast_intCast _
     have term : ∀ ℓ : Fin d, (ρ ℓ i) • ((t * c ℓ : ℝ) : UnitAddCircle) =
         (((ρ ℓ i : ℝ) * (t * c ℓ) : ℝ) : UnitAddCircle) := by
       intro ℓ

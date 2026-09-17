@@ -165,3 +165,12 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   正确论证(相邻比值对 + mediant 严格内部)已内联于主引理。教训:
   冻结陈述也要小样例 sanity-check。
 - 实际用 δ=9/40;annihilator 成员证明走 AddCircle.coe_zsmul/zsmul_eq_mul。
+
+## 2026-09-17 W7b+W7a 完成
+
+- W7b Dirichlet 经核实完成(190行,全 delta/rem API + 双定理,零 sorry)。
+- W7a Subtorus 证毕(390行):饱和子模→无挠商→对偶函数族的干净路径;
+  subtorusMap_range_eq_annihilator 的 sorryAx 仅来自 W6 未收敛的
+  kerSpan_eq_span_rat。
+- W6 正在重构 Relations.lean(626行膨胀中,中途编译破损正常)。
+- 重启第三次:W7c=2c701ed0(带前代归约笔记), W8=dbfd3a65。
