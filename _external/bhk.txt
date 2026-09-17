@@ -1,0 +1,5296 @@
+Six Lonely Runners
+
+Tom Bohman 
+Department of Mathematics Massachusetts Institute of Technology
+tbohman@moser.math.cmu.edu
+
+Ron Holzman 
+Department of Mathematics Technion - Israel Institute of Technology
+holzman@tx.technion.ac.il
+
+Dan Kleitman
+Department of Mathematics Massachusetts Institute of Technology
+djk@math.mit.edu
+
+Submitted: March 8, 2000; Accepted: February 6, 2001. MR Subject Classifications: 11B75, 11J71
+
+Abstract
+For x real, let {x} be the fractional part of x (i.e. {x} = x - x ). In this paper we prove the k = 5 case of the following conjecture (the lonely runner conjecture): for any k positive reals v1, . . . , vk there exists a real number t such that 1/(k + 1)  {vit}  k/(k + 1) for i = 1, . . . , k.
+1 Introduction
+Consider the following problem. There are n people running on a circular track of circumference 1. All n runners start at the same time and place. It is not a race; runner i runs at constant speed vi. Thus, the position of runner i at time t is {vit} where {x} is the fractional part of x (i.e. {x} = x - x ). All the speeds are different (i.e. vi = vj for i = j). A runner is said to be lonely if the smallest distance (along the track) to another runner is at least 1/n. To be precise, runner i is lonely at time t if the following holds:
+{vit - vjt}  [1/n, (n - 1)/n] for all j = i.
+Research supported by NSF Grant DMS-9627408 Research supported by the M. and M. L. Bank Mathematics Research Fund and by the Fund for the Promotion of Research at the Technion. Work partly done while this author was visiting the Department of Mathematics, Massachusetts Institute of Technology.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+1
+
+For example, if there are exactly two runners on the track then there comes a time when they are opposite each other, and at this moment both runners are lonely. The question: does every runner get lonely?
+This question originally arose in the context of diophantine approximations (see [BW], [W]) and in the study of so-called View Obstruction Problems (see [C1], [C2], [C3]). It has been shown that if there are less than or equal to five runners on the track then every runner gets lonely [BGGST], [CP]. In [BGGST], this result was used to prove a theorem on flows in graphs related to Seymour's six-flow theorem [S]. Furthermore, it was pointed out that a proof of the lonely runner conjecture for higher values of n would have analogous consequences regarding flows in regular matroids.
+While the formulation of the question in the above paragraph (due to Goddyn [BGGST]) is poetic, the following reformulation of the problem will be easier to handle.
+Ê Conjecture 1 (Wills, Cusick). For any collection v1, v2, . . . , vn-1  + there exists Ê t  + such that the following holds:
+
+{vit}  [1/n, (n - 1)/n] for i = 1, . . . , n - 1.
+
+(1)
+
+To get this conjecture from the original simply choose an i and subtract vi from each of the original speeds. After doing so, runner i is standing still and is lonely at time t if all the other runners are far from the starting point at time t (i.e. far from 0). Condition (1) holds for time t if and only if the original runner i is lonely at time t.
+The following example shows that Conjecture 1 is sharp. Let vi = i for i = 1, . . . , n-1, and assume for the sake of contradiction that there exists a time t for which {vit}  (1/n, (n - 1)/n) for all i. Then there exist i and j such that {vit}  {vjt} < {vit} + 1/n. However, vj - vi = vk for some k  {1, . . . , n - 1} (note that for the purposes of this problem vi and -vi are equivalent speeds) and {vkt} = {vjt} - {vit} < 1/n. This is a contradiction. It should be noted that a number of other, sporadic extremal examples have been discovered for particular values of n.
+Before stating our central result, we give a third formulation of the problem, a restatement of the conjecture as a covering problem. Define
+Ê B = {x  + : k  such that |k - x| < 1/n}
+
+and xi = 1/vi for i = 1, . . . , n - 1. Runner i is near the imaginary stationary runner (i.e.
+
+near the starting point) for t  Bi := xiB. Thus, there exists t satisfying condition (1) if
+
+and only if we have
+
+Ê n-1
+B := xiB = + .
+
+(2)
+
+i=1
+
+Ê Thus, condition (1) is equivalent to the statement that no set of n - 1 contractions and/or
+expansions of B covers + . Throughout the remainder of the paper we will pass between
+
+the formulation of the problem given by (1) and that given by (2) without comment. Conjecture 1 has been proven for n  5 [CP], [BGGST]. Here we prove that the
+
+conjecture holds for n = 6.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+2
+
+Ê Ê Theorem 2. For any collection v1, v2, v3, v4, v5  + there exists t  + satisfying
+
+{vit}  [1/6, 5/6] for i = 1, . . . , 5.
+
+(3)
+
+Now, the arguments used in [CP] and [BGGST] for the proof of Conjecture 1 for n  5 rely on number theoretical analyses of the speeds (which are assumed to be integers) focusing on how the runners cover discrete sets of times. In contrast, the proof we give here takes advantage of the fact that runners must cover intervals of times. Because of
+Ê this difference in approach, we are also able to show that there are, up to scaling, only
+two sets of speeds for which B = + ; in other words, there are two extremal examples. The second of these is one of the sporadic extremal examples found by Flor (see [W]).
+
+Theorem 3. Let v1 < v2 < v3 < v4 < v5 be a collection of positive reals. Either
+Ê (v1, . . . , v5) = x(1, 2, 3, 4, 5) for some x  + , (v1, . . . , v5) = y(1, 3, 4, 5, 9) for some y  Ê+ or there exists a time t and an > 0 satisfying
+
+[t, t + ]  B = .
+
+The methods developed in this paper can certainly be used to prove statements analogous to Theorems 2 and 3 for n < 6. For the sake of brevity, a discussion of such arguments is not included here. The same methods may be used to attack the problem for n > 6, but the amount of work involved seems to grow so fast with n as to make this approach impractical.
+
+2 The Argument
+
+We begin with some preparatory assumptions and definitions. We first assume v1, . . . , v5 are rational. This assumption is justified by Lemma 8, which is stated and proved in Section 4. For notational convenience we assume v1 < v2 < v3 < v4 < v5 and v3 = 1 (in other words x1 > x2 > x3 > x4 > x5 and x3 = 1). For S  {1, 2, 3, 4, 5}, a maximal
+Êinterval contained in iSBi is called a S-block and a maximal interval contained in + \(iSBi) is called a S-gap. Note that S-gaps are closed intervals and S-blocks are open intervals. For notational convenience we will drop brackets and commas when discussing S-blocks and S-gaps; for example, we will write 45-gap instead of {4, 5}-gap. The length of an interval I will be denoted |I|.
+The starting point for our argument is the following simple observation.
+Lemma 4. If I is a 45-block then |I| < 2x4/3.
+Proof. First note that I contains at most one 4-block because a 4-gap (which has length 2x4/3) cannot be contained in a 5-block (which has length x5/3 < x4/3). Let I be the union of at most one 4-block and k 5-blocks.
+If k  1 then |I| < x4/3 + x5/3 < 2x4/3. Suppose k  2. In this case I contains a 5-gap. This 5-gap is a subset of some 4-block J. Therefore, 2x5/3 < x4/3. There are at most two 5-blocks that are contained in I but not contained in J. Thus, |I| < x4/3 + 2x5/3 < 2x4/3.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+3
+
+Ê Corollary 5. If there exists a 3-gap that is also a 123-gap then B = + .
+
+Proof. Let I be a 3-gap that is also a 123-gap. Since I is a 3-gap, |I| = 2x3/3 > 2x4/3. Thus, I is contained in no 45-block, and I  B.
+
+In this section we establish sufficient conditions for the existence a 3-gap that is also a 123-gap. Later in the paper we handle collections of speeds that fail to satisfy these sufficient conditions case by case. The machinery developed in this section will be used repeatedly when we consider the special cases.
+When does there exist a 3-gap that is also a 123-gap? Consider an arbitrary 3-gap I. It is an interval of time when runner 3 is in the interval [1/6, 5/6]. The interval I is also a 23-gap if and only if runner 2 is also in [1/6, 5/6] throughout I, which is the case if and only if runner 3 passes runner 2 somewhere in I. Now, the times when runner 3 passes runner 2 are the positive integer multiples of t0, where t0 is defined by
+
+1
+
+1
+
+t0
+
+:=
+
+v3
+
+- v2
+
+=
+
+. 1 - v2
+
+If we have
+
+{v3kt0} = {kt0}  [1/6, 5/6]
+
+(4)
+
+then runner 3 is in [1/6, 5/6] at time kt0, and kt0 is in a 3-gap that is also a 23-gap. This 23-gap is also a 123-gap if and only if the following three conditions are satisfied:
+
+1. runner 1 is in [1/6, 5/6] at time kt0:
+
+{v1kt0}  [1/6, 5/6],
+
+(5)
+
+2. the last time before kt0 that runner 3 enters [1/6, 5/6] follows the last time before kt0 that runner 1 enters [1/6, 5/6]:
+
+{v1kt0} - 1/6  {kt0} - 1/6
+
+v1
+
+1
+
+and
+
+3. the first time after kt0 that runner 3 leaves [1/6, 5/6] precedes the first time after kt0 that runner 1 leaves [1/6, 5/6]:
+
+5/6 - {v1kt0}  5/6 - {kt0}.
+
+v1
+
+1
+
+Conditions 2 and 3 are equivalent to
+
+1/6 + ({kt0} - 1/6)v1  {v1kt0}  5/6 - (5/6 - {kt0})v1.
+
+(6)
+
+Thus, there exists a 3-gap that is also a 123-gap if and only if there exists a positive integer k satisfying (4), (5) and (6).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+4
+
+In order to get a better feel for this, we restate these conditions in slightly different language. Let G  T := [0, 1) × [0, 1) be defined by
+
+G = {({kt0}, {v1kt0}) : k = 0, 1, . . .} .
+
+(7)
+
+Note that the rationality of v1 and v2 implies that G is finite. Also note that G is merely the subgroup of T , with respect to addition modulo 1 in each coordinate, generated by ({t0}, {v1t0}). Now, let P be the collection of (x, y)  T satisfying
+
+1/6  x  5/6, and
+
+(8)
+
+(1 - v1)/6 + v1x  y  5(1 - v1)/6 + v1x.
+
+(9)
+
+There exists a 3-gap that is also a 123-gap if and only if G  P =  (note that (5) follows from (8) and (9)).
+This formulation of our problem leads naturally to the question: under what conditions does a finite cyclic subgroup of the two dimensional torus intersect a given polygon lying on the torus? It seems reasonable to think that if the polygon is sufficiently large then such an intersection will exist when G is `random looking;' that is, the intersection is nonempty so long as G doesn't follow some very restrictive pattern (e.g. G lies on a coordinate axis). This is in fact the case when the polygon in question is a rectangle with sides parallel to the coordinate axes, as is seen in the lemma below. Before stating this technical lemma we must establish some definitions. As above, let T = [0, 1) × [0, 1) be the two-dimensional torus. We shall sometimes specify a point (x, y)  T using values of x, y which are not in [0, 1) ­ these should be understood modulo 1. Let G be an arbitrary finite subgroup of T . Define
+
+N1 = {x : y such that (x, y)  G}, N2 = {y : x such that (x, y)  G}, n1 = |N1|, n2 = |N2| and n = |G|.
+Note that N1 = {i/n1 : i = 0, . . . , n1 - 1} , N2 = {i/n2 : i = 0, . . . , n2 - 1}, n is a common multiple of n1, n2 (if G is cyclic, it actually equals lcm{n1, n2}), and G  {(i/n, j/n) : 0  i, j  n - 1}. A rectangle in T is a set of the form
+
+R := {(u, v)  T : 0  {u - x1}   and 0  {v - x2}  } for some x = (x1, x2)  T , width , and height .
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+5
+
+j
+
+j
+
+-1100000011111/000100011111111000001101000110111100-11/010101011100/ 1101000101010000111110100101101100010111001001011/
+
+i
+
+-n100111110001110000-1001100001001110111/010001001111001101010110011100001110-10010110101000110111//n011001110101010001110100110101001001K0010111010000111010101100001111110001/001100001010111011011011000001111001n i
+
+-n
+
+(a)
+
+
+
+
+
+2 n
+
+(b)
+
+1 n
+
+
+
+
+
+<
+
+2 n
+
+Figure 1: The conditions in the main lemma. The region in 2 which must contain an element (i, j) = (0, 0) such that (i/n, j/n)  G is shaded. The polygon with bold boundary in (b) is an example of a possible choice of K.
+
+Main Lemma. Let G be a finite subgroup of the torus T of order |G| = n. Let 0 < ,   1 be given, and suppose   1/n. Then G intersects every rectangle R in T of width  and height , unless one of the following conditions holds:
+
+1.   2/n and there exists (i, j)  2 \ {(0, 0)} in the box (-1/, 1/) × (-1/, 1/)
+
+satisfying
+
+(i/n, j/n)  G and |i| + |j| - 2 |i||j| < 1. n
+
+Ê 2. 1/n   < 2/n and for every symmetric closed convex neighborhood K of the origin in 2 which is contained in the box [-n, n] × [-n, n] and has area A(K)  4n, there exists (i, j)  K  2 \ {(0, 0)} satisfying
+
+(i/n, j/n)  G and |i| + |j| - 2 |i||j| < 1. n
+
+Note that when the area  of the rectangles in question is less than 1/n, it is impossible for the group G of order n to intersect all of them. Hence, we restrict attention to   1/n. We chose to distinguish the cases   2/n and 1/n   < 2/n in the statement of the lemma because when n is large enough so that   2/n the condition in the lemma admits a simpler form. Figure 1 illustrates the condition in each of the two cases.
+When applying the Main Lemma we will use the following simpler form.
+Corollary 6. Let G be a finite subgroup of the torus T of order |G| = n > 1. Let 0 < ,  < 1 be fixed. Either G intersects every rectangle R in T of width  and height 
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+6
+
+or there exists (i, j)  2 \ {(0, 0)} satisfying
+
+0
+
+
+
+i
+
+<
+
+1 ,
+
+-1
+
+-
+
+ i
+
+<j
+
+<
+
+1
+
++
+
+ i,
+
+and (i/n, j/n)  G.
+
+(10)
+
+ 
+
+
+
+The proofs of the main lemma and Corollary 6 are given in the next section. A
+
+central idea in these proofs is the following elementary observation that is used repeatedly
+
+throughout the paper. We begin with some more definitions. A rational circle in T is a
+
+set of the form
+
+Ê L = {x + yt : t  +}
+
+for some x, y = (y1, y2)  T where both y1 and y2 are rational and either y1 = 1 or y2 = 1. We will opt for a `horizontal parameterization' (i.e. y1 = 1) whenever possible (in fact, the only circles that we consider that have a vertical parameterization are of the form Lj1 defined below). Note that any rational circle has finite length as there exists a finite t such that x + yt = x. Now, if L intersects G then it does so periodically; let the period of G in L be defined by
+Ê p = min{t  + : g, h  G  L such that g = h + yt}.
+
+For example, if g = (g1, g2)  G and g1 = 0 then the circle generated by g, which we define
+
+as
+
+Ê Lg =
+
+(0, 0) + t 1, g2 g1
+
+:t +
+
+,
+
+has period at most g1. A second important example of rational circles are the circles
+
+Ê Lj1 = (j/n1, 0) + t(0, 1) : t  + for j = 0, . . . , n1 - 1 and Ê Lj2 = (0, j/n2) + t(1, 0) : t  + for j = 0, . . . , n2 - 1.
+
+For i  {1, 2} the circle Lji has period ni/n. Our elementary observation is the following: if L  P contains a segment longer than the period of G in L (where the length of the segment is measured in terms of the parameterization of L) then G intersects P . To be
+more precise,
+
+z  L such that z + yt  P for 0  t  p  G  P = .
+
+(11)
+
+With this observation in hand, we are ready to apply the main lemma to the group G defined in (7) and parallelogram P described in (8) and (9). To be more precise, we apply the lemma to a large rectangle R contained in P . As the dimensions of P depend on v1, such a large rectangle will not exist if v1 is too large. So, for the sake of this discussion, we assume v1  1/4. It follows from this assumption that R = [1/6, 5/6] × [1/3, 2/3]  P . Since R is a rectangle having width 2/3 and height 1/3, Corollary 6 implies that G intersects P unless one of the following conditions hold:
+1. |G| = 1, (1/n, 0)  G or (0, 1/n)  G.
+
+2. (2/n, 0)  G.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+7
+
+3. there exists (u, v)  G such that u  {1/n, 2/n} and v = ±u.
+4. (2/n, 1/n)  G or (2/n, -1/n)  G.
+In these cases the condition (u, v)  G assumes (u, v) is minimal in that there does not exist (u , v )  G and integer k > 1 such that u = ku and v = kv .
+In the discussion that follows, we show that G and P do, in fact, intersect when conditions 2, 3 or 4 are satisfied. Condition 1, on the other hand, is a completely different matter. The condition (0, 1/n)  G implies {v3t0} = {t0} = 0 which means that runner 3 is at 0 whenever runner 3 passes runner 2. So, in this case there is obviously no 3-gap that is also a 23-gap. The condition (1/n, 0)  G, on the other hand, implies {v1t0} = 0 which corresponds to runner 1 being at 0 whenever runner 3 passes runner 2. In such a situation there is clearly no 23-gap that is also a 123-gap. When |G| = 1 we have {v1t0} = {v3t0} = 0; in words, when runner 3 passes runner 2, runners 1, 2 and 3 are at 0. Thus, we cannot use Lemma 4 when condition 1 is satisfied: different arguments are required. These arguments are fairly intricate (especially in the case {v1t0} = 0), and are relegated to later sections of the paper. We now return to conditions 2, 3 and 4, dealing with them case by case.
+Case 2.1. (2/n, 0)  G.
+Here we must have n2 = 2 and n  4. Consider the circle L21. The period of G in L21 is n2/n = 2/n  1/2 while L  P contains a segment of length 2/3. It then follows from (11) that G  P = .
+Case 2.2. There exists (u, v)  G such that u  {1/n, 2/n} and v = ±u.
+If n = 2 then (1/2, 1/2)  G  R. For n  3 consider the circle L generated by (u, v). The period of G in L is u, and L  P contains a segment of length at least 1/3. Thus, if u  1/3 it follows from (11) that G  P = . On the other hand, it follows from n  3 that u  2/3. So, if u > 1/3 then 1/3 < u  2/3 and (u, v) itself lies in G  P .
+Case 2.3. There exists v = ±1/n such that (2/n, v)  G.
+Consider the circle generated by (2/n, v). The period of G in L is 2/n, and L  P contains a segment of length 1/3. Thus, (11) implies G  P =  for n  6. For n = 3, 4, 5 it is easy to see that either (2/n, v) itself is in G  P or 2(2/n, v)  G  P .
+Note that for n = 4 the only elements of G  L in P lie on the boundary of P . Thus, for v1 > 1/4 such a group corresponds to a set of speeds for which there exists no 3-gap that is also a 123-gap. This is the fact that motivated our choice of v1  1/4 for this discussion.
+Ê To summarize, we have shown in this section that B = + under the assumptions
+v1  1/4, {t0} = 0 and {v1t0} = 0. As noted above, we handle the cases {t0} = 0 and {v1t0} = 0 via applications of the main lemma. Each of these applications, like the application given in this section, require that we assume v1 is small, and become easier
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+8
+
+as the assumed value of v1 shrinks. We handle large v1 using different ad hoc arguments, and as v1 shrinks these arguments become more difficult. Thus, we have a tradeoff in the difficulty of the proof depending on where we `switch' between an ad hoc proof and
+applications of the main lemma. In this paper, we make the transition at v1 = 1/3, but this choice is arbitrary.
+The rest of this paper is organized as follows. The next section, Section 3, contains the
+proofs of the main lemma and Corollary 6 as well as an additional technical lemma that
+will be used in all later applications of the main lemma. In Section 4 the case of irrational speeds is considered. In Section 5 we handle the case {v1t0} = 0, and in Section 6 we deal with {t0} = 0. In both Section 5 and Section 6 we assume v1 < 1/3. In Section 7 we consider the case {t0} = 0, {v1t0} = 0 and 1/4 < v1 < 1/3; this is merely an extension of the argument in this section to slightly larger values of v1. In Section 8 we consider v1  1/3.
+Taken together, these sections constitute a proof of Theorem 2. A proof of Theorem 3
+is obtained by following that of Theorem 2 and observing that, except for the sets of
+speeds specified in Theorem 3, the argument provides an uncovered interval, or may be
+easily enhanced so that it will. We omit the extra details needed for that.
+
+3 Tools
+
+3.1 Proof of the Main Lemma
+
+Let G be a finite subgroup of T of order n > 1, let 0 < ,  < 1 be given such that
+Ê  1/n, and let K be an arbitrary symmetric closed convex neighborhood of (0, 0) in 2 which is contained in the box [-n, n] × [-n, n] and has area A(K)  4n. We first show that there exists an element (i, j)  ( 2  K) \ {(0, 0)} such that (i/n, j/n)  G (this statement could be deduced from a well-known theorem of Minkowski, but we prefer to give a proof here). Consider the family F of subsets of T of the form (i/n, j/n) + (1/2n)K, where (i/n, j/n)  G. If two sets in F intersect, say (i1/n, j1/n) + 1/2n(x1, y1) = (i2/n, j2/n) + 1/2n(x2, y2) for (x1, y1), (x2, y2)  K, then, (i1 - i2, j1 - j2) = 1/2(x2, y2) + 1/2(-x1, -y1) holds modulo n, and we obtain an element as desired. But it is impossible for the sets in F to be disjoint, as there are n of them and each is a closed
+set of area at least 1/n, with n > 1.
+We now pick an (i, j) as above which is minimal in the sense that it is not of the form (i, j) = k(i0, j0) for some integer k > 1 and (i0/n, j0/n)  G. We will show that if G misses some  ×  rectangle R in T then (i, j) must satisfy
+
+|i| + |j| - 2 |i||j| < 1.
+
+(12)
+
+n
+
+This will establish the condition stated in part 2 of the lemma. In order to obtain the condition stated in part 1 of the lemma, it suffices to take K to be the box [-1/, 1/] × [-n, n] and to observe that   2/n, (i, j)  K and (12) imply -1/ < i < 1/, -1/ < j < 1/.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+9
+
+We assume w.l.o.g. that i, j  0. If i = 0 then G consists of n/j equidistant points on each of the j vertical circles L01, . . . , L1j-1. Since the distance between two consecutive points on one of these vertical circles is j/n   (recall, K  [-n, n] × [-n, n]), in order for G to miss R the latter must lie in the interior of a strip between two vertical
+circles. But, the distance between two vertical circles is 1/j which is no more than ,
+unless (12) holds. The argument in the case j = 0 is similar.
+Thus, we may assume i, j > 0. The circle Lg generated by g = (i/n, j/n) has period (measured horizontally) exactly i/n (due to the minimality of (i, j)). Consider the family L of line segments which are parallel to Lg, pass through a point of G and have the same projection onto the horizontal axis as R. By (11), if the intersection of such a line segment with R has length (measured horizontally) at least i/n, then G  R = . Let (x1, x2) be the lower left hand corner of R. Since i/n   and j/n   (which is due to the fact that K  [-n, n] × [-n, n]), the intersection of a line in L with R is of length at least i/n if and only if the line intersects the set
+
+i x1 + n
+
+×
+
+j(2i - n)
+
+x2 +
+
+in , x2 + 
+
+.
+
+The number of line segments in L is determined by
+
+|L| = |G  ([x1, x1 + i/n) × [0, 1)) | = i.
+
+Since G is a group, these line segments are equally spaced. Hence, these line segments
+
+cross
+
+the
+
+vertical
+
+circle
+
+{x1
+
++
+
+i n
+
+}
+
+×
+
+[0,
+
+1)
+
+at
+
+equally
+
+distanced
+
+points,
+
+and
+
+if
+
+none
+
+of
+
+these
+
+has
+
+second
+
+coordinate
+
+between
+
+x2
+
++
+
+j(2i-n) in
+
+and
+
+x2
+
++ ,
+
+then
+
+we
+
+must
+
+have
+
+
+
+-
+
+j(2i
+
+-
+
+n)
+
+<
+
+1 ,
+
+in
+
+i
+
+or equivalently (12).
+
+3.2 Proof of Corollary 6
+
+Let G be a finite subgroup of T of order n > 1, let 0 < ,  < 1 and define
+
+X=
+
+(i, j) 
+
+2
+
+:
+
+0
+
+
+
+i
+
+<
+
+1,-1
+
+-
+
+ i
+
+<
+
+j
+
+<
+
+1
+
++
+
+ i
+
+\ {(0, 0)}.
+
+
+
+
+
+We show that either G intersects every  ×  rectangle in T or there exists (i/n, j/n)  G such that (i, j)  X. If n  2/ this follows directly from part 1 of the Main Lemma.
+Assume 1/  n < 2/. Define
+
+Ê K = (x, y)  2 : - 1 < x < 1 , -n  y  n .
+
+
+
+
+
+As in the proof of the Main Lemma, there exists a minimal (i, j)  ( 2  K)\{(0, 0)} such that i  0 and (i/n, j/n)  G (note that the conditions n  1/ and  < 1 guarantee
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+10
+
+that (1/2n)K does not self-intersect on the torus, and that although it is only half-closed n translates of it cannot be disjoint). If n < 1/ then (i, j)  X, and the proof is complete. If 1/  n < 2/ then either (i, j)  X or we have
+
+|j|  1 + i and |j|  n. 
+But, if the latter holds then we obtain
+
+|i| + |j| - 2|i||j|  i + 
+
+1 i +
+
+n
+
+
+
+= 1 + 2i  - |j| n
+
+ 1 + 2i  - n n
+
+= 1,
+
+- 2i|j| n
+
+and it follows from the proof of the main lemma that G intersects all  ×  rectangles. Finally, assume n < 1/. Then, since  < 1, X contains the set
+
+{0, 1, . . . , n - 1} × {-1, 0, 1} \ {(0, 0)},
+
+which must contain some (i, j) such that (i/n, j/n)  G.
+
+3.3 Minimal group elements
+In the applications of the main lemma in the following sections there are many pairs (i, j) that satisfy (10) (i.e.  and  are small). In these situations there are groups of small order that contain more than one element that satisfies (10). Thus, when we consider the pairs (i, j) that satisfy (10) case by case, these particular small groups could be considered more than once.
+In order to attempt to avoid this repetition, we strengthen the notion of minimality used in the proofs of the Main Lemma and Corollary 6. For i, j  0 let Zi,j be the following subset of 2
+Zi,j = [-i, i] × [-j, j] \ {(±i, ±j)}.
+We say that (i/n, j/n)  G is minimal if the following holds:
+
+(k/n, l/n) : (k, l)  Z|i|,|j|  G = {(0, 0)}.
+
+(13)
+
+Note that, in spite of our terminology, minimality is a property of the pair (i, j) and not of the group element (i/n, j/n); in other words, it may happen that (i/n, j/n), (i /n, j /n) represent the same group element and one is minimal while the other is not.
+We have the following lower bound on the order of a group having minimal element (i/n, j/n).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+11
+
+Lemma 7. Let G be a group of order n > 1 having minimal element (i/n, j/n). Then we
+
+have |i|, |j|  2  n  (|i| + 1)(|j| + 1) - 1,
+
+|i|, |j|  1  n  (|i| + 1)(|j| + 1) - 2,
+
+(14)
+
+i = 0 or j = 0  n  2 max{|i|, |j|}.
+
+Proof. Suppose i, j = 0. Let Y be the following subset of 2
+
+Y = [0, |i|] × [0, |j|] \ {(|i|, 0), (|i|, |j|)}.
+
+Note that Y - Y  Z|i|,|j|. We will show that for (a1, a2) = (b1, b2) we have
+
+(a1/n, a2/n), (b1/n, b2/n)  G  ((a1, a2) + Y )  ((b1, b2) + Y ) = 
+
+(15)
+
+(where addition is modulo n). If (15) holds then {g + Y /n : g  G} (where addition is in T ) is a collection of disjoint subsets of {(k/n, l/n) : 0  k, l < n}. Thus, |G||Y |  n2,
+and the second part of (14) follows. The first part of (14) follows from the observation that when |i|, |j|  2 the shape Y /n cannot tile the torus.
+It remains to prove (15). Assume for the sake of contradiction that a = (a1/n, a2/n), b = (b1/n, b2/n)  G, (x1, x2), (y1, y2)  Y and (a1, a2) + (x1, x2) = (b1, b2) + (y1, y2). It follows that a - b = (y1/n - x1/n, y2/n - x2/n)  G. However, (y1 - x1, y2 - x2)  Z|i|,|j|. This contradicts the minimality of (i/n, j/n).
+If i = 0 or j = 0 the conclusion of (14) is straightforward.
+
+Now, in the proofs of the Main Lemma and Corollary 6, we chose (i, j)  ( 2  K) \ {(0, 0)} such that (i/n, j/n)  G, i  0 and (i, j) is not a positive integer multiple of (i0, j0)  2 such that (i0/n.j0/n)  G. Note that in both proofs we can actually choose an element (i , j )  ( 2  K) \ {(0, 0)} such that i  0 and (i /n, j /n) is a minimal
+element of G in the place of (i, j). We thereby conclude that either G intersects every  by  rectangle or there exists (i, j)  2 \ {(0, 0)} satisfying (10) and (14).
+
+4 Irrational Speeds
+In this section we justify why, in the rest of this paper, we restrict our attention to rational speeds. In some of the previous papers that treated Conjecture 1, a reduction of the irrational case to the rational case was attributed to Wills. However, it seems to us that what Wills did does not amount to that, and therefore we address the issue here.
+It follows from the lemma below that if Conjecture 1 holds when n - 1 is substituted for n and all speeds are assumed to be rational, then it also holds true (in fact, with some slack) for n, except possibly when the speeds are proportional to a collection of rational speeds. To see this, apply Lemma 8 with any  satisfying 1/n <  < 1/(n - 1). In particular, the irrational case of Conjecture 1 for n = 6 follows from the rational case of the conjecture for n = 5 (proved in [CP] and [BGGST]). Similarly, the irrational case of Conjecture 1 for n = 7 is implied by the results of the current paper.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+12
+
+É Lemma 8. Let 0 <  < 1/2. Suppose that for every collection v1, . . . , vn-2  + there Ê exists t  + satisfying
+
+{vit}  (, 1 - ) for i = 1, . . . , n - 2.
+Ê Then for any collection u1, . . . , un-1  + for which there is a pair ui ,uj such that É Ê ui/uj  there exists t  + satisfying
+{uit}  (, 1 - ) for i = 1, . . . , n - 1.
+
+Proof. Let u = (u1, . . . , un-1) and consider the set
+Ê Ê M(u) = y  n-1 : t  and k  n-1 such that y = tu - k .
+
+Clearly, the conclusion of the lemma is equivalent to the assertion that M(u) intersects the open hypercube (, 1 - )n-1. It suffices to prove that the closure of M(u), which we denote by M (u), intersects the same hypercube.
+É Ê By a generalization of Kronecker's theorem (see [P, Satz 65]), the set M (u) is char-
+acterized as follows. If u1, . . . , un-1 are linearly independent over , then M (u) = n-1 ;
+É in this case there is nothing to prove. Otherwise, the speeds u1, . . . , un-1 satisfy some
+homogeneous linear equations over of the form
+
+a1u1 + · · · + an-1un-1 = 0.
+
+(16)
+
+Consider a maximal set of linearly independent equations of the form (16) satisfied by
+Éu1, . . . , un-1, and write them as the rows of a matrix A; thus, A is a m×(n-1) matrix over of rank m, satisfying u  Ker(A). In this setting, the above mentioned generalization of Kronecker's theorem is the statement
+
+M (u) = Ker(A) + n-1.
+
+(17)
+
+Ê Since Ker(A) contains the vector u which lies in the positive orthant of n-1, and
+
+A has rational entries, it follows that Ker(A) also contains some vector r with positive
+
+rational components. By assumption, u is not proportional to a rational vector, and hence
+
+Ker(A) has dimension two or more. We can therefore find a vector s  Ker(A) which has
+
+rational components and is not a constant multiple of r. It follows that we can find i, j
+
+obeying
+
+si < sj and sk  si , sj for k = 1, . . . , n - 1.
+
+(18)
+
+ri rj
+
+rk
+
+ri rj
+
+Consider now the vector
+
+w = (ri + rj)s - (si + sj)r.
+
+It is clearly a rational vector in Ker(A). We observe that we have
+
+wi = -wj and wk = 0 for k = 1, . . . , n - 1.
+
+(19)
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+13
+
+To verify the second part of (19), note that wk = 0 is equivalent to
+sk = si + sj , rk ri + rj
+which would imply that sk/rk lies between si/ri and sj/rj, contradicting (18). Now, let v1, . . . , vn-2 be a collection of positive rationals that contains |w1|, . . . , |wn-1|;
+Ê we can find such a collection by virtue of (19). Applying the assumption of the lemma,
+we find t  + such that {vit}  (, 1 - ) for i = 1, . . . , n - 2. Since tw  Ker(A), it follows from (17) that M (u) intersects the hypercube (, 1 - )n-1, which completes the proof.
+
+5 {v1t0} = 0 and x1 > 3
+
+In this case runner 1 is at 0 whenever runner 3 passes runner 2. In terms of the speeds of the runners, this condition is equivalent to
+
+1
+
+1 -
+
+v2 v1
+
+=
+
+k
+
+
+
+v2
+
+=
+
+1
+
+-
+
+v1 k
+
+(20)
+
+for some integer k  1. As we have already noted, there is no chance of applying Lemma 4 when (20) holds (i.e. when (20) holds there exists no 123-gap of length 2/3). The difficulty is further compounded by the fact that the behavior of the system varies depending on the value of k in (20). In order to deal with these differences, we divide our treatment of this topic into two cases.
+
+Case 5.1. t0v1 = k for some integer k  3.
+
+While there exists no 123-gap of length 2/3, we will show that in this situation there usually are two (or more) 123-gaps of length at least 1/2 near each other. To make this notion more precise, we establish some definitions. For a fixed time t define
+
+I1 = [t, t + 1/2] , I2 = (t + 1/2, t + 1) and I3 = [t + 1, t + 3/2].
+We say that t initiates the triple configuration I1, I2, I3 if I1  (B1  B2  B3) =  and I3  (B1  B2  B3) = .
+Before analyzing if and when triple configurations arise, we show that x4 and x5 must satisfy very special conditions if we are to have
+
+I1  I3  B4  B5.
+
+(21)
+
+For the purposes of this discussion, we assume t initiates a triple configuration and that (21) holds. Our first observation is that Lemma 4 implies
+
+x4 > 3/4.
+
+(22)
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+14
+
+Claim 9. If I1  I3  B4  B5 then no 4-block is contained in I2. Proof. Assume for the sake of contradiction that there exists j satisfying
+
+(j - 1/6)x4, (j + 1/6)x4  I2.
+
+This implies
+
+[(j - 5/6)x4, t + 1/2], [t + 1, (j + 5/6)x4]  B5,
+
+and therefore we have
+
+2x4/3 > 2x5/3 > (t + 1/2) - (j - 5/6)x4 + (j + 5/6)x4 - (t + 1) = 5x4/3 - 1/2.
+
+Therefore, x4 < 1/2, which contradicts (22). Claim 10. If I1  I3  B4  B5 then no 4-block is contained in I1 or I3.
+
+Proof. Assume without loss of generality that there exists j satisfying
+
+t  (j - 1/6)x4 and (j + 1/6)x4  t + 1/2.
+
+(23)
+
+This implies
+
+2x5/3 < x4/3 and 2x5/3 + x4/3 > 1/2,
+
+(24)
+
+and therefore 1/4 < x5 < 1/2. This absolute upper bound, in turn, implies x4/3 + x5/3 < 1/2. Thus, we must have
+
+t + 1  (j + 5/6)x4 and (j + 7/6)x4  t + 3/2.
+
+(25)
+
+Now, (23) and (25) imply that there exist four 1234-gaps in I1  I3 that are covered by B5. It follows from this observation and 1/4 < x5 that no 5-block is contained in the 4-block ((j - 1/6)x4, (j + 1/6)x4). So, the first two 1234-gaps in I1  I3 must be covered by consecutive 5-blocks, which implies
+
+4x5/3 > 1/2.
+From this observation it follows that no 5-block is contained in I2, and therefore the first three 1234-gaps in I1  I3 must be covered by consecutive 5-blocks. We therefore have 4x5/3 > 2x4/3, which contradicts (24).
+To summarize, we have shown that if t initiates a triple configuration and (21) holds then there exists a j such that the following holds:
+
+either [(j - 1/6)x4 < t and (j + 3/2)x4 > t + 3/2] or [(j - 1/2)x4 < t and (j + 7/6)x4 > t + 3/2].
+
+(26)
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+15
+
+One implication of (26) is
+
+10x4/6 > 3/2  x4 > 9/10.
+
+(27)
+
+It also follows from (26) that if there exists t satisfying
+
+([t, t + 1/2]  [t + 1, t + 3/2]  . . .  [t + l, t + l + 1/2])  (B1  B2  B3) =  (28)
+
+(we call this a multiple configuration) then there exists a j for which we have:
+
+either (j - 1/6)x4 < t and (j + l + 1/2)x4 > t + l + 1/2, or (j - 1/2)x4 < t and (j + l + 1/6)x4 > t + l + 1/2.
+
+(29)
+
+This implies
+
+(l
+
++
+
+2/3)x4
+
+>
+
+l
+
++
+
+1/2
+
+
+
+x4
+
+>
+
+6l 6l
+
++ +
+
+3 .
+4
+
+(30)
+
+We now turn to an analysis of how triple and multiple configurations arise. Our first
+
+observation here is the following: if t satisfies
+
+jkx1  t  (j + 1/6)kx1
+
+(31)
+
+then runners 2 and 3 are very close to each other. In fact, if (31) holds then (20) implies
+
+{{v3t} - {v2t}} =
+
+t - (1 - v1 )t k
+
+=
+
+t v1 k
+
+ 1/6.
+
+Thus, if J is a 23-gap and J  [jkx1, (j + 1/6)kx1] then |J|  1/2. More importantly, if
+
+we have
+
+x1/6  i + 1/3, i + l + 1/3  kx1/6 and i + l + 5/6  5x1/6
+
+(32)
+
+then t = i + 1/3 and l satisfy (28). It then follows from (29) that we must have
+
+(i
+
++
+
+1/2)x4
+
+<
+
+i
+
++
+
+1/3
+
+
+
+x4
+
+<
+
+6i 6i
+
++ +
+
+2 .
+3
+
+(33)
+
+It follows from (30) and (33) that we have a contradiction if l  i (note that our multiple configuration begins in the 123-gap following the time i and ends in the 123-gap following time i + l). A multiple configuration satisfying l  i exists unless one of the following conditions holds.
+
+1. k = 3 and x1 < 14/3 2. k = 3 and 8 < x1 < 26/3 3. k = 4 and x1 < 14/4 4. k  5 and x1 < 17/5. We give a unified argument for three of these conditions.
+
+Case 5.1.1. k  3 and x1 < 14/3.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+16
+
+Since v1 < 1/3 and k  3, we have
+
+v2
+
+=
+
+1-
+
+v1 k
+
+>
+
+1-
+
+1 3·3
+
+=
+
+8. 9
+
+Therefore, [21/16, 11/6] is contained in a 123-gap, implying
+
+2x4
+
+>
+
+11
+
+-
+
+21
+
+=
+
+25 .
+
+3 6 16 48
+
+It follows that [21/16, 275/192] is contained in a 1234-gap. So, there exists an i  2 such that (i - 1/6)x5 < 21/16 and 275/192 < (i + 1/6)x5. The only values of i that may satisfy these equations are i = 2, 3. Thus, we obtain
+
+19x5 > 11x4  x5 > x4/2.
+
+In particular, if 13x4  11 then [13x4/6, 11/6] is a 1234-gap that cannot be covered by runner 5. So, we may assume 13x4 > 11. But this implies that [21/16, 121/78] is a 1234gap. For runner 5 to cover this gap, there must be i  {2, 3} such that (i-1/6)x5 < 21/16 and 121/78 < (i + 1/6)x5. However (by the narrowest of margins) no such i exists.
+
+Case 5.1.2. k = 3 and 8 < x1 < 26/3.
+
+In this situation, there exists a triple configuration ((28) holds with t = 14/6 and l = 1). It then follows from (27) that x4 > 9/10. Furthermore, we have
+
+v2
+
+=
+
+1-
+
+v1 3
+
+>
+
+1-
+
+1 24
+
+=
+
+23 . 24
+
+It follows from these two observations that [52/23, 51/20] is contained in a 1234-gap. Thus, there exists an i  3 such that (i - 1/6)x5 < 52/23 and (i + 1/6)x5 > 51/20. No such i exists.
+
+Case 5.2. v1t0 = k for k  {1, 2}.
+In this case the above method of exploiting triple configurations will not work. We shall handle the cases k = 1, 2 jointly by proving the following
+
+Proposition 11. Let v1 < v2 < v3 < v4 < v5 be a collection of rational speeds satisfying v1 + v2 = v3 = 1.
+1. If v1 < 1/3 then there exists a positive real t such that {vit}  [1/6, 5/6] for i = 1, . . . , 5.
+2. If, moreover, v1 < 1/6, then there exists t satisfying the requirements in part 1 as well as {v1t}  (5/12, 7/12).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+17
+
+Ê In the case k = 1, (20) becomes v1 + v2 = 1, and we apply part 1 of the proposition to
+conclude that B = + . In the case k = 2, (20) becomes v1/2 + v2 = 1. By applying part 2 of the proposition to the collection of speeds v1/2, v2, v3, v4, v5, we obtain t such that
+Ê {vit}  [1/6, 5/6] for i = 2, . . . , 5 and {(v1/2)t}  [1/6, 5/6] \ (5/12, 7/12). The latter
+implies that {v1t}  [1/6, 5/6], so that B = + for the original collection of speeds. The remainder of this section is devoted to the (long) proof of Proposition 11, which is
+organized into the following parts. We begin in Part 1 by making some initial assumptions and fixing notation. Part 2 consists of a number of preliminary developments based
+on the initial assumptions. These include showing that v4 is small, showing that the denominators of v4 and v5 equal the denominator of v1, and eliminating the v1 = 1/4 case. With these observations in hand we are able to apply the main lemma in Part 3.
+Before handling the (many) exceptional groups that are left by this application of the main lemma we develop in Part 4 techniques for getting an expression for v4 in terms of v1 for each exceptional group. These expressions are then used in Part 5 to show that all exceptional groups but one actually intersect the polygon defined in Part 3. The remaining exceptional group (which does not necessarily intersect the polygon defined in
+Part 3) is treated (using different techniques) in Part 6. This organization is presented schematically in Figure 2.
+We begin with our initial assumptions and notation. We proceed indirectly in a way that proves part 1 and 2 of the Proposition simultaneously. Define:
+
+B = B  1/2B1 if v1 < 1/6
+
+B
+
+if 1/6  v1 < 1/3
+
+Ê We assume at the outset that B = + . If v1 < 1/6 we will, for ease of notation, introduce
+a fictional runner 0 having speed 2v1. This runner is in the interval (-1/6, 1/6) whenever runner 1 is in (5/12, 7/12). This will allow us, for example, to distinguish those 123-gaps
+during which runner 1 is known not to be in (5/12, 7/12), now 0123-gaps, from 123-gaps
+in which runner 1 might intersect (5/12, 7/12), simply 123-gaps. Note that the times covered by this fictional runner 0 are simply B0 := 1/2B1. For 1/6  v1 < 1/3 this fictional runner is not introduced. However, the 0 is not dropped from the notation in this
+setting; for example, we will discuss both 0123-gaps and 123-gaps, but these objects are identical, by convention, for 1/6  v1 < 1/3.
+We assume p and q are relatively prime positive integers that satisfy
+
+v1 = p/q < 1/3 and v2 = (q - p)/q.
+We are now ready for Part 2 of the proof of Proposition 11: preliminary observations that will allow us to make some simplifying assumptions on the values of the speeds in the main part of the argument.
+Ê Lemma 12. Assume v1 = p/q, v2 = (q - p)/q and B = + . If I is a 0123-gap then
+I  B4 or I  B5 or there exist integers r, s such that v4 = r/q and v5 = s/q.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+18
+
+Ê Part 1: Notation and initial assumptions Assume B = +
+
+Let
+
+v1
+
+=
+
+p q
+
+<
+
+1 3
+
+v2
+
+=
+
+q-p q
+
+
+
+Part 2: Preliminary observations
+
+Lemmas 12 ­ 18, Table 1
+
+r, s 
+
+v4 is small
+
+such
+
+that
+
+v4
+
+=
+
+r q
+
+and
+
+v5
+
+=
+
+s q
+
+q5
+
+
+
+Part 3: An application of the main lemma
+
+(36) ­ (50), Figure 3
+
+
+
+Part 4: Pre-processing the exceptional groups
+
+Table 2
+
+Part 5: Treating all exceptional cases
+
+except
+
+v4
+
+=
+
+q+p q
+
+Cases 5.2.1 ­ 5.2.11, Tables 3­8
+
+Part
+
+6:
+
+v4
+
+=
+
+q+p q
+
+Case 5.2.12
+
+Figure 2: A road-map of the proof of Proposition 11.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+19
+
+Proof. Suppose I  B4 and I  B5. Note that {vjq} = 0 for j = 0, 1, 2, 3. Thus I + iq is a 0123-gap for i = 0, 1, . . . Since I  B4  B5, there exists a time u  I  B4  B5. Furthermore, the time u + iq must be contained in B4  B5 for i = 1, 2, . . . Now, for j  {4, 5}, the set
+Pj := {{vj(u + iq)} : i = 0, 1 . . . }
+is a finite set that is equidistributed on the circle [0, 1). Thus, if nj = |Pj|, then we have
+
+|{x  Pj : x  [1/6, 5/6]}| 
+
+nj + 2 3
+
+.
+
+(34)
+
+In particular, if nj > 1 then the proportion of elements of Pj that lie in (-1/6, 1/6) is at most 1/2. Since runners 4 and 5 both cover u itself, it follows from (34) that there exists a  {4, 5} such that na = 1. It follows that the denominator of va is q.
+Let b be the element of {4, 5} not equal to a. Since I is contained in neither B4 nor B5, there is a 0123a-gap J  I. Let w  J. Since {vjq} = 0 for j = 0, 1, 2, 3, a, runner b must cover the time w + iq for i = 0, 1, . . . However, the set of positions of runner b at these times is equidistributed in [0, 1). Therefore, as in (34), there can be only one such position, and the denominator of vb is q.
+We will find it useful to consider the case q = 4 separately.
+Ê Lemma 13. If v1 = p/q, v2 = (q - p)/q and B = + then q  5.
+
+Ê Proof. Suppose q = 4. Since v1 < 1/3, we must have p = 1. Thus, v1 = 1/4 and v2 = 3/4.
+By assumption, B = + . Note that I1 = [2/3, 5/6] and I2 = [13/6, 44/18] are 123-gaps. Let k  {4, 5}. If I2  Bk then there exists an i  3 such that (6i - 1)xk < 13/6 and
+(6i + 1)xk > 44/18. As these are contradictory inequalities, we have
+
+I2  B4 and I2  B5.
+
+(35)
+
+Therefore, it follows from Lemma 12 that there exist integers r, s such that v4 = r/4 and v5 = s/4.
+We now make two observations about the integers r and s. First, consider the time
+t = 2/3. The positions of runners 4 and 5 at this time are r/6 and s/6, respectively. Since t = 2/3 must be covered by either runner 4 or runner 5, we must have either 6|r or 6|s. For our second observation, we consider I2. Since I2 is a 123-gap of length 5/18, we can conclude, by Lemma 4, that r  {5, 6, 7, 8, 9}. We consider each of these possible values of r separately.
+If r = 6 then I2 is a 1234-gap and we have a contradiction by (35). For each of the remaining cases we may assume 6|s. If r = 5 then [13/6, 68/30] is a 1234-gap of length 1/10, it follows that s  {6, 12}, and in either case we have a contradiction. If r = 7 or r = 8, then I1 is a 1234-gap of length 1/6, and runner 5 cannot possibly cover this gap as in either of these cases s  12. If r = 9 then [2/3, 44/54] is a 1234-gap of length x4/3.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+20
+
+In most of the remainder of this section we focus on times of the form t = l + 1/2 where l is a positive integer. These are times when runner 3 is at 1/2, opposite the starting point. Note that if we know the location of runner 1 at such a time t then we know the location of runner 2 at that time via v1t + v2t = v3t = t. In particular, if runner 1 is in the interval [1/6, 1/3] at such a time t, then so is runner 2, and the interval [t, t + 1/3] is a 0123-gap (note that we must use v1 < 1/6 to ensure that B0 does not intersect this 123-gap). The following lemma strengthens this observation.
+Lemma 14. Assume v1 + v2 = 1. Let 0    1/6. If there exists a time t satisfying {v3t} = 1/2 and
+{v1t}  [1/6 + v1, 1/3 - v2]
+then there exists a 0123-gap of length at least 1/3 + .
+Proof. Note that for t satisfying the conditions of the lemma, {v2t} = 1/2 - {v1t}. Thus, the 123-gap containing t starts either at the last time before time t when runner 2 leaves (-1/6, 1/6) or the last time before t when runner 1 leaves (-1/6, 1/6). These times are given by
+t - ({v2t} - 1/6)x2 = t - (1/3 - {v1t})x2
+and t - ({v1t} - 1/6)x1
+respectively. Since the 123-gap in question ends at t + 1/3, it has length at least 1/3 +  if
+min{({v1t} - 1/6)x1, (1/3 - {v1t})x2}  ,
+which is equivalent to the condition in the lemma. Once again, it follows from the condition v1 < 1/6 on the existence of runner 0 that this 123-gap is also a 0123-gap.
+Ê Corollary 15. Assume v1 = p/q, v2 = (q - p)/q and B = + . There exists a 0123-gap
+of length at least 1/3.
+Proof. We apply Lemma 14 with  = 0. It suffices to find a time of the form t = l + 1/2 such that {v1t}  [1/6, 1/3]. However, the set of positions of runner 1 at the times t = l + 1/2 is simply a set of q equidistributed points on the circle. Thus, if q  6 one of them will lie in [1/6, 1/3]. By Lemma 13 and the fact that v1 < 1/3, the only remaining possibility is v1 = 1/5, for which we find v1(1 + 1/2) = 3/10  [1/6, 1/3].
+Ê Corollary 16. If v1 = p/q, v2 = (q - p)/q and B = + then v4 < 2.
+Proof. This follows from Corollary 15 and Lemma 4.
+Ê Lemma 17. Assume v1 = p/q, v2 = (q - p)/q and B = + . There exist r, s  such
+that v4 = r/q and v5 = s/q.
+Proof. By Corollary 15, there exists a 0123-gap that is neither covered entirely by runner 4 nor covered entirely by runner 5. The result then follows directly from Lemma 12.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+21
+
+In the very technical case analysis below, we will find it useful to have a better upper bound on v4 than the one provided by Corollary 16. In the following lemma and table we get such an upper bound on v4 by using the full power of Lemma 14 (rather than just  = 0).
+Ê Lemma 18. Assume v1 = p/q, v2 = (q - p)/q and B = + . If q  12 then v4  3/2. For
+each possible (p, q) with q  17, {v4} is bounded above by the number given in Table 1.
+Proof. In order to prove that v4  3/2 it suffices, by Lemma 4, to show that there exists a 0123-gap I such that |I|  4/9. The set of positions of runner 1 at times t = l + 1/2 is a set of q points that is equidistributed in [0, 1). Thus, if we have
+
+1/6
+
+
+
+v1
+
++ v2
+
++
+
+1 q
+
+=
+
+
+
++
+
+1 q
+
+then there exists such a position in the interval [1/6 + v1, 1/3 - v2]. Therefore, by Lemma 14 there exists a 0123-gap I satisfying
+
+|I |
+
+
+
+1/3
+
++
+
+1/6
+
+-
+
+1/q
+
+=
+
+q
+
+-
+
+2 .
+
+2q
+
+This is at least 4/9 for q  18. For q  17, we first note that the actual set of positions of runner 1 at times l + 1/2 is
+{i/q : i = 0, . . . , q - 1} for p even and {(2i + 1)/2q : i = 0, . . . , q - 1} for p odd. Then for each possible pair (p, q) we identify the position of runner 1 in (1/6, 1/3) for which the 0123-gap given by Lemma 14 is longest. This 0123-gap, in turn, gives an upper bound on v4, by Lemma 4. This upper bound is further reduced by noting that the denominator of v4 is q. These calculations are organized in Table 1. An inspection of the table shows that, in fact, v4  3/2 holds already for q  12.
+We now come to Part 3 of the proof of Proposition 11, the application of the main lemma. Once again, we consider times of the form t = l + 1/2. As noted above, if runner 1 is in [1/6, 1/3] at such a time then [t, t + 1/3] is contained in a 0123-gap. If, in addition, runner 4 is in the interval [1/6, 1/2] at time t, then [t, t+x4/3] is contained in a 01234-gap. Of course, runner 5 cannot cover this gap. Thus, we may conclude that there does not exist a time t of the form t = l + 1/2 such that l is a positive integer and we have
+
+{v1t}  [1/6, 1/3], and
+
+(36)
+
+{v4t}  [1/6, 1/2].
+
+(37)
+
+In other words, the set
+
+S = {({v4(l + 1/2)}, {v1(l + 1/2)}) : l = 0, 1, . . . }
+
+(38)
+
+in the torus T does not intersect the 1/3 × 1/6 rectangle determined by (36) and (37).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+22
+
+q
+
+p
+
+{v1t}
+
+x1
+
+{v1t}
+
+-
+
+1 6
+
+51
+
+3 10
+
+2 3
+
+61
+
+3 12
+
+1 2
+
+71
+
+3 14
+
+1 3
+
+72
+
+2 7
+
+5 12
+
+81
+
+3 16
+
+1 6
+
+91
+
+5 18
+
+1
+
+92
+
+2 9
+
+1 4
+
+10 1
+
+5 20
+
+5 6
+
+10 3
+
+5 20
+
+5 18
+
+11 1
+
+5 22
+
+2 3
+
+11 2
+
+2 11
+
+1 12
+
+11 3
+
+5 22
+
+2 9
+
+12 1
+
+5 24
+
+1 2
+
+13 1
+
+5 26
+
+1 3
+
+13 2
+
+3 13
+
+5 12
+
+13 3
+
+5 26
+
+1 9
+
+13 4
+
+3 13
+
+5 24
+
+14 1
+
+5 28
+
+1 6
+
+14 3
+
+7 28
+
+7 18
+
+15 1
+
+7 30
+
+1
+
+15 2
+
+3 15
+
+1 4
+
+15 4
+
+3 15
+
+1 8
+
+16 1
+
+7 32
+
+5 6
+
+16 3
+
+7 32
+
+5 18
+
+16 5
+
+7 32
+
+1 6
+
+17 1
+
+7 34
+
+2 3
+
+17 2
+
+4 17
+
+7 12
+
+17 3
+
+7 34
+
+2 9
+
+17 4
+
+4 17
+
+7 24
+
+17 5
+
+7 34
+
+2 15
+
+x2
+
+1 3
+
+-
+
+{v1t}
+
+1
+
+24 1
+
+10 5
+
+36 1
+
+15 1
+
+6 1
+
+16 1
+
+7 5
+
+54 5
+
+42 7
+
+60 5
+
+27 7
+
+48 3
+
+22 11
+
+72 4
+
+33 11
+
+60 4
+
+27 1
+
+6 7
+
+66 3
+
+28 2
+
+13 2
+
+11 11
+
+90 11
+
+78 1
+
+6 13
+
+96 1
+
+9 13
+
+84 5
+
+39 13
+
+72
+
+|I| {v4} 
+
+9
+
+3
+
+24
+
+5
+
+13
+
+3
+
+30
+
+6
+
+17
+
+2
+
+36
+
+7
+
+2
+
+4
+
+5
+
+7
+
+1
+
+2
+
+2
+
+8
+
+19
+
+6
+
+48
+
+9
+
+10
+
+3
+
+21
+
+9
+
+23
+
+5
+
+54
+
+10
+
+19
+
+4
+
+42
+
+10
+
+27
+
+5
+
+60
+
+11
+
+5
+
+6
+
+12
+
+11
+
+23
+
+4
+
+48
+
+11
+
+31
+
+5
+
+66
+
+12
+
+35
+
+4
+
+72
+
+13
+
+15
+
+6
+
+33
+
+13
+
+4
+
+6
+
+9
+
+13
+
+13
+
+4
+
+27
+
+13
+
+1
+
+4
+
+2
+
+14
+
+29
+
+7
+
+66
+
+14
+
+37
+
+7
+
+84
+
+15
+
+19
+
+5
+
+39
+
+15
+
+11
+
+6
+
+24
+
+15
+
+41
+
+7
+
+90
+
+16
+
+37
+
+6
+
+78
+
+16
+
+1
+
+5
+
+2
+
+16
+
+45
+
+7
+
+96
+
+17
+
+4
+
+8
+
+9
+
+17
+
+41
+
+6
+
+84
+
+17
+
+18
+
+7
+
+39
+
+17
+
+7
+
+7
+
+15
+
+17
+
+Table 1: Upper bounds on {v4} for small values of p and q that follow from the argument given in Lemma 18.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+23
+
+In fact, we are able to conclude that S does not intersect a certain pentagon that is obtained by relaxing the conditions given in (36) and (37). We shall see that if 1/6  v1 < 1/3 and (x, y)  S then we cannot simultaneously have
+
+x
+
+
+
+1 6
+
+-
+
+v4 (1 3
+
+-
+
+x5),
+
+(39)
+
+y
+
+
+
+1 6
+
+-
+
+v1 (1 3
+
+-
+
+x5),
+
+(40)
+
+y
+
+
+
+1 3
+
++
+
+v2 3
+
+(1
+
+-
+
+x5),
+
+and
+
+(41)
+
+x
+
+
+
+5 6
+
+-
+
+v4
+
+x5 - min 3
+
+1 v1
+
+y- 1 6
+
+1 ,
+v2
+
+1 -y 3
+
+(42)
+
+Furthermore, if v1 < 1/6 and (x, y)  S then we can not have (39), (40), (41), (42) and
+
+y  5 - v1 .
+
+(43)
+
+12 3
+
+This will follow from observing that if (x, y) satisfies these conditions then there exists
+
+a 01234-gap of length at least x5/3 near the time t = l + 1/2 that determines (x, y).
+
+To see that this is the case, first observe that conditions (39), (40) and (41) allow run-
+
+ners
+
+4,
+
+1,
+
+and
+
+2,
+
+respectively,
+
+to
+
+be
+
+behind
+
+1 6
+
+at
+
+time
+
+t,
+
+but
+
+they
+
+guarantee
+
+that
+
+they
+
+will
+
+arrive at 1/6 no later than time t + (1 - x5)/3. The expression
+
+min
+
+1
+
+y-1
+
+1 ,
+
+1 -y
+
+v1
+
+6 v2 3
+
+in (42) is positive for 1/6 < y < 1/3 and measures for such y the length of the portion of the 123-gap that precedes time t; it is negative for y < 1/6 or y > 1/3 and its absolute value measures for such y the time that will elapse from time t until the beginning of the coming 123-gap.
+Now, at time t we are either in a 1234-gap, or, according to the conditions, such a gap will start as soon as runners 4, 1 and 2 have all passed 1/6. That 1234-gap will end when runner 3 or runner 4 arrive at 5/6 - whichever comes first (it is easy to see that runners 1 and 2 cannot arrive at 5/6 before runner 3). Conditions (39) thru (42) are designed so that the length of that 1234-gap will be at least x5/3. Indeed, if the gap ends when runner 3 arrives at 5/6, i.e. at time t + 1/3, then conditions (39), (40) and (41) imply that its length is at least x5/3. If, on the other hand, the gap ends when runner 4 arrives at 5/6 then the argument depends on the identity of the runner who was at 1/6 when the gap started. It is easy to see that it could not be runner 3. If it was runner 1 or runner 2, then condition (42) implies that the length of the gap is at least x5/3. If it was runner 4, then the length of the gap is 2x4/3 > x5/3. In any case, the 1234-gap is too long for runner 5 to cover.
+Condition (43) insures that, when v1 < 1/6 runner 1 does not arrive at 5/12 (i.e. runner 0 does not arrive at 5/6) before the end of the 1234-gap. Thus, when (43) is
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+24
+
+Ê satisfied, we in fact have a 01234-gap that runner 5 cannot cover. So, it follows from our
+initial assumption B = + that S does not intersect the pentagon defined by (39)-(43) for v1 < 1/6 and S does not intersect the pentagon defined by (39)-(42) for 1/6  v1 < 1/3. We will refer to these pentagons as the expansion of the original 1/3 × 1/6 rectangle.
+We proceed now to rewrite the above conditions in a manner that is convenient for an
+application of the main lemma. As 1 < v4 < 2 (by Corollary 16) and 0 < v1 < 1, we have
+
+v4t = v4(l + 1/2) = lv4 + {v4}/2 + 1/2
+
+(44)
+
+v1t = v1(l + 1/2) = lv1 + {v1}/2.
+
+(45)
+
+Let G be the subgroup of T generated by ({v4}, {v1}), and let C be the coset
+
+C = G + ({v4}/2, {v1}/2).
+
+Since S = C + (1/2, 0), our conditions can be rewritten in the form: C does not intersect a translate (by 1/2 in the x-coordinate) of the pentagon from the above discussion. More explicitly, let P be the region on the torus defined by
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5)
+
+
+
+x
+
+
+
+4 3
+
+-
+
+v4
+
+x5 - min 3
+
+1 v1
+
+y-1 6
+
+1 ,
+v2
+
+1 -y 3
+
+(46)
+
+1 6
+
+-
+
+v1 (1 3
+
+-
+
+x5)
+
+
+
+y
+
+
+
+1 3
+
++
+
+v2 (1 3
+
+-
+
+x5).
+
+(47)
+
+(note that we refer to points to the right of our 1/3 × 1/6 rectangle as having x-coordinate greater than 1). Let P be the region defined by (46), (47), and (43). To reiterate, it follows from our initial assumption that C  P =  for 1/6  v1 < 1/3 and C  P =  for v1 < 1/6.
+The pentagons P and P contain the rectangle R := [2/3, 1] × [1/6, 1/3]; the latter is the translate of the original rectangle that we had before the expansion. Figure 3 shows
+the shape of P and its position relative to R; the shape of P is similar, except the part above the line y = 5/12 - v1/3, if any, is cut off. We note for later reference that the sides of P which are not parallel to the coordinate axes meet the respective horizontal sides of P at points having first coordinate x = 4/3 - v4/3.
+In fact, P and P contain a rectangle that is somewhat larger than R, namely
+
+R=
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5),
+
+1
+
+×
+
+11 ,
+63
+
+.
+
+The width of R is  = 1/3 + v4(1 - x5)/3 > v4/3 and the height of R is  = 1/6. We now apply the main lemma to the group generated by ({v4}, {v1}) using these values of  and . Clearly, if G intersects every  ×  rectangle in T then so does every coset of G; in particular, C  R = , which is a contradiction. By the corollary to the main lemma, this implies the existence of a minimal element (i/n, j/n)  G \ {(0, 0)} satisfying
+
+0i<
+
+1
+
+= 6 and |j| <
+
+1 (1 + i) <
+
+3
+
+i 1+
+
+.
+
+(48)
+
+
+
+
+
+v4
+
+6
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+25
+
+runner 1
+1
+
+100101011001R 110010 P
+
+0
+
+1 runner
+
+4
+
+Figure 3: The pentagon P and the rectangle R.
+
+Thus, the values of (i, j) that we must consider are
+
+i = 0, 1, . . . , 5, j = 0, ±1, . . . , ± 2 + i .
+
+(49)
+
+2
+
+Moreover, it follows from (48) that whenever we consider a pair (i, j) with j = 0 we may
+
+assume
+
+6+i
+
+v4 < 2|j| .
+
+(50)
+
+Below we shall consider systematically every pair (i, j) given in (49) and analyze the
+case it represents until a contradiction is reached. The starting point of such an analysis,
+which is dubbed Part 4 of the proof of Proposition 11, is the following information that
+we have concerning the location of the elements of the subgroup G (see the discussion in Sections 2 and 3). To every (i, j) there corresponds a collection Li,j of equally spaced parallel line segments in the [0, 1)2 square (for the purpose of the following description of Li,j we are thinking of [0, 1)2 as a square rather than as a torus). The common slope of these line segments is j/i. For j  0, one of the line segments starts at (0, 0) corner
+of the square, and for j < 0 one of the line segments starts at the (0, 1) corner of the square. There are |j| line segments intersecting any horizontal line y = y0 and there are i line segments intersecting any vertical line x = x0. The elements of G appear periodically on the circles in the torus formed by the line segments in Li,j. The period is i/q when measured horizontally, or equivalently |j|/q when measured vertically. Note that |G| = q because G is generated by ({v4}, {v1}) and we have v1 = p/q, (p, q) = 1, and, by Lemma 17, v4 = r/q.
+The generator ({v4}, {v1}) of G must itself lie on one of the line segments in Li,j. The identity of the line segment which contains ({v4}, {v1}) determines, in a manner that we proceed to explain, the location of the coset C = G + ({v4}/2, {v1}/2). Suppose first that j  0. If ({v4}, {v1}) lies on the line segment starting at (0, 0), or any line segment in Li,j that is removed an even number of lines from it, then ({v4}/2, {v1}/2) also lies
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+26
+
+on a line segment in Li,j. It follows that in this case the coset C also lies periodically on the circles formed by Li,j, with the same period as G. On the other hand, if the line segment containing ({v4}, {v1}) is removed an odd number of lines from the one starting at (0, 0), then ({v4}/2, {v1}/2) lies halfway between two adjacent segments in Li,j. It follows that in this case the coset C lies on a system of line segments Li,j, obtained from Li,j by a parallel shift that places the line segments in Li,j halfway between those of Li,j. Again, the elements of C appear periodically on the circles formed by Li,j with the same period as G. We refer below to this case as the shifted case, and to the former case as the unshifted one. The same dichotomy appears when j < 0. If ({v4}, {v1}) lies on the line segment closest to (0, 0), or any line segment that is removed an even number of lines
+from it, we are in the shifted case; otherwise, we are in the unshifted case.
+For every possible pair (i, j), we try to determine on which of the line segments in Li,j the generator ({v4}, {v1}) may lie. Such a determination, using tools that we will describe shortly, will enable us to conclude that for certain (i, j) pairs only the shifted
+or only the unshifted case is possible. In some cases, neither is possible, leading to an
+immediate contradiction. In some other cases, however, we will have to consider both the shifted and the unshifted variant. In any case, placing ({v4}, {v1}) on a certain line segment yields a linear equation that {v4}, {v1} must satisfy, which allows us to express v4 in terms of v1.
+The tools that we use to determine where ({v4}, {v1}) may lie are the bounds on its coordinate values given by v4 > 1, Lemma 18, Table 1 and (50) for the first coordinate and by 0 < v1 < 1/3 for the second. An additional tool is available for pairs (i, j) where i and j are not relatively prime. In this case the line segments in Li,j form more than one circle on the torus, and the generator of G must not lie on the circle through the
+origin, for if it did the whole subgroup G would lie there. Using these tools, we classify
+the pairs (i, j) into four classes: S (shifted), U (unshifted), N (neither) and SU (shifted
+or unshifted). We present the classification in Table 2, together with an indication of
+the number of the case below where each pair (i, j), or shifted/unshifted variant of it, is
+treated.
+Since the classification in Table 2 is obtained by a straightforward and repetitive
+application of the tools described above, we present the details of the argument for only
+a few examples. (i, j) = (1, -1): In this case Li,j consists of only one line segment given by x + y = 1.
+Thus, we must have {v4} + {v1} = 1. Since v1 < 1/3, we must have v4 > 5/3. By Lemma 18 and an inspection of Table 1 this is never the case.
+(i, j) = (1, 3): In this case Li,j consists of three line segments of slope 3 starting at (0, 0), (1/3, 0) and (2/3, 0), respectively. By (50) we have v4 < 7/6, which implies that ({v4}, {v1}) can only lie on the first of these line segments. Thus we are in the unshifted case.
+(i, j) = (2, 2): Here Li,j is the collection of line segments starting at (0, 0), (0, 1/2) and (1/2, 0) having slope 1. Furthermore, 2|q. Since 2 and 2 are not relatively prime, the generator of G cannot lie on the segment through (0, 0). Since v1 < 1/3 the generator of G cannot lie on the second line in Li,j. The only remaining possibility is for it to lie on
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+27
+
+ji0 1
+
+23
+
+4
+
+5
+
+5
+
+S2
+
+4
+
+U3 S2 S7U3
+
+3
+
+U3 U3 S2 S3U7 S5U5
+
+2 N S3U11 N U3 S6 S4U6
+
+1 N U12 U10 U4 S8U4 S4U7
+
+0
+
+N N N S1 S1
+
+-1 N N S7 S4 S6 S7U7
+
+-2 N S9 S7 S3 S6 S6U4
+
+-3
+
+N S7 S2U2 S3U7 S5U5
+
+-4
+
+S3 S2 S3U7
+
+-5
+
+S2U2
+
+Table 2: The classification of pairs (i, j) as shifted (S), unshifted (U), neither (N) or either (SU). The subscript of an entry is the case in which the entry is treated.
+
+the line v4 = 3/2 + v1. It follows from Lemma 18 and an inspection of Table 1 that this is not the case.
+(i, j) = (3, 3): In this case Li,j consists of the line segments of slope one through (0, 2/3), (0, 1/3), (0, 0), (1/3, 0) and (2/3, 0). Since i and j are not relatively prime, the generator of G cannot lie on the line segment containing (0, 0). The restriction v1 < 1/3 implies that it does not lie on the first two line segments listed above. The restriction v4 < 3/2 that follows from (50) implies that it does not lie on the last of the line segments. Thus ({v4}, {v1}) can only lie on the line segment starting at (1/3, 0), and we are in the shifted case.
+We now embark on Part 5 of the proof of Proposition 11, in which we treat all pairs (i, j) that appear in Table 2, with the exception of the pair (1, 1). Note that some of the pairs from (49) were actually handled in the pre-processing above (i.e. Part 4 of the proof of Proposition 11). The pairs are grouped into cases.
+Case 5.2.1. (i, 0), i = 4, 5
+In these cases the generator ({v4}, {v1}) of G must lie on the line y = 1/i, which implies that p/q = 1/i and hence q = i, contradicting (14).
+Case 5.2.2. (i, ±i), i = 3, 4, 5
+In all of these cases, both Li,j and Li,j contain a line segment whose intersection with R has full vertical length of 1/6. Thus, our assumption that C  R =  implies that q < 6i. Since in these cases we must have i|q, we actually have q  5i. On the other hand (14) implies q  i2 + 2i. These two bounds are contradictory for i = 4, 5, and leave us with only q = 15 for i = 3.
+In the case of the pair (3, 3), which can only be shifted, we have {v4} = 1/3 + v1 = (5 + p)/15. It follows from this equation and Table 1 that p = 1. However, in this case (1, 1/6)  C  R.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+28
+
+(1, 2)S
+
+[4, 11]
+
+q+p 2q
+
+(3, 2)U
+
+[11, 11]
+
+3p 2q
+
+(3, -2)S
+
+[11, 11]
+
+q-3p 2q
+
+(1, 3)U
+
+[6, 17]
+
+p 3q
+
+(2, 3)U
+
+[11, 17]
+
+2p 3q
+
+(4, 3)S
+
+
+
+(4, -3)S 
+
+(3, 4)U
+
+[19, 23]
+
+3p 4q
+
+(3, -4)S
+
+[19, 23]
+
+q-3p 4q
+
+(5, 4)U
+
+
+
+(5, -4)S 
+
+p, q odd p even p, q odd
+3|p 3|p
+4|p q odd p  -q (mod4)
+
+Table 3: Conditions on p and q for the pairs in Case 5.2.3.
+
+In the case of (3, -3)S, we have {v4} = 1/3 - v1 = (5 - p)/15. For p = 1, 2, 4 we find the points (14/15, 7/30), (9/10, 4/15) and (5/6, 1/3), respectively, in C  R.
+In the case of (3, -3)U , we have {v4} = 2/3 - v1 = (10 - p)/15. Table 1 indicates that this is possible only for p = 4. But in this case (4/5, 1/5)  C  R.
+Case 5.2.3. (1, 2)S, (3, 2)U , (3, -2)S, (1, 3)U , (2, 3)U , (4, 3)S, (4, -3)S, (3, 4)U , (3, -4)S, (5, 4)U , (5, -4)S
+In all of these cases either Li,j or Li,j contains a segment whose intersection with R has full vertical length of 1/6. Thus, our assumption that C  R =  implies that q < 6|j| in each case. Together with the lower bound on q given by (14), this leaves only a certain (possibly empty) interval of possible values of q to be considered in each case. The second column in Table 3 specifies that interval. The identification of the line segment on which ({v4}, {v1}) lies gives, in each remaining case, an expression for {v4} in terms of v1, and hence in terms of p and q, which is listed in the third column. This expression and Lemma 17 imply certain restrictions on the possible values of p and q, which are listed in the fourth column.
+We now note that some of the remaining cases can be eliminated by other considerations. For (1, 2)S, it follows from Table 1 that the only cases in which {v4} = (q + p)/2q and p, q odd is a possibility are q = 5, p = 1 and q = 9, p = 1. In the cases (3, ±4), we have the upper bound v4 < 9/8 from (50). In the case of (3, 4)U this becomes 3p/4q < 1/8 (i.e. p < q/6) which is incompatible with 4|p and q  23. In the case of (3, -4)S this bound is (q - 3p)/4q < 1/8 (i.e. p > q/6); in conjunction with the restrictions given in Table 3 for this case, only q = 19, p = 5 and q = 23, p = 5 remain possible.
+What remains is treated in Table 4. For each pair and every choice of p and q consistent with the above restrictions, we specify an element of C that is either in R or, when no element of C  R exists, in P . The instances in which an element of P \ R is given satisfy v1 > 1/6, and so the existence of an element of C  P is a contradiction (to verify that
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+29
+
+qp 51 91 10 3 11 1 11 2 11 3 13 3 14 3 16 3 17 3 19 5 23 5
+
+(1, 2)S
+
+9 10
+
+,
+
+3 10
+
+5 6
+
+,
+
+1 6
+
+(3, 2)U (3, -2)S
+
+17 22
+
+,
+
+2 11
+
+10 11
+
+,
+
+5 22
+
+17 22
+
+,
+
+7 22
+
+(1, 3)U (2, 3)U
+
+3 4
+
+,
+
+1 4
+
+17 22
+
+,
+
+7 22
+
+19 26
+
+,
+
+5 26
+
+3 4
+
+,
+
+1 4
+
+25 32
+
+,
+
+11 32
+
+
+
+25 34
+
+,
+
+7 34
+
+9 11
+
+,
+
+5 22
+
+11 13
+
+,
+
+7 26
+
+11 14
+
+,
+
+5 28
+
+13 16
+
+,
+
+7 32
+
+15 17
+
+,
+
+11 34
+
+(3, -4)S
+
+25 38
+
+,
+
+11 38
+
+
+
+21 23
+
+,
+
+13 46
+
+Table 4: Elements of C that are in R or P for the remaining cases in Case 5.2.3.
+
+(3, 1)U
+[6, 8]
+3p q
+
+(3, -1)S
+[6, 8]
+q-3p q
+
+(4, 1)U
+[8, 11]
+4p q
+
+(5, 1)S
+[10, 14]
+5p-q q
+
+(5, 2)S 
+
+(5, -2)U 
+
+Table 5: Conditions on p and q for the pairs in Case 5.2.4.
+
+these elements lie in P consider (46) and (47), taking into account the actual values of v2 and v4 and the lower bound 1 - x5 > 1 - x4). These instances are marked with an asterisk.
+Case 5.2.4. (3, 1)U , (3, -1)S, (4, 1)U , (5, 1)S, (5, 2)S, (5, -2)U
+In these cases either Li,j or Li,j (whichever is applicable) has a segment whose intersection with R has full horizontal length of 1/3. Thus, it follows from C  R =  that q < 3i. Together with the lower bound on q given by (14), this leaves only a certain (possibly empty) interval of possible values of q to be considered in each case. The second row of Table 5 specifies that interval. The line in Li,j on which ({v4}, {v1}) lies gives a relationship between {v4} and v1. This yields an expression for {v4} in terms of p and q which is given in the third row of Table 5.
+Note that some of the remaining cases are eliminated by a consideration of the third row of Table 5 alone. In particular, in the case (4, 1)U we must have 4p < q and in the case (5, 1)S we must have q < 5p. The remaining cases are treated in Table 6. Some of these cases can be eliminated by noting that the bound on {v4} given in Table 1 is incompatible with the expression for {v4} given in the third row of Table 5. These cases are marked with a -- in the table. For most of the other cases we are able to specify an element of C  R. In two of the cases we must resort to identifying an element of C  P . These elements are marked with an asterisk, and in these cases v1 > 1/6, and therefore an element of C  P is sufficient to give a contradiction.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+30
+
+q p (3, 1)U
+
+61
+
+3 4
+
+,
+
+1 4
+
+7 1 --
+
+7 2 --
+
+8 1 --
+
+91
+
+92
+
+10 1
+
+10 3
+
+11 1
+
+11 2
+
+11 3
+
+13 3
+
+13 4
+
+14 3
+
+(3, -1)S
+
+3 4
+
+,
+
+1 4
+
+--
+
+9 14
+
+,
+
+2 7
+
+
+
+--
+
+(4, 1)U
+
+--
+
+2 3
+
+,
+
+1 6
+
+--
+
+1,
+
+1 4
+
+10 11
+
+,
+
+5 22
+
+--
+
+(5, 1)S
+
+--
+
+7 11
+
+,
+
+5 22
+
+
+
+11 13
+
+,
+
+7 26
+
+--
+
+3 4
+
+,
+
+1 4
+
+Table 6: Treating the remaining cases in Case 5.2.4.
+
+(4, -1)S
+
+1
+
+6
+
+[8, 23]
+
+q-4p
+
+q
+
+q
+
+
+
+p
+
+<
+
+q 4
+
+12  p
+
+
+
+q 8
+
+(4, 2)S
+
+1
+
+4
+
+[14, 15]
+
+4p-q
+
+2q
+
+q even
+
+p
+
+>
+
+q 4
+
+(4, -2)S
+
+1
+
+4
+
+[14, 15]
+
+q-4p
+
+2q
+
+q even
+
+p
+
+<
+
+q 4
+
+(5, 2)U
+
+1
+
+6
+
+[17, 29]
+
+5p
+
+2q
+
+p even
+
+p
+
+
+
+q 5
+
+(5, -2)S
+
+1
+
+6
+
+[17, 29]
+
+q-5p
+
+2q
+
+p, q odd
+
+p
+
+<
+
+q 5
+
+Table 7: Conditions on p and q for the pairs in Case 5.2.6.
+
+Case 5.2.5. (5, ±3)U , (5, ±3)S
+For these pairs, both Li,j and Li,j have line segments whose intersection with R has length 2/9 (measured horizontally). Thus C  R =  implies q < 45/2. On the other hand, (14) implies q  23, a contradiction.
+Case 5.2.6. (4, -1)S, (4, 2)S, (4, -2)S, (5, 2)U , (5, -2)S
+Table 7 indicates which values of p and q need to be considered for each of these pairs. The second row shows the length (measured horizontally) of the intersection of a suitable line segment in Li,j or Li,j (whichever is applicable) with R. The third row specifies the interval to which q must belong, based on the above intersection length and (14). The fourth row gives the expression for {v4} in terms of p and q. The fifth row contains conditions on p and q that are obtained from the expression for {v4} in the fourth row and Lemmas 17 and 18.
+In the case of (4, 2)S, the conditions obtained on p and q are contradictory. The remaining pairs are treated in tables on page 33. As in previous cases, a -- indicates
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+31
+
+incompatibility between the expression in the fourth row of Table 7 and the upper bounds on {v4} given in Table 1. In all other cases (that satisfy the conditions given in the fifth row of Table 7) we present an element of C  P . An asterisk indicates that this is an element of P \R and v1 > 1/6; a double asterisk indicates that this is an element of P \R.
+Case 5.2.7. (2, -1)S, (5, 1)U , (5, -1)S, (5, -1)U , (2, -2)S, (2, -3)S, (4, 3)U , (4, -3)U , (5, 4)S, (5, -4)U
+In these cases, either Li,j or Li,j (whichever is applicable) has a segment that intersects the x = 1 line at some point y between 1/6 and 1/3. We are going to take advantage of the continuation of that segment that still lies in P (and P ). Of course, the exact length of that continuation depends on v1, v2, v4 and x5. We shall be satisfied with a lower bound on the length of this extension, obtained by replacing the upper bound on x given in (46) by the more restrictive upper bound (for 1/6  y  1/3)
+
+x  1 + min 3 y - 1 , 1 - y .
+
+(51)
+
+63
+
+To obtain (51) we used the estimates v4x5 < 1, v4 > 1, v1 < 1/3 and v2 < 1. The second column of Table 8 contains the right endpoint of the extension of line
+segment we are interested in (i.e. the largest x of a point (x, y) on the extension of
+the line segment that satisfies (51). The third column contains a lower bound on the (horizontal) length of the intersection of a circle occupied by C with P . In all but one case, this lower bound is given by the union of the intersection of the given line segment with R and its continuation to the right (as defined by (51)). In the case of (5, -1)U we use the intersection of the line segment with R, the extension to the right of R, and an extension to the left of R. In the (5, -1)U case, we observe that the point (5/9, 13/45) on the line y = 2/5 - x/5 belongs to P . Indeed, the generator ({v4}, {v1}) lies on the same line, and since v1 < 1/3 it follows that v4 > 4/3 and hence x5 < x4 < 3/4. This implies that 2/3 - v4(1 - x5)/3 < 5/9. Thus the line segment in question has an extension of length at least 1/9 to the left of R. The fourth column indicates the (possibly empty) interval to which q must belong, based on the above intersection length and (14). The fifth and sixth column, respectively, contain expressions for {v4} in terms of p and q and conditions on p and q obtained thereby.
+The pairs that were not eliminated in the above table are treated in the tables on page 35, using the same conventions as in previous cases.
+
+Case 5.2.8. (4, 1)S
+In this case the generator ({v4}, {v1}) is on the line y = 1/4 + x/4. This has several implications. First, v1 > 1/4 > 1/6, and so, by assumption, C  P = . Second, x1 < 4 implies that in order to cover the first 123-gap we must have
+
+x5
+
+<
+
+x1 5
+
+<
+
+4 .
+5
+
+(52)
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+32
+
+qp 81 91 92 10 1 11 1 11 2 13 2 13 3
+qp 17 2 19 2 21 2 21 4
+qp 17 1 17 3 19 1 19 3 21 1
+
+(4, -1)S
+
+qp
+
+qp
+
+-- 14 3
+
+5 6
+
+,
+
+1 6
+
+11 18
+
+,
+
+2 9
+
+
+
+--
+
+15 2 16 3 17 3
+
+-- 17 4
+
+17
+
+22
+
+15 26
+
+,
+
+,
+
+2 11
+
+3
+
+13
+
+
+
+19 19
+
+3 4
+
+19 26
+
+,
+
+5 26
+
+20 3
+
+11 14
+
+,
+
+5 28
+
+21 4
+
+-- 21 5
+
+5 8
+
+,
+
+7 32
+
+
+
+22 3
+
+23 34
+
+,
+
+7 34
+
+22 5
+
+27 34
+
+,
+
+3 17
+
+23 3
+
+29 38
+
+,
+
+7 38
+
+25 38
+
+,
+
+4 19
+
+
+
+23 23
+
+4 5
+
+4 5
+
+,
+
+7 40
+
+(4, -2)S
+
+qp
+
+14 1 --
+
+14 3
+
+3 4
+
+,
+
+1 4
+
+(5, 2)U
+
+qp
+
+qp
+
+25
+
+34
+
+25 38
+
+,
+
+,
+
+5 17
+
+5
+
+19
+
+
+
+23 23
+
+2 4
+
+5 6
+
+,
+
+1 3
+
+25 2
+
+5 7
+
+,
+
+2 7
+
+25 4
+
+35 46
+
+,
+
+7 23
+
+15 23
+
+,
+
+6 23
+
+
+
+27 27
+
+2 4
+
+7 10
+
+,
+
+7 25
+
+29 2
+
+4 5
+
+,
+
+8 25
+
+29 4
+
+(5, -2)S
+
+qp
+
+qp
+
+16 17
+
+,
+
+11 34
+
+23 1
+
+25
+
+34
+
+25 38
+
+,
+
+,
+
+7 34
+
+9
+
+38
+
+
+
+23 25
+
+3 1
+
+15 19
+
+,
+
+7 38
+
+25 3
+
+5 7
+
+,
+
+3 14
+
+27 1
+
+35
+
+46
+
+15 23
+
+,
+
+,
+
+9 46
+
+11
+
+46
+
+
+
+27 29
+
+5 1
+
+4 5
+
+,
+
+9 50
+
+29 3
+
+7 10
+
+,
+
+11 50
+
+29 5
+
+5 6
+
+,
+
+1 6
+
+31 42
+
+,
+
+4 21
+
+5 6
+
+,
+
+1 6
+
+15 22
+
+,
+
+9 44
+
+15 22
+
+,
+
+9 44
+
+33 46
+
+,
+
+9 46
+
+37 46
+
+,
+
+4 23
+
+33 46
+
+,
+
+9 46
+
+5 6
+
+,
+
+1 3
+
+20 27
+
+,
+
+8 27
+
+45 58
+
+,
+
+9 29
+
+20 29
+
+,
+
+8 29
+
+5 6
+
+,
+
+1 6
+
+20 29
+
+,
+
+13 58
+
+45 58
+
+,
+
+11 58
+
+20 29
+
+,
+
+13 58
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+33
+
+(2, -1)S
+
+11 10
+
+4 15
+
+[4, 7]
+
+q-2p q
+
+(5, 1)U
+
+10 9
+
+5 18
+
+[10, 17]
+
+5p q
+
+p
+
+<
+
+q 5
+
+q
+
+
+
+12
+
+
+
+p
+
+
+
+q 10
+
+(5, -1)S
+
+25 24
+
+5 24
+
+[10, 23]
+
+q-5p q
+
+p
+
+<
+
+q 5
+
+q
+
+
+
+12
+
+
+
+p
+
+
+
+q 10
+
+(5, -1)U
+
+17 16
+
+73 144
+
+
+
+(2, -2)S
+
+17 16
+
+7 48
+
+[8, 13]
+
+q-2p 2q
+
+q even
+
+(2, -3)S
+
+23 22
+
+10 99
+
+[11, 19]
+
+q-2p 3q
+
+3 |q p  -q (mod 3)
+
+(4, 3)U
+
+22 21
+
+10 63
+
+[19, 25]
+
+4p 3q
+
+3|p
+
+(4, -3)U
+
+14 13
+
+22 117
+
+[19, 21]
+
+2q-4p 3q
+
+3 |q
+
+p  -q (mod 3)
+
+p  q/8
+
+(5, 4)S
+
+55 5 54 27
+
+
+
+(5, -4)U
+
+35 34
+
+10 51
+
+
+
+Table 8: Conditions on p and q for the pairs in Case 5.2.7.
+
+Third, v1 = 1/4 + {v4}/4 implies
+
+v4 = 4v1.
+
+(53)
+
+We observe (using (52), (53), and the fact that the vertical line x = 4/3 - v4/3 passes through two vertices of P ) that the portion of the line segment y = 1/8 + x/4
+
+corresponding to
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5)
+
+
+
+x
+
+
+
+4 3
+
+-
+
+v4 3
+
+is contained in P . Since C has period 4/q on this line segment we must have (again using (52) and (53))
+
+4 > 4 - v4 - q33
+
+=
+
+2 3
+
+-
+
+v4 3
+
+x5
+
+> 2 - v4 x1 3 35
+
+2 =.
+5
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5)
+
+This implies that q < 10. On the other hand (14) implies q  8. However, for q = 8, 9 there is no p such that 1/4 < p/q < 1/3.
+
+Case 5.2.9. (1, -2)S
+
+In this case the generator ({v4}, {v1}) is on the line y = 1-2x. Hence, v4 = 3/2-v1/2,
+
+which implies v4 > 4/3. This, in turn, implies x5 < x4 < 3/4. Based on these estimates, we observe that the portion of the line segment y = 3/2 - 2x corresponding to 1/6  y 
+
+1/3 is contained in P .
+
+It follows from our assumption C  P
+
+=  that q < 12.
+
+Since
+
+{v4}
+
+=
+
+q-p 2q
+
+,
+
+we
+
+must
+
+have p and q odd. A look at Table 1 shows that the only cases in which {v4} = (q - p)/2q
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+34
+
+qp 51 61
+
+(2, -1)S
+
+qp
+
+9 10
+
+,
+
+3 10
+
+--
+
+71 72
+
+--
+
+13 14
+
+,
+
+2 7
+
+qp 81 10 1
+
+(2, -2)S
+
+qp
+
+-- 10 3
+
+1,
+
+1 4
+
+12 1
+
+9 10
+
+,
+
+7 20
+
+25 24
+
+,
+
+5 24
+
+ 
+
+qp 10 1 11 1 11 2
+
+(5, 1)U
+
+qp
+
+3 4
+
+,
+
+7 20
+
+13 22
+
+,
+
+7 22
+
+ 
+
+12 13
+
+1 1
+
+-- 14 1
+
+q
+
+pp
+
+25 24
+
+,
+
+5 24
+
+
+
+15
+
+1
+
+-- 16 1
+
+-- 17 1
+
+5 6
+
+,
+
+1 6
+
+35 32
+
+,
+
+7 32
+
+35 34
+
+,
+
+7 34
+
+ 
+
+qp 10 1 11 1 11 2 13 2 15 2
+
+(5, -1)S
+
+qp
+
+3 4
+
+,
+
+7 20
+
+
+
+16
+
+3
+
+-- 17 2
+
+15 22
+
+,
+
+4 11
+
+
+
+17
+
+3
+
+25 26
+
+,
+
+4 13
+
+19 2
+
+5 6
+
+,
+
+1 3
+
+19 3
+
+q
+
+pp
+
+25 32
+
+,
+
+11 32
+
+35 34
+
+,
+
+5 17
+
+ 
+
+20 21
+
+3 4
+
+15 17
+
+,
+
+11 34
+
+22 3
+
+35
+
+38
+
+15 19
+
+,
+
+,
+
+6 19
+
+13
+
+38
+
+
+
+23 23
+
+3 4
+
+7 8
+
+,
+
+13 40
+
+5 6
+
+,
+
+1 3
+
+45 44
+
+,
+
+13 44
+
+
+
+20 23
+
+,
+
+15 46
+
+45 46
+
+,
+
+7 23
+
+qp 11 1 13 2 14 1
+
+21 22
+
+,
+
+7 22
+
+25 26
+
+,
+
+4 13
+
+1,
+
+1 4
+
+(2, -3)S
+
+qp q
+
+pp
+
+16 5 17 1 17 4
+
+11
+
+16
+
+35 34
+
+,
+
+,
+
+7 32
+
+7
+
+34
+
+
+
+19 19
+
+2 5
+
+33 34
+
+,
+
+5 17
+
+39 38
+
+,
+
+4 19
+
+
+
+37 38
+
+,
+
+11 38
+
+qp 19 3 19 6 20 3
+
+(4, 3)U
+
+qp
+
+15 19
+
+,
+
+13 38
+
+
+
+22
+
+3
+
+18 19
+
+,
+
+4 19
+
+9 10
+
+,
+
+7 40
+
+23 3 23 6
+
+q
+
+pp
+
+1,
+
+1 4
+
+24 23
+
+,
+
+13 46
+
+
+
+25 25
+
+3 6
+
+22 23
+
+,
+
+5 23
+
+24 25
+
+,
+
+11 50
+
+19 25
+
+,
+
+8 25
+
+(4, -3)U
+
+qp
+
+19 5
+
+13 19
+
+,
+
+9 38
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+35
+
+is possible are q = 5, p = 1; q = 9, p = 1; q = 11, p = 1; q = 11, p = 3. In these cases we
+
+find the points
+
+3 5
+
+,
+
+3 10
+
+,
+
+2 3
+
+,
+
+1 6
+
+,
+
+13 22
+
+,
+
+7 22
+
+, and
+
+7 11
+
+,
+
+5 22
+
+, respectively, in C  P
+
+.
+
+Case 5.2.10. (2, 1)U
+
+In this case the generator ({v4}, {v1}) is on the line y = x/2, and hence v4 = 1 + 2v1. We first prove C  P =  (P will be handled below). Let l be the intersection of the line y = x/2 with P . We claim that the left end of l is on the vertical side of P . This will follow from the fact that the lower-left corner of P is below the line y = x/2. The latter requires the inequality
+
+2 3
+
+-
+
+v4 3
+
+(1
+
+-
+
+x5)
+
+>
+
+2
+
+1 6
+
+-
+
+v1 3
+
+(1
+
+-
+
+x5)
+
+,
+
+which is equivalent to
+
+(v4 - 2v1)(1 - x5) < 1,
+
+which holds because v4 - 2v1 = 1 and 1 - x5 < 1. The right end of l is either (a) on the horizontal upper side side of P or (b) beyond
+the vertical line x = 4/3 - v4/3. We handle each case separately, showing in each that C  P =  unless q < 6.
+In case (a) the (horizontal) length of l, which we denote h(l), satisfies
+
+h(l)
+
+=
+
+v4 (1 3
+
+-
+
+x5)
+
++
+
+2v2 (1 3
+
+-
+
+x5)
+
+=
+
+v4
+
++ 2v2 (1 3
+
+-
+
+x5)
+
+=
+
+1
+
+-
+
+x5.
+
+We have v4 = 1 + 2v1  (q + 2)/q, which implies v5  (q + 3)/q. Thus, 1 - x5  3/(q + 3). So, we are guaranteed that l contains a point of C if 2/q  3/(q + 3), that is, if q  6.
+In case (b), we have
+
+h(l)  4 - v4 - 33
+
+2 3
+
+-
+
+v4 3
+
+(1
+
+-
+
+x5)
+
+= 2 - v4x5 > 1/3, 33
+
+and again we are guaranteed that l contains a point of C if 2/q  1/3, that is, if q  6.
+
+The only remaining case is q = 5, p = 1. In this case
+
+3 5
+
+,
+
+3 10
+
+ C P.
+
+The conclusion that C  P =  is compatible with our assumption only if v1 < 1/6
+
+and C  P = . If so, the intersection l of l with P must be properly contained in l, and
+
+therefore the right end of l is on the horizontal line y = 5/12 - v1/3. It follows that the
+
+length of l satisfies
+
+h(l ) = 2
+
+5 - v1 12 3
+
+-
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5)
+
+= 1 + v4 - 2v1 - v4x5
+
+6
+
+3
+
+= 1 + 1 - v4x5
+
+6
+
+3
+
+1 >.
+6
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+36
+
+Hence, C P =  implies q < 12. Since v1 < 1/6 this leaves us with the cases q = 7, . . . , 11
+
+and p = 1. In these cases (with one exception) the points
+
+5 7
+
+,
+
+5 14
+
+,
+
+5 8
+
+,
+
+5 16
+
+,
+
+5 9
+
+,
+
+5 18
+
+,
+
+7 10
+
+,
+
+7 20
+
+,
+
+and
+
+7 11
+
+,
+
+7 22
+
+, respectively, are in C  P .
+
+The one exception is that
+
+5 9
+
+,
+
+5 18
+
+is not in P for
+
+q = 9 and v5 = 12/9. Note that when q = 9 we have v4 = 11/9 and v5 = s/9 for some
+
+s  12. The x­coordinate of the left side of P is given by
+
+x
+
+=
+
+2 3
+
+-
+
+v4 (1 3
+
+-
+
+x5)
+
+=
+
+2 3
+
+-
+
+11(s - 27s
+
+9) ,
+
+which is less than 5/9 for s  13. If s = 12 then the interval [39/22, 11/6] is a 012345-gap, contradicting our initial assumption.
+
+Case 5.2.11. (1, 2)U
+
+In this case the generator ({v4}, {v1}) is on the line y = 2x, and hence v4 = 1 + v1/2. This implies
+
+v4 < 7/6.
+
+(54)
+
+In
+
+terms
+
+of
+
+p
+
+and
+
+q
+
+we
+
+have
+
+v4
+
+=
+
+2q+p 2q
+
+,
+
+which
+
+implies
+
+that
+
+p
+
+is
+
+even
+
+(and
+
+therefore
+
+q
+
+is
+
+odd, q  7).
+
+We first prove that C  P = . Let l be the intersection of the line y = 2x - 1 with
+
+P . Note that the right end of l is on the horizontal upper side of P . The left end of l is
+
+either (a) on the vertical side of P or (b) on the horizontal lower side of P . We handle
+
+each case separately, showing that C  P =  unless q = 7.
+
+In case (a) the (horizontal) length of l satisfies
+
+h(l)
+
+=
+
+v4 (1 3
+
+-
+
+x5)
+
++
+
+v2 6
+
+(1
+
+-
+
+x5
+
+)
+
+=
+
+2
+
++ v1 + 6
+
+v2 (1 -
+
+x5)
+
+=
+
+1 - x5 . 2
+
+Now,
+
+we
+
+may
+
+write
+
+v5
+
+=
+
+2q+p+2i 2q
+
+,
+
+where
+
+i1
+
+is
+
+an
+
+integer.
+
+In
+
+order
+
+to
+
+guarantee
+
+that
+
+l
+
+contains a
+
+point
+
+of
+
+C,
+
+it
+
+suffices
+
+if
+
+1-x5 2
+
+
+
+1 q
+
+,
+
+that
+
+is,
+
+if p + 2i  6.
+
+The
+
+only remaining
+
+possibility is p = 2, i = 1. In this case the speeds are 2/q, (q - 2)/q, 1, (q + 1)/q, and
+
+(q + 2)/q.
+
+Let
+
+j
+
+be
+
+an
+
+integer
+
+such
+
+that
+
+1 6
+
+
+
+2j+1 q
+
+
+
+1 3
+
+(such
+
+an
+
+integer
+
+exists
+
+whenever
+
+q  9). The time t = j + 1/2 is in a 012345-gap, contradicting our initial assumption.
+
+If
+
+case
+
+(b)
+
+occurs,
+
+then
+
+we
+
+must
+
+have
+
+v4 3
+
+(1
+
+-
+
+x5)
+
+>
+
+1 12
+
+.
+
+Together
+
+with
+
+(54)
+
+,
+
+this
+
+implies
+
+that 1 - x5 > 3/14. The vertical length of l, which we denote v(l), in case (b) satisfies
+
+v(l)
+
+=
+
+1 6
+
++
+
+v1 (1 3
+
+- x5)
+
++
+
+v2 (1 3
+
+- x5)
+
+=
+
+1 6
+
++
+
+1 - x5 3
+
+>
+
+5. 21
+
+Since 2/q  5/21 for q  9, l must contain a point of C.
+
+The only remaining case is q = 7, p = 2. In this case
+
+9 14
+
+,
+
+2 7
+
+ C P.
+
+The conclusion C  P =  is compatible with our initial assumption only if v1 < 1/6
+
+and C  P = . The right end of l , the intersection of l with P , is on the horizontal line
+
+y
+
+=
+
+5 12
+
+-
+
+v1 3
+
+.
+
+As
+
+to
+
+the
+
+left
+
+end,
+
+we
+
+consider
+
+again
+
+the
+
+two
+
+cases
+
+above.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+37
+
+In case (a), the (horizontal) length of l satisfies
+
+h(l
+
+)
+
+=
+
+v4 (1 3
+
+-
+
+x5)
+
++
+
+1 2
+
+1 - v1 12 3
+
+=
+
+1
+
++ 1 - v4x5 
+
+1 .
+
+24 3 3 24
+
+Thus l must contain a point of C if q  24. The remaining cases are q = 13, 15, 17, 19, 21, 23
+
+with p = 2. In these cases the points
+
+17 26
+
+,
+
+4 13
+
+,
+
+19 30
+
+,
+
+4 15
+
+,
+
+23 34
+
+,
+
+6 17
+
+,
+
+25 38
+
+,
+
+6 19
+
+,
+
+27 42
+
+,
+
+6 21
+
+,
+
+and
+
+31 46
+
+,
+
+8 23
+
+, respectively,
+
+are in C  P
+
+.
+
+In case (b), the (horizontal) length of l is more than 1/12, and since q > 12 there
+
+must be a point of C in l .
+
+Case 5.2.12. (1, 1)U
+This is Part 6 of the proof of Proposition 11, in which we have v4 = 1 + v1 = (q + p)/q. In this situation there does not necessarily exist a long 01234-gap; that is, C does not usually intersect P . So, we resort to a completely different, two-part argument. We first consider times when runner 1 is at 1/6, times of the form t = x1(k + 1/6) where k is a nonnegative integer.
+
+Claim 19. Assume v1 = p/q, v2 = (q - p)/q and v4 = (q + p)/q. If there exists a nonnegative integer k satisfying
+
+v4x1
+
+1 k+
+6
+
++
+
+= 2 and 0   < 1    1 + q
+
+3
+
+12 12p
+
+(55)
+
+then there exists a 01234-gap of length at least x4/6.
+
+Proof. Let t = x1(k + 1/6), and let  be as in (55). Furthermore, let t be the first time
+
+at or after t when runner 4 is at 2/3; that is , t = t + x4.
+
+We consider the interval I := [t , t + x4/6], which is clearly a subset of a 4-gap. We
+
+first note that the position of runner 1 at time t + x4/6 is between 1/6 and u, where u
+
+obeys
+
+1 u= +
+6
+
+1 +
+6
+
+x4v1
+
+
+
+1 6
+
++
+
+1q +
+4 12p
+
+p5 <.
+q + p 12
+
+It follows that I is contained in a 0134-gap. It remains to consider runner 2. Since v2 = v4 - 2v1, the position of runner 2 at time t satisfies
+
+{v2t } = {{v4t } - {2v1t }}
+
+= {2/3 - {2v1t} - {2v1x4}}
+
+ 2 - 1 - 2p
+
+1q
+
+1
+
++
+
+=.
+
+3 3 q + p 12 12p 6
+
+Therefore, I is contained in a 01234-gap.
+
+We conclude from Claim 19 that if there exists a nonnegative integer k for which (55) holds then v5 < 2v4. To get a lower bound on v5 we consider times when runner 1 is at 1/3, times of the form t = x1(j + 1/3).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+38
+
+Ê Claim 20. Assume v1 = p/q, v2 = (q - p)/q, v4 = (q + p)/q and B = + . If there exists
+a nonnegative integer j satisfying
+
+{v4x1(j + 1/3)} =
+
+1 q jq ++
+3 3p p
+
+ [5/6, 1)  [0, 1/6]
+
+(56)
+
+then v5 > 2v4.
+
+Proof. Let t = x1(j + 1/3), and consider the 4-block I whose closure contains t. Since {tv2} = {{tv4}+1/3} and {tv3} = {{tv4}-1/3}, I is a subset of a 23-gap. Since v1 < v4/4 and {v1t} = 1/3, I is in fact a subset of a 0123-gap. Therefore, runner 5 must cover both
+ends of I and v5 > 2v4.
+
+So, if there exist nonnegative integers k and j satisfying (55) and (56), respectively,
+
+then we have a contradiction. Since the lengths of the intervals given in (55) and (56) are
+
+at least 1/3 and in each case we are concerned with a set of p equidistant points on the
+
+circle, we have a contradiction for p  3. It remains to consider p = 1 and p = 2.
+
+Suppose p = 2. In this case q is odd and q  7. First note that the two points given
+
+in
+
+(56)
+
+are
+
+of
+
+the
+
+form
+
+a 6
+
+,
+
+a+3 6
+
+for
+
+some
+
+integer
+
+a.
+
+One
+
+of
+
+these
+
+points
+
+lies
+
+in
+
+the
+
+specified
+
+interval, and v5 > 2v4. On the other hand, the interval given in (55) has length at least
+
+1/2 for q  10. Thus, we have v5 < 2v4 unless q = 7 or q = 9. However, in each of these
+
+cases v1 > 1/6 and the time x1/2 is in a 1234-gap of length greater than x4/6. Thus, for
+
+any q we have v5 < 2v4 and a contradiction.
+
+The only remaining case is p = 1. First note that for q  6 there exists an integer k
+
+satisfying (55), and, therefore, for q  6 we have v5 < 2v4. To achieve a lower bound on v5 we use both Claim 20 and the following
+
+Ê Claim 21. Assume v1 = 1/q, v2 = (q - 1)/q, v4 = (q + 1)/q and B = + . If there exists
+an integer m satisfying
+
+m
+
+1 +
+
+1 ,
+
+5
+
+-
+
+1
+
+(57)
+
+q 3 6q 12 6q
+
+then v5  2v4.
+
+Proof. Consider the 3-block I := (m - 1/6, m + 1/6). At time t = m runner 3 is at 0 while runners 1 and 4 are at m/q and runner 2 is at 1 - m/q. It follows that I is contained in a 0124-gap, and runner 5 must cover both endpoints of I. Thus, v5 > 2v3 = 2.
+Now, if v5 = (2q + 1)/q then the position of runner 5 at time t = m is also m/q. Thus, the time m + 1/6 remains uncovered.
+
+It follows from Claim 20 that v5 > 2v4 if q  2(mod 3). Furthermore, it follows from Claim 21 that v5  2v4 if q  16 or q  {10, 13, 15}. Thus, we have a contradiction unless q  {5, 6, 7, 9, 12}. We consider these cases individually. In each case we set v5 = s/q.
+
+Case 5.2.12.1. q = 5, p = 1
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+39
+
+It follows from Claim 20 that v5 > 2v4. Thus, s  13. Note that since v1  1/6 the interval (5x1/12, 7x1/12) does not constitute a 01-block. Thus, [5/2 + x2/6, 5/2 + 1/3] is a 01234-gap, and we can conclude that v5 < 8/3. Therefore, s = 13. However, for this set of speeds [5/3 + x4/6, 5/3 + 1/6] is a 012345-gap.
+Case 5.2.12.2. q = 6, p = 1
+As in the previous case, (5x1/12, 7x1/12) does not constitute a 01-block. Therefore, (3 - 1/6, 3 + 1/6) is a 3-block that is contained in the 0124-gap [3 - x4/3, 3 + x4/3]. It follows that v5 > 2v3 and that v5 < 2v4; that is, s = 13. However, for this set of speeds the interval [2 + 1/6, 2 + x2/6] is a 012345-gap.
+Case 5.2.12.3. q = 7, p = 1
+In this case the interval [7/6 + x2/6, 7/6 + x4/2] is a 01234-gap. It follows that v5 < 48/35. Therefore, we must have v5 = 9/7. However, for this set of speeds, the interval [7/6 + x2/6, 7/6 + x5/3] is a 012345-gap.
+Case 5.2.12.4. q = 9, p = 1
+Note that the time t = 3/2 is in a 01234-gap. Since the position of runner 5 at this time is s/6 we must have 6|s. However, when this is the case [3/2 + x5/6, 3/2 + x4/6] is a 012345-gap.
+Case 5.2.12.5. q = 12, p = 1
+In this case the interval [2+x2/3, 2+2x4/3] is a 01234-gap. It follows that s  {14, 15}. If s = 14 then the interval [2 + x2/3, 2 + x5/2] is a 012345-gap. On the other hand, if s = 15 then [2 + 2x5/3, 2 + 2x4/3] is a 012345-gap.
+
+6 {v1t0} = 0, {t0} = 0, and x1 > 3
+
+Here we have v3t0 = t0 = k for some integer k  2; in words, when runner 3 passes
+
+runner
+
+2
+
+both
+
+runners
+
+are
+
+at
+
+0.
+
+This
+
+implies
+
+k
+
+=
+
+t0
+
+=
+
+1 1-v2
+
+,
+
+and
+
+therefore
+
+we
+
+have
+
+k-1 v2 = k
+
+for some integer
+
+k  2.
+
+(58)
+
+As Lemma 4 is not applicable in this case, we begin our discussion with a lemma that plays the role that Lemma 4 plays in Section 2.
+
+Ê Lemma 22. If there exists an interval I and t  I such that I  (B1  B2  B3) = ,
+|I|  1/3 and {v4t} = 1/2 then B = + .
+Proof. Clearly, t lies in a 1234-gap. If t + x4/3  I or t - x4/3  I then the length of this 1234-gap is at least x4/3, and the result follows (since the length of any 5-block is x5/3). If t + x4/3, t - x4/3  I then I itself is contained in a 1234-gap. This 1234-gap has length at least 1/3 > x5/3.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+40
+
+It remains to show that when (58) holds there exists an interval satisfying the con-
+
+ditions of Lemma 22. In order to do so, we consider the first 23-gap after times of the
+
+form jt0. These are intervals of the form [jt0 + x2/6, jt0 + 5/6]. It follows from (58) that x2  2 and therefore Ij := [jt0 + 2/6, jt0 + 5/6] does not intersect B2  B3. It is easy to see that if we have
+
+1/6 - 2v1/6  {v1jt0}  5/6 - 5v1/6
+
+(59)
+
+then Ij  B1 = . It follows from x1 > 3 that (59) defines an interval in [0, 1) of length 4/6 -3v1/6 > 1/2. Since {v1t0} = 0, there exists a j satisfying (59) and hence there exists an Ij that is the subset of a 123-gap (this observation is simply a one dimensional version of the observation given in (11)). Lemma 4 then implies that (3) holds if x4  3/4. So, we henceforth assume x4 > 3/4. Under this assumption it is easy to see that if we have
+
+{v4jt0} 
+
+1 - v4 , 3 - 5v4 2 32 6
+
+(60)
+
+then there exists t  Ij such that {v4t} = 1/2. Note that (60) excludes an interval on the circle [0, 1) of length 1 - v4/2 < 1/2.
+We are now ready to apply the main lemma. Let G be the additive subgroup of T generated by ({v1t0}, {v4t0}) and define
+
+R = [1/6 - v1/3, 5/6 - 5v1/6] × [9/6 - 5v4/6, 9/6 - 2v4/6].
+
+Note that R is a (4/6 - 3v1/6) × 3v4/6 rectangle on the torus T . Note further that for any x1 > 3 and any x4 > 3/4 we have
+
+[1/6, 5/9] × [2/3, 1]  R.
+
+(61)
+
+Now, it follows from Lemma 22, (59) and (60) that G  R =  implies (3). Corollary 6 implies that G  R =  unless one of the following conditions holds (note that we are using notation from Section 2).
+
+1. n1 = 1 or n2 = 1 2. There exists v  {±1/n, ±2/n} such that (1/n, v)  G.
+
+As usual, we handle these situations case by case. Note that we apply (14) in the statement of some of the cases.
+
+Case 6.1. n1 = 1 or n2 = 1
+First note that n1 = 1 is impossible because we assume {v1t0} = 0. If n2 = 1 then the circle L20 has an intersection with R of length 2/3 - v1/2 > 1/2 while the period of G in L20 is 1/n1  1/2. Thus it follows from (11) that G  R = .
+Case 6.2. (1/n, 1/n)  G and n  2.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+41
+
+In this case it is possible to have G  R = . So, we are forced to use a different ad hoc argument here.
+It follows from n  2 that there exists (u, u)  G such that 1/3  u  1/2. In other words, there exists an integer j satisfying
+
+ := {v1jt0} = {v4jt0}  [1/3, 1/2].
+
+Our goal here will be to show that for such a j runner 5 cannot do all the things asked of it around the time jt0. In order to do this we consider two subcases.
+Case 6.2.1. v2 = 1/2
+We begin with a simple lemma.
+
+Lemma 23. [7/6, 10/6]  B4  B5.
+
+Proof. Assume for the sake of contradiction that [7/6, 10/6]  B4  B5. By Lemma 4 we have x4 > 3/4. It follows that 11x4 > 33/4, [7/6, 33/24]  B5 and x5 > 1/2. Since x5 > 1/2 the 45-block containing [7/6, 10/6] consists of exactly one 4-block and exactly one 5-block. Thus, 11x5 < 7, 11x4 < 13x5 and 10 < 13x4. These three inequalities yield
+
+10
+
+13
+
+91
+
+13
+
+<
+
+x4
+
+<
+
+11 x5
+
+<
+
+. 121
+
+This is an obvious contradiction.
+
+Since [7/6, 10/6] is a 23-gap in this case, it follows from Lemma 23 that B1 must intersect [7/6, 10/6], and we must have x1 > 7. Consider the time jt0 defined above. Since {v1jt0} =   [1/3, 1/2] the following define 123-gaps:
+I1 = [jt0 - 5/6, jt0 - 2/6], I2 = [jt0 + 2/6, jt0 + 5/6], I3 = [jt0 + 7/6, jt0 + 10/6].
+Since {v1t0} = {v4t0}, there exists a positive integer m for which we have
+v4 - v1 = m/t0 = m(1 - v2) = m/2.
+
+It follows from v4 < 4/3 and v1 < 1/7 that m = 2, v4 = 1 + v1 and v4 < 8/7. Now, the 2-block separating I1 from I2 cannot contain a 4-block, because at its mid-
+point, jt0, runner 4 is in [1/3, 1/2] and has speed v4 < 8/7. It follows that the 4-blocks meeting I1 and I2 are consecutive ones, which implies the inequality 8x4 + 4x5 > 10, and in particular x5 > 1/2.
+Since {v4jt0}  [1/3, 1/2] and v4 < 8/7, runner 4 covers neither jt0 + 5/6 nor jt0 + 7/6. However, since x5 > 1/2, runner 5 cannot cover both these points.
+Case 6.2.2. v2  2/3
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+42
+
+In this case we know the interval
+
+I = [jt0 + 1/4, jt0 + 5/6]
+is contained in a 123-gap. It follows immediately from Lemma 4 that x4 > 7/8. Since the endpoints of I cannot be covered by runner 4, the 45-block covering I consists of a 4-block flanked by a 5-block on either side, and x5 < x4/2.
+On the other hand, if n > 2 then there exists a k such that {v1kt0} = {v4kt0}  [1/6, 1/3]. Then the interval [kt0 + 1/4, kt0 + (5/6 - {v4kt0})x4] is contained in a 1234-gap of length at least x4/6. This interval cannot be covered by runner 5 because x5 < x4/2. This leaves n = 2, but in this case, {v1t0} = 1/2 and the interval [t0 + 2x4/3, t0 + 5/6] is a 1234-gap of length at least 1/6. Again, this interval cannot be covered by runner 5.
+Case 6.3. (1/n, -1/n)  G and n  2
+It follows from (61) that if 1/6  1/n  1/3 then (1/n, -1/n)  G  R and that if 1/n < 1/6 then some multiple of (1/n, -1/n) lies in G  R. This leaves us with the case n = 2. However, when n = 2 we have 1/n = -1/n. So this case was handled above in Case 6.2.
+Case 6.4. (1/n, 2/n)  G and n  4
+Here it follows from (61) that if there exists an integer j such that j/n  [1/3, 1/2] then j(1/n, 2/n)  G  R. Such a j exists for all n.
+Case 6.5. (1/n, -2/n)  G and n  4
+
+Once again, we apply (61). In this case we conclude that if there exists j such that j/n  [1/2, 5/9] then j(1/n, -2/n)  G  R. Such a j exists unless n  {5, 7}.
+
+Case 6.5.1. n = 5
+
+In this case (1/5, 3/5)  G  R unless 3/5 < 9/6 - 5v4/6. So, we may assume
+
+x4 > 25/27.
+
+(62)
+
+Similarly (3/5, 4/5)  G  R unless 3/5 > 5/6 - 5v1/6, and we may assume
+
+x1 < 25/7.
+
+(63)
+
+It follows that [x1/6, 5x4/6] is a 1234-gap. Thus, there exists j > 0 such that (6j - 1)x5 < x1 and 5x4 < (6j + 1)x5. It then follows from (62) and (63) that j = 1. We obtain
+
+125 189
+
+<
+
+5x4 7
+
+<
+
+x5
+
+<
+
+x1 5
+
+<
+
+5 .
+7
+
+(64)
+
+It follows that t = 7/6 lies in a 2-block, and so we must have x2 < 7/5. Next, the point 7x2/6 must be covered by a 5-block, namely (11x5/6, 13x5/6). It is then the case that no block covers t = 13x5/6.
+
+Case 6.5.2. n = 7
+
+Here we have (1/7, 5/7), (4/7, 6/7)  G. It follows from (61) and the fact that the width of R is more than 1/2 that either (1/7, 5/7)  R or (4/7, 6/7)  R.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+43
+
+(3, 0) (4, 0) (3, 1) (3, -1) (4, 1) (4, -1) (3, 2) (3, -2) (4, 2) (4, -2)
+
+1/2 2/3 2/3 2/3 2/3 1/2 1/2 7/18 2/3 8/15
+
+686
+
+6
+
+8
+
+8
+
+11 11 14 14
+
+Table 9: Exceptional pairs in Section 7 for which (11) alone suffices to finish the proof.
+
+7 {v1t0} = 0,{t0} = 0, and 3  x1 < 4
+
+Here we extend the argument given in Section 2, where we assumed x1  4. Again, we consider the subgroup G of T generated by ({t0}, {v1t0}). By assumption, G is not contained in one of the axes of T . As in Section 2, it suffices to show G  P = , where P
+is the parallelogram defined by (8) and (9). Since P shrinks as x1 gets smaller, we focus on the worst case in our domain, namely x1 = 3. In this case P is defined by
+
+1
+
+
+
+x
+
+
+
+5 ,
+
+1
+
++
+
+1 x
+
+
+
+y
+
+
+
+5
+
++
+
+1 x.
+
+6
+
+6 93
+
+93
+
+Thus, P contains the rectangle R = [1/6, 5/6] × [7/18, 11/18] which has width  = 2/3 and height  = 2/9.
+By Corollary 6, G  R =  unless G contains a minimal nonzero element of the form (i/n, j/n) where i and j satisfy
+
+i  {0, 1, 2, 3, 4} and |j| < 3 + 1i. 23
+We take advantage of the full P to show that, with two exceptions, G  P =  even in these cases. First note that (i, j)  {(0, ±1), (1, 0)} is ruled out by our assumption that G is not contained in an axis of T . The cases where (i, j)  {(2, 0), (1, ±1), (2, ±2)} were treated in Section 2, and the arguments used there apply here as well. This leaves us with 12 possible cases for the pair (i, j).
+In 10 of these cases there exists a circle L (parallel to L(i/n,j/n)) such that the length of L  P exceeds or equals the period of G in L. These cases are considered in Table 9. In each column we consider a particular (i, j). The second row contains the length of the intersection L  P , measured horizontally, and the third row contains the lower bound on n given by (14). Since the period of G in L is i/n, we see that G  P =  in each case.
+We are left with the cases (i, j) = (2, 1) and (i, j) = (2, -1). In each of these cases, it follows from (14) that we may assume n  4. The second column in Table 10 gives the length of the longest intersection of L(i/n,j/n) with P . The values of n for which this intersection length does not imply GP =  are considered in the other columns. In these columns we specify an element of G  P if it exists. This leaves us with two exceptional groups which are considered below.
+Consider the case G = G4, the group generated by (1/2, 1/4). There exists a positive integer k such that {kt0} = 1/2 and {kt0v1} = 1/4. The interval
+
+I = [kt0 - x1/12, kt0 + 1/3]
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+44
+
+(i, j)
+
+n = 4 n = 5 n = 6 n = 7 n = 8 n = 9 n = 10 n = 11
+
+(2, 1)
+
+1 6
+
+G4
+
+4 5
+
+,
+
+2 5
+
+2 3
+
+,
+
+1 3
+
+G7
+
+3 4
+
+,
+
+3 8
+
+2 3
+
+,
+
+1 3
+
+4 5
+
+,
+
+2 5
+
+8 11
+
+,
+
+4 11
+
+(2, -1)
+
+3 10
+
+G4
+
+4 5
+
+,
+
+3 5
+
+2 3
+
+,
+
+2 3
+
+Table 10: Treating the remaining exceptional pairs in Section 7.
+
+is a 123-gap. Since I  B4 has total length at most 1/3, I  B5 must have total length at least x1/12. Note that in order to cover the point t = x1/6 (the beginning of the first 123gap), we must have x5 < x1/5. Hence the length of a 5-block is less than x1/15. Thus, the 45-block covering I must consist of a 4-block flanked by two 5-blocks. Furthermore, these two 5-blocks must be consecutive (otherwise x5 < x4/5 < 1/5 and 2x5/3 < 2/15 < x1/12). This gives the conditions
+4x5/3 > 1/3 + x1/12  7/12 and x4 > 2x5,
+which imply the bounds
+7/16 < x5 < 1/2 and 7/8 < x4 < 1.
+Under these conditions, however, the interval [2/3, 35/48] remains uncovered. The case G = G7, the group generated by (2/7, 1/7), is treated similarly. Let k be a
+positive integer such that {kt0} = 4/7 and {v1kt0} = 2/7. Then the interval
+J = [kt0 - 5/14, kt0 + 11/42]
+is contained in a 123-gap (here we use x1  3). Out of the total length of J, which is 13/21, runner 5 must cover more than 2/7. As x5 < x1/5 < 4/5, one 5-block does not suffice for this, and so J must be covered by a 4-block flanked by two 5-blocks. As above, these two 5-blocks must be consecutive, yielding the bounds
+13/28 < x5 < 1/2 and 13/14 < x4 < 1.
+Given these bounds, the interval [2/3, 65/84] remains uncovered.
+
+8 x1  3
+Ê Here we assume for the sake of contradiction that x1  3 and B = 5i=1Bi = + . We will Ê make a series of observations concerning the way in which B covers small t  + . This
+series of observations will progressively restrict the possible values of x1, . . . , x5 until we finally reach a contradiction. We begin by dividing the argument in cases.
+Case 8.1. x4 > 5/7
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+45
+
+We begin with
+
+(x1, x2, x3, x4, x5)  [1, 3] × [1, x1] × {1} ×
+
+5 ,1
+7
+
+× [0, x4].
+
+It follows immediately that [x1/6, 5x4/6] is a 1234-gap, so there exists an integer j > 0 satisfying
+(6j - 1)x5 < x1 and 5x4 < (6j + 1)x5,
+
+which implies
+
+25(6j - 1) 7(6j + 1) < x1.
+
+Since we are assuming x1  3 this implies that j = 1. Thus, we have
+
+5x5 < x1 and 5x4 < 7x5.
+
+(65)
+
+With this observation in hand, we now have
+
+(x1, x2, x3, x4, x5) 
+
+125, 3 49
+
+× [1, x1] × {1} ×
+
+5, 21 7 25
+
+×
+
+25, 3 49 5
+
+.
+
+We now consider the 13-gap [7/6,11/6]. It is easy to see that [max{7, 13x5}/6, 11x4/6] is now a 1345-gap. This implies
+
+5x2 < max{7, 13x5}  39/5  x2 < 39/25
+
+(66)
+
+and
+
+11x4 < 7x2.
+
+(67)
+
+It now follows from (66) that [max{13x4, 7x2}/6, 11/6] is a 1234-gap, and therefore we
+
+have
+
+17x5 < max{13x4, 7x2} and 11 < 19x5.
+
+(68)
+
+This leaves us with
+
+(x1, x2, x3, x4, x5) 
+
+55 ,3
+19
+
+×
+
+39 1,
+25
+
+× {1} ×
+
+5 21 ,
+7 25
+
+×
+
+11 3 ,
+19 5
+
+.
+
+We now consider two subcases.
+
+Case 8.1.1. 13x4  7x2
+
+Here we have
+
+17x5 < 7x2,
+
+(69)
+
+which leaves us with
+
+(x1, x2, x3, x4, x5) 
+
+55 ,3
+19
+
+×
+
+187 39 ,
+133 25
+
+× {1} ×
+
+5 21 ,
+7 25
+
+×
+
+11 3 ,
+19 5
+
+.
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+46
+
+We now move on to consideration of the interval [13/6, 5x1/6], which is obviously a 123-gap. It follows from (65) that 25x5 < 5x1 and from (68) that 13 < 23x5. Therefore, we must have
+
+17x4 < 13 and 5x1 < 19x4
+
+(70)
+
+and
+
+(x1, x2, x3, x4, x5) 
+
+55 247 ,
+19 85
+
+×
+
+187 39 ,
+133 25
+
+× {1} ×
+
+5 13 ,
+7 17
+
+×
+
+11 3 ,
+19 5
+
+.
+
+Finally, we consider time close to t = 23/6. It turns out that [37x5/6, 23/6] is a 1235-gap, which implies
+
+29x4 < 37x5 and 23 < 31x4.
+
+(71)
+
+This contradicts (65) and (70) (i.e. we cannot simultaneously have 5x5 < x1, 5x1 < 19x4 and 29x4 < 37x5).
+
+Case 8.1.2. 7x2 < 13x4
+
+Here we have
+
+17x5 < 13x4.
+
+(72)
+
+Appealing to (67) and (72) we have
+
+(x1, x2, x3, x4, x5) 
+
+55 ,3
+19
+
+×
+
+2057 39 ,
+1729 25
+
+× {1} ×
+
+187 21 ,
+247 25
+
+×
+
+11 3 ,
+19 5
+
+.
+
+We now consider the interval [13/6, 5x1/6]. As in Case 8.1.1, we have that 13 < 23x5 and 25x5 < 5x1. Moreover, 13 < 11x2. Therefore, for t = 13/6 to be covered we must have
+
+17x4 < 13.
+
+(73)
+
+This now implies (note that we use (72))
+
+(x1, x2, x3, x4, x5) 
+
+55 ,3
+19
+
+×
+
+2057 39 ,
+1729 25
+
+× {1} ×
+
+187 13 ,
+247 17
+
+×
+
+11 169 ,
+19 289
+
+.
+
+Next, we consider the points t = 109/30 and t = 26/6. It can be checked that both points lie in 1345-gaps. Hence, runner 2 covers both. This, however, is impossible, as they are too far apart to be covered by the same 2-block (having length at most 13/25) and too close to be covered by distinct 2-blocks (the length of a 2-gap is at least 4114/5187).
+
+Case 8.2. x4  5/7
+As in case 8.1 we first consider the 123-gap [x1/6, 5/6]. This gap is covered by B4  B5 in one of two ways. Either 5x4 < x1 in which case we have [7x4/6, 5/6]  B5 or x1  5x4 and [x1/6, 5x4/6]  [7x4/6, 5/6]  B5. We consider these two possibilities separately.
+Case 8.2.1. 5x4 < x1
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+47
+
+Here there exists j > 1 satisfying
+
+(6j - 1)x5 < 7x4 and 5 < (6j + 1)x5.
+
+This implies a contradiction.
+
+x1
+
+>
+
+25(6j - 1) 7(6j + 1)
+
+
+
+275 ,
+91
+
+Case 8.2.2. x1  5x4
+
+In this case there exist 1 < j < k satisfying
+
+(6j - 1)x5 < x1 , 5x4 < (6j + 1)x5 , (6k - 1)x5 < 7x4 and 5 < (6k + 1)x5. (74)
+If j + 2  k then 5x4 < (6j + 1)x5 and (6k - 1)x5 < 7x4 imply 10x5 < 2x4. If this is the case, then all 45-blocks have length less than 1/3 while the 123-gap [x1/6, 5/6] has length at least 1/3. So, we have k = j + 1, and
+
+(6j - 1)x5 < x1 , 5x4 < (6j + 1)x5 , (6j + 5)x5 < 7x4 and 5 < (6j + 7)x5.
+
+(75)
+
+This implies
+
+5(6j - 1) 6j + 7 < x1,
+
+which implies j = 2. So, we actually have
+
+11x5 < x1 , 5x4 < 13x5 , 17x5 < 7x4 and 5 < 19x5,
+
+and
+
+(x1, x2, x3, x4, x5) 
+
+55 ,3
+19
+
+× [1, x1] × {1} ×
+
+85 39 ,
+133 55
+
+×
+
+53 ,
+19 11
+
+.
+
+It now follows that 7/6, 21/12  B4  B5, and therefore we have
+
+5x2 < 7 and 7x2 > 21/2.
+
+This is a contradiction.
+
+References
+[BW] U. Betke and J.M. Wills, Untere Schranken fu¨r zwei diophantische ApproximationsFunktionen, Monatsh. Math. 76, 214-217 (1972).
+[BGGST] W. Bienia, L. Goddyn, P. Gvozdjak, A. Sebo, M. Tarsi. Flows, view obstructions and the lonely runner, JCTB 72, 1-9 (1998).
+[C1] T.W. Cusick, View obstruction problems, Aequationes Math. 8, 165-170 (1972).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+48
+
+[C2] T.W. Cusick, View obstruction problems in n-dimensional geometry, JCTA 16, 1-11 (1974).
+[C3] T.W. Cusick, View obstruction problems II, Proc. Amer. Math. Soc. 84, 25-28 (1982).
+[CP] T.W. Cusick and C. Pomerance, View obstruction problems III, Journal of Number Theory 19, 131-139 (1984).
+[P] O. Perron, Irrationalzahlen, 2nd edition, Chelsea Publishing Company, New York, 1951.
+[S] P.D. Seymour, Nowhere-zero 6-flows, JCTB 30, 130-135 (1981).
+[W] J.M. Wills, Zur simultanen homogenen diophantischen Approximation I, Monatsh. Math. 72, 254-263 (1968).
+
+the electronic journal of combinatorics 8 (no. 2) (2001), #R3
+
+49
+
+

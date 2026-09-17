@@ -1,0 +1,46 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - generic [ref=f1e4]:
+      - link [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - img "企业邮箱" [ref=f1e6]
+      - generic [ref=f1e7]:
+        - link "注册新企业" [ref=f1e8] [cursor=pointer]:
+          - /url: /
+        - text: "|"
+        - link "客户端收发" [ref=f1e9] [cursor=pointer]:
+          - /url: https://open.work.weixin.qq.com/help2/pc/19782?person_id=1
+        - text: "| English | 繁体版"
+    - generic [ref=f1e12]:
+      - generic [ref=f1e13]:
+        - heading "不只是邮箱，" [level=1] [ref=f1e14]
+        - heading "更是一种高效办公新体验" [level=1] [ref=f1e15]
+      - generic [ref=f1e18]:
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]:
+            - generic [ref=f1e21]: 微信扫码登录
+            - generic [ref=f1e22]: 企业微信开通的新账号需使用企业微信扫码
+          - generic [ref=f1e24]:
+            - iframe [ref=f1e25]
+            - generic [ref=f1e26]:
+              - checkbox "5天内自动登录邮箱" [ref=f1e27]
+              - generic [ref=f1e28]: 5天内自动登录邮箱
+          - generic [ref=f1e29]:
+            - link "企业微信" [ref=f1e30] [cursor=pointer]
+            - link "微信" [ref=f1e33] [cursor=pointer]
+            - link "手机号" [ref=f1e34] [cursor=pointer]
+            - link "账号密码" [ref=f1e35] [cursor=pointer]
+        - text: +
+  - generic [ref=f1e36]:
+    - link "关于腾讯" [ref=f1e37] [cursor=pointer]:
+      - /url: http://www.tencent.com/
+    - text: "|"
+    - link "用户协议" [ref=f1e38] [cursor=pointer]:
+      - /url: https://exmail.qq.com/cgi-bin/bizmail_portal?t=bizmail_eula
+    - text: "|"
+    - link "帮助中心" [ref=f1e39] [cursor=pointer]:
+      - /url: https://work.weixin.qq.com/help?h=e
+    - text: "|"
+    - link "用户手册" [ref=f1e40] [cursor=pointer]:
+      - /url: https://exmail.qq.com/cgi-bin/download?path=manual&filename=%CC%DA%D1%B6%C6%F3%D2%B5%D3%CA%CF%E4%D3%C3%BB%A7%CA%B9%D3%C3%CA%D6%B2%E1.pdf
+    - text: ©1998 - 2026 Tencent Inc. All Rights Reserved

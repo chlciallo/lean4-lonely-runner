@@ -61,21 +61,32 @@ Renault's exact case list; fallback = prove directly, it's small).
   relation lattice, contradicting maximality of A).
 - Positive rational kernel vector from positive u (rational perturbation of coefficients).
 
-### W7: Flow Kronecker — the analytic crux (~800–1500 lines, hard)
-`{c_ℓ : Fin d → ℝ}` ℚ-independent ⇒ `{t·c mod ℤ^d : t ∈ ℝ}` dense in `UnitAddTorus (Fin d)`.
-- d=1: trivial (nonzero slope hits everything).
-- Candidate routes: (a) multidim pigeonhole on a long segment (Hardy–Wright-style);
-  (b) ℤ-orbit density on the *subtorus* after basis change — careful: ℤ-orbit has extra
-  integer-sum relations, so must parametrize the subtorus first (W6 gives the basis) and
-  then need ℤ-Kronecker in the internal coords where {c_ℓ} indep gives density via
-  `ergodic_add_left_iff_denseRange_zsmul` + Fourier on `UnitAddTorus`
-  (`mFourierBasis`, `orthonormal_mFourier` — all in mathlib).
-  Route (b) is likely cheapest given `ergodic_add_left_iff_denseRange_zsmul` exists.
+### W7: Flow Kronecker — the analytic crux, now split 4-way for parallelism
 
-### W8: Orbit-closure density, ⊇ direction (~400–800 lines, medium)
-`closure {t·u mod ℤ⁴} ⊇ {y : ∀k, Σkᵢuᵢ = 0 → Σkᵢyᵢ = 0}` — parametrize the annihilator
-subtorus by the W6 basis {r_ℓ}, pull back to flow Kronecker on T^{dim}. (⊆ direction is
-trivial continuity; only ⊇ is needed.)
+Target: `{c_ℓ : Fin d → ℝ}` ℚ-independent ⇒ `{t·c mod ℤ^d : t ∈ ℝ}` dense in
+`UnitAddTorus (Fin d)`, then transported to the annihilator subtorus.
+
+- **W7a: Subtorus parametrization** (~400–700 lines, algebra; needs only W6 signatures).
+  Primitive integer basis of `minRatSpan u` (columns = LCM-scaled ℚ-basis); the map
+  `Φ : T^d → T⁴, x ↦ Σ x_ℓ r_ℓ`; prove `range Φ = {y : ∀k∈relLattice u, Σkᵢyᵢ = 0}`.
+  Saturation/primitivity is the fiddly bit (`LinearAlgebra/FreeModule/Int` index theory).
+- **W7b: Simultaneous Dirichlet** (~150–250 lines, standalone, ZERO dependencies).
+  Port `five-distance-sharp/ThreeGap/SimultaneousDirichlet.lean` (verified sorry-free,
+  ~120 self-contained lines incl. its `delta`/`rem` defs) to mathlib v4.34 — or rebuild
+  via `NormedAddCommGroup.exists_norm_nsmul_le` on `UnitAddTorus (Fin d)`. Pigeonhole
+  port is cheaper and gives the inhomogeneous-friendly `delta` API we want anyway.
+- **W7c: Flow-Kronecker core** (~400–800 lines, the actual crux; needs W7b).
+  `{c_ℓ}` indep ⇒ flow orbit dense. Elementary route: inhomogeneous target y ⇒ need t
+  simultaneously near each AP `{(y_ℓ+k)/c_ℓ}`; W7b's Dirichlet supplies approximate
+  common return times. Sub-splittable once statements freeze: (i) d=1 base +
+  density-under-projection lemmas; (ii) return-time/AP bookkeeping; (iii) assembly.
+- **W7d: Density through parametrization** (~200–400 lines; needs W7a+W7c).
+  Pull density back along `Φ`: orbit of u in T⁴ ↦ orbit of c in T^d.
+
+### W8: Orbit-closure density, ⊇ direction (~200–400 lines, medium; needs W7)
+`closure {t·u mod ℤ⁴} ⊇ Φ(T^d)` — i.e., every annihilator point is approximable.
+With W7a+W7d this is: Φ range ⊆ closure (each Φ(x) = limit of orbit points by W7c
+density in internal coords). (⊆ direction = continuity of relations, trivial.)
 
 ### W9: BHK Lemma 8 assembly for n=5 (~400–600 lines, medium bookkeeping)
 Steps 3–7 of §1 in Lean: extremal-ratio indices over `Fin 4`, the w construction,
@@ -88,8 +99,12 @@ Galilean → 4 relative speeds wⱼ = vⱼ − vᵢ (Fin.succAbove, reuse LRC5/M
 case split: all ratios rational → clear denominators → `lrc5_int`; else W9.
 Update `Audit.lean`, `#print axioms`, zero-sorry gate, JOURNAL/STATEMENT sync.
 
-**M3 total estimate: ~2.5–4k lines, 6 work packages.** W5 ∥ W6 ∥ W7 parallelizable
-(W7 depends only on mathlib); W8 needs W6+W7; W9 needs W5+W6+W8; W10 last.
+**M3 total estimate: ~2.5–4k lines, 9 work packages.** Parallelism: W5 ∥ W6 ∥ W7b start
+immediately (zero interdependencies); W7a needs W6 signatures only; W7c needs W7b;
+W7d needs W7a+W7c; W8 needs W7; W9 needs W5+W6+W8; W10 last.
+Critical path: W7b → W7c → W7d → W8 → W9 → W10.
+**Subagent reporting rule applies to every package** (see AGENTS.md): each agent keeps
+`_reports/<task>.md` incrementally on disk — a killed agent loses nothing on disk.
 
 ## 3. Phase T — tier-up after M3 (ordered by ROI)
 
