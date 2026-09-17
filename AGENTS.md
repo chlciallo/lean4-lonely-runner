@@ -15,6 +15,12 @@ Orchestrator side: when dispatching agents, put this requirement verbatim in the
 Never dispatch more than one heavy literature-reconstruction per agent — split into
 small single-source digs so a killed agent loses little.
 
+**Profile requirement:** `subagent_explore` is READ-ONLY (no file writes) — any agent
+with reporting duties MUST be `subagent_general`. If an explore agent is used anyway
+(pure search), the orchestrator must persist its final-message findings to
+`_reports/` on receipt. (Rule added after 24e5010e/39d7801e were dispatched with a
+report contract they physically could not fulfill.)
+
 ## Verification gates (apply to every Lean change)
 
 - `lake build` clean; zero `sorry`/`admit`/`native_decide`/`unsafe`.

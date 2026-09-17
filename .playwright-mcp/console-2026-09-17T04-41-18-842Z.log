@@ -239,3 +239,49 @@
 [  389818ms] [LOG] [compose_send] runJS @ :0
 [  390186ms] [LOG] [Risky function] global.js loaded! @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/global7fa051.js:0
 [  390186ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://exmail.qq.com/cgi-bin/folderlist?sid=MQhdT5P8m5M45Vc9,2&scode=&r=1789620468630:10
+[ 1225140ms] [LOG] [Risky function] global.js loaded! @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/global7fa051.js:0
+[ 1225140ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://exmail.qq.com/cgi-bin/mail_list?sid=MQhdT5P8m5M45Vc9,2&folderid=3&page=0&topmails=0&loc=folderlist,,,3:10
+[ 1225140ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1225649ms] [LOG] [Risky function] global.js loaded! @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/global7fa051.js:0
+[ 1225649ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://exmail.qq.com/cgi-bin/mail_list?sid=MQhdT5P8m5M45Vc9,2&folderid=3&page=0&topmails=0&loc=folderlist,,,3:10
+[ 1225649ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1225882ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1225887ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/modules/jquery/jquery/1.11.3/jquery.min5d902b.js:0
+[ 1228649ms] [LOG] [Risky function] global.js loaded! @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/global7fa051.js:0
+[ 1228650ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://exmail.qq.com/cgi-bin/readmail?folderid=3&t=readmail&mailid=ZC0017-SXDdbLDAYmrBw3EbfIrVR0l&mode=pre&maxage=3600&base=10.4410&ver=10396&sid=MQhdT5P8m5M45Vc9,2&show_ww_icon=false:10
+[ 1228650ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228680ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/modules/jquery/jquery/1.11.3/jquery.min5d902b.js:0
+[ 1228732ms] [LOG] match url: 16 16 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 026 026 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 56 56 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 1180086 1180086 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 1180086 1180086 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228732ms] [LOG] match url: 682989 682989 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 026 026 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 16 16 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 63 63 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 210023 210023 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 86 86 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 25 25 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 682989 682989 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 1180086 1180086 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 1180086 1180086 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 16 16 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 026 026 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 42 42 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 027 027 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228733ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 027 027 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 028 028 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 027 027 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 18060110 18060110 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 025 025 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228734ms] [LOG] match url: 1180086 1180086 @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228736ms] [ERROR] Permissions policy violation: unload is not allowed in this document. @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/all7e1bf3.js:0
+[ 1228908ms] [LOG] [Risky function] global.js loaded! @ https://rescdn.qqmail.com/bizmail/zh_CN/htmledition/js_biz/global7fa051.js:0
+[ 1228909ms] [WARNING] document.domain mutation is ignored because the surrounding agent cluster is origin-keyed. @ https://exmail.qq.com/cgi-bin/send_status?sid=MQhdT5P8m5M45Vc9,2&messageid=lv4gz3a-0t1789620396t4e97f20a&date=20260917&custom_send=0:10

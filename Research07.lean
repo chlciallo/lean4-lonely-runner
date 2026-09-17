@@ -1,3 +1,11 @@
 import Research07.Basic
 import Research07.LRC3.Main
 import Research07.LRC5.Main
+import Research07.M3.Dirichlet
+import Research07.M3.Relations
+import Research07.M3.Subtorus
+import Research07.M3.FlowDense
+import Research07.M3.OrbitClosure
+import Research07.M3.BHK
+import Research07.M3.Main
+import Research07.LRC4.Main
