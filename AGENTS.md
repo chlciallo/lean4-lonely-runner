@@ -38,8 +38,7 @@ report contract they physically could not fulfill.)
   `[propext, Classical.choice, Quot.sound]` enforced by `Audit.lean`
   (imported from the umbrella `Research07.lean`).
 - Full build: `lake build` = 8945 jobs clean.
-- Tier-up roadmap (κ(V) formula, p-generalization, n=6 Renault,
-  n=7 Barajas–Serra) in `PLAN_M3.md` §3 — none started.
+- Planning docs and roadmap live in `_dev/docs/` (local only, gitignored).
 - `_external/` holds reference clones (five-distance-sharp, bhk.pdf/bhk.txt) —
   reference only, not part of the package.
 - `_dev/` holds scratch/dev files (gitignored): `scratch/`, `W8overlay/`.

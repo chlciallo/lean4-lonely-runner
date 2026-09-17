@@ -35,7 +35,7 @@ whose LRC entries remain unproved (`sorry`).
   at a half-integer shift.
 - **n = 3 real** := covering argument à la Wills (1967).
 
-### Reusable infrastructure (Mathlib-grade, currently unupstreamed)
+### Reusable infrastructure
 
 - `SimDirichlet.*` — simultaneous Dirichlet approximation on `ℝᵈ` via
   pigeonhole (self-contained, ~190 lines).
@@ -78,8 +78,6 @@ Research07/
                   relations lattice, subtorus, Dirichlet,
                   flow Kronecker, orbit closure
 _reports/         incremental work logs (statement-fidelity records)
-JOURNAL.md        development journal
-PLAN_M3.md        blueprint for the n = 5 real-speeds chain
 ```
 
 ## Provenance
