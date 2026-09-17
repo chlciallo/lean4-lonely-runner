@@ -130,3 +130,20 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   我们的内核验证不与它们重复。
 
 ### 待回:文献 agent(BHK Lemma 8 完整重建 + n=4 证明)
+
+## 2026-09-17 M3 骨架冻结 + 8路并行开工
+
+- 规则修正:subagent_explore 只读,报告协议必须用 subagent_general
+  (AGENTS.md 已写明;explore 交付物由 orchestrator 落盘)。
+- M3 骨架冻结(全部 sorry 陈述编译通过):
+  Relations(relLattice/kerSpan/kerSpanRat/kerSpanInt/annihilator + 4引理)
+  Subtorus(subtorusMap + range=annihilator)
+  FlowDense(flow_orbit_dense)
+  OrbitClosure(orbit_dense_annihilator)
+  BHK(bhk_w三件套 + lrc5_real_of_irrational_ratio)
+  Dirichlet(两陈述) LRC4(lrc4_int/lrc4_rel_rat/lrc4_rat_finset)
+  Main(lrc5_rel_real/lonely_runner_five)
+- Kronecker.lean 按所有权拆三文件(一文件一agent)。
+- 并行 agent:W5=6d65c149, W7b=d6180ae5, W6=c5d0b176, W7a=edd850e4,
+  W7c=cd46338e, W8=300919df, W9=198ca837, W10=78f41dce
+- 文献侦察:24e5010e(Renault s=3), 39d7801e(Henze-Malikiosis)
