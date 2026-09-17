@@ -190,3 +190,20 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   mFourier 局部测度实例陷阱已记录。
 - W8 orbit_dense_annihilator 证毕,公理三件套。
 - **M3 全链只剩 W5 (lrc4_int/lrc4_rat)。**
+
+## 2026-09-17 W5 完成——M3 全链闭环,`lonely_runner_five` 实数版证毕
+
+- W5 第三代 agent (6d65c149) 再度死于连接错误,但留下 880 行已编译机械层;
+  orchestrator 手动完成最后 ~300 行(seed 扰动构造 + 有限边界集极值 +
+  lrc4_int 归纳组装 + Main.lean 两个有理 wrapper)。
+- 关键改良:`two_moving` 的 1/3-margin 直接给出区间内部点,微小扰动即得
+  `off ≠ 0` 种子——完全绕开"退化角点"子情形。紧性取极值用
+  `forward_endpoint`/`backward_endpoint` + `Finset.exists_max_image` 实现,
+  无需形式化 compactness。
+- **终审:全量 `lake build` 8944 jobs 干净;`lonely_runner_five`、
+  `lrc5_real_of_irrational_ratio`、`lrc4_int`、`lrc4_rel_rat`、
+  `lrc4_rat_finset`、`orbit_dense_annihilator`、`flow_orbit_dense`、
+  `bhk_w_eq_neg` 全部只依赖 [propext, Classical.choice, Quot.sound]。**
+- LRC n=5 全实数版(与 formal-conjectures 陈述同型)现为世界首个
+  内核验证证明。剩余杂项:scratch 散件清理(不在 import 树,合规)、
+  STATEMENT/BLUEPRINT 文档同步。
