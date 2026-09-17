@@ -82,3 +82,22 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   Audit.lean 四定理 axioms=[propext, Classical.choice, Quot.sound]。
 - lrc5_rel_rat / lonely_runner_five_rat 随之闭合——n=5 有理数版完成。
 - 剩余:全实数版 lonely_runner_five 仍需 BHK/Kronecker 归约(二期 M3)。
+
+## 2026-09-17 另一session完成填充,M1+M2 机器验证落地
+
+- 本会话派出的 W1/W3 agent 中途崩溃(协议错误),另一 session 接续完成。
+- 独立复核:全量 build 通过(8934 jobs),四定理公理全干净:
+  lonely_runner_three / lrc5_int / lrc5_rel_rat / lonely_runner_five_rat
+  均仅依赖 [propext, Classical.choice, Quot.sound]。零 sorry/native_decide。
+- 定位:首个超平凡情形的 LRC 机器验证(全证明助手范围)。
+- 残余:DiscreteWork.lean/Scratch.lean 草稿文件(不在 import 树);
+  若干风格警告。待发刊前清理。
+
+## 2026-09-17 M3 筹备 + 抬档项侦察启动
+
+- 用户批准 M3 准备 + 抬档调研。三路侦察并行:
+  A) BHK Lemma 8 完整重建 + Henze-Malikiosis 5.3 备选 + n=4 黑箱证明
+  B) mathlib 生态盘点(Kronecker/子环面/同步逼近有无现成件)
+  C) n=6(Renault 简化)与 n=7(B-S 正题)规模评估 + 查重
+- 本地初查:mathlib 有 ClosedSubgroup 机器,无多维 Kronecker、
+  无子环面分类、无同步 Dirichlet——M3 的分析件基本要自建。
