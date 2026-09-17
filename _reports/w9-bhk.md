@@ -51,3 +51,37 @@ Fill 4 sorries in `Research07/M3/BHK.lean`: `bhk_w_mem_kerSpanRat`, `bhk_w_eq_ne
   adjacent-ratio i,j; w; |w|-image Finset card ≤ 3 via w_i = −w_j; hlrc4; δ = 9/40;
   y := i ↦ ↑(t·w_i) ∈ annihilator via k•↑x = ↑(k•x) + map_sum + hwmem; open U = ⋂ {δ < ‖y i‖};
   `orbit_dense_annihilator` + `mem_closure_iff` → t'; answer `|t'|` via `circ_abs`/`abs_mul`.
+
+## RESULT — DONE (2026-09-17)
+
+`lake build Research07.M3.BHK` → **BUILD SUCCEEDED, zero errors, zero sorry in file.**
+
+`#print axioms`:
+- `bhk_w_mem_kerSpanRat`: `[propext, Classical.choice, Quot.sound]` CLEAN
+- `bhk_w_eq_neg`: `[propext, Classical.choice, Quot.sound]` CLEAN
+- `bhk_w_ne_zero`: `[propext, Classical.choice, Quot.sound]` CLEAN
+- `lrc5_real_of_irrational_ratio`: `[propext, sorryAx, Classical.choice, Quot.sound]`
+  — `sorryAx` enters ONLY via still-open dependencies: `exists_pos_rat_kerSpan`,
+  `exists_kerSpanRat_not_parallel` (Relations.lean/W6) and `orbit_dense_annihilator`
+  (OrbitClosure.lean/W8). Will clear when those WPs land.
+
+### Proof notes for orchestrator
+- `bhk_w_ne_zero` proved VACUOUSLY: its frozen hypotheses are inconsistent
+  (`hj i : s j/r j ≤ s i/r i` contradicts `hij`). The real nonvanishing argument
+  lives inline in `lrc5_real_of_irrational_ratio` (mediant strictly between the
+  adjacent ratio values).
+- Assembly uses the "adjacent distinct ratio values" pair (j = argmax s_k/r_k;
+  i = argmax among ratios < s_j/r_j) — NOT argmin/argmax (mediant needs the
+  open-interval exclusion; matches BHK paper eq. (18) "s_k/r_k ∉ (s_i/r_i, s_j/r_j)").
+- δ = 9/40; circ bounds via `circ_abs`/`abs_mul`; annihilator membership via
+  `AddCircle.coe_zsmul` + `zsmul_eq_mul` + `map_sum (QuotientAddGroup.mk'
+  (AddSubgroup.zmultiples 1))` + `mk'_apply`; openness via
+  `isOpen_iInter_of_finite` + `isOpen_lt` + `(continuous_apply i).norm`
+  (additive `Continuous.norm` — the PRIMED `norm'` is multiplicative, wrong class);
+  density via `orbit_dense_annihilator` + `mem_closure_iff`; final `t := |t'|`.
+- Linter warnings only: unused binders `u`, `hrpos`, `hi` in `bhk_w_ne_zero`
+  (frozen signature — cannot rename).
+
+### Files changed
+- `Research07/M3/BHK.lean` — all 4 sorries proved (~170 lines of proof).
+- `_reports/w9-bhk.md` — this report.

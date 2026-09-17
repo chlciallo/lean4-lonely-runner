@@ -75,13 +75,12 @@ theorem lrc5_real_of_irrational_ratio
     funext k
     have hlt : ¬ s k / r k < s j / r j := by
       have hk : k ∉ Finset.univ.filter (fun k => s k / r k < s j / r j) := by
-        rw [hT']; exact Finset.not_mem_empty k
+        rw [hT']; exact Finset.notMem_empty k
       rw [Finset.mem_filter] at hk
-      push_neg at hk
-      exact hk (Finset.mem_univ k)
+      exact fun h => hk ⟨Finset.mem_univ k, h⟩
     have heq : s k / r k = s j / r j :=
       le_antisymm (hjmax k (Finset.mem_univ k)) (not_lt.mp hlt)
-    show s k = (s j / r j) • r k
+    change s k = (s j / r j) • r k
     rw [smul_eq_mul, ← heq]
     exact (div_mul_cancel₀ (s k) (hrpos k).ne').symm
   obtain ⟨i, hiT, himax⟩ := (Finset.univ.filter fun k => s k / r k < s j / r j).exists_max_image
@@ -92,9 +91,9 @@ theorem lrc5_real_of_irrational_ratio
     exact absurd hij (lt_irrefl _)
   have hadj : ∀ k : Fin 4, s k / r k ≤ s i / r i ∨ s j / r j ≤ s k / r k := by
     intro k
-    rcases le_or_lt (s j / r j) (s k / r k) with hge | hlt
-    · exact Or.inr hge
+    rcases lt_or_ge (s k / r k) (s j / r j) with hlt | hge
     · exact Or.inl (himax k (Finset.mem_filter.mpr ⟨Finset.mem_univ k, hlt⟩))
+    · exact Or.inr hge
   -- (iii) The equal-coordinates vector `w = (rᵢ+rⱼ)·s − (sᵢ+sⱼ)·r`.
   set w : Fin 4 → ℚ := (r i + r j) • s - (s i + s j) • r with hwdef
   have hwmem : w ∈ kerSpanRat u := by
@@ -178,21 +177,23 @@ theorem lrc5_real_of_irrational_ratio
           apply Finset.sum_congr rfl; intro i _
           rw [← AddCircle.coe_zsmul, zsmul_eq_mul]
       _ = ((∑ i, (k i : ℝ) * (t * (w i : ℝ)) : ℝ) : UnitAddCircle) := by
-          have hm := (map_sum (QuotientAddGroup.mk' (zmultiples (1 : ℝ)))
+          have hm := (map_sum (QuotientAddGroup.mk' (AddSubgroup.zmultiples (1 : ℝ)))
             (fun i => (k i : ℝ) * (t * (w i : ℝ))) Finset.univ).symm
           simpa only [QuotientAddGroup.mk'_apply] using hm
       _ = ((0 : ℝ) : UnitAddCircle) := by rw [hsum0]
-      _ = 0 := AddCircle.coe_zero
+      _ = 0 := AddCircle.coe_zero (1 : ℝ)
   -- (vi) The cube `U = {∀ i, δ < ‖y i‖}` is open and contains `y`; orbit density
   -- supplies an orbit point in `U`, and `circ` kills its sign.
   have hUopen : IsOpen {y : Fin 4 → UnitAddCircle | ∀ i, δ < ‖y i‖} := by
     have heq : {y : Fin 4 → UnitAddCircle | ∀ i, δ < ‖y i‖} =
         ⋂ i : Fin 4, {y : Fin 4 → UnitAddCircle | δ < ‖y i‖} := by
       ext y
-      simp only [Set.mem_setOf_eq, Set.mem_iInter]
+      simp only [Set.mem_iInter, Set.mem_ofPred_eq]
     rw [heq]
     exact isOpen_iInter_of_finite fun i =>
-      isOpen_lt continuous_const ((continuous_apply i).norm')
+      isOpen_lt continuous_const
+        ((continuous_apply i).norm :
+          Continuous fun y : Fin 4 → UnitAddCircle => ‖y i‖)
   have hyU : (fun i => ((t * (w i : ℝ) : ℝ) : UnitAddCircle)) ∈
       {y : Fin 4 → UnitAddCircle | ∀ i, δ < ‖y i‖} := fun i => hcirc i
   obtain ⟨z, hzI⟩ := (mem_closure_iff.mp (orbit_dense_annihilator u hy_ann) _
@@ -209,7 +210,7 @@ theorem lrc5_real_of_irrational_ratio
     have h0 := hδt 0
     rw [zero_mul] at h0
     have hc0 : circ (0 : ℝ) = 0 := by
-      show ‖((0 : ℝ) : UnitAddCircle)‖ = 0
+      change ‖((0 : ℝ) : UnitAddCircle)‖ = 0
       rw [AddCircle.coe_zero, norm_zero]
     rw [hc0] at h0
     exact absurd h0 (not_lt.mpr hδpos.le)

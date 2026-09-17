@@ -156,3 +156,12 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
 - 已知散件:Research07/W6Scratch.lean(W6 反模型草稿,不被 import)。
 - 连接错误阵亡4路已重启:W7c=cdd7aaee, W8=75e8b127, W9=d65d9e46。
   仍在跑:W5=6d65c149, W7b=d6180ae5, W6=c5d0b176, W7a=edd850e4。
+
+## 2026-09-17 W9 交付
+
+- d65d9e46: BHK.lean 4 sorry 全证。lrc5_real_of_irrational_ratio 的 sorryAx
+  仅来自未收敛的上游签名(W6/W8)。
+- 骨架瑕疵记录:bhk_w_ne_zero 的 hi/hj 方向写反(冻结陈述互斥、空真),
+  正确论证(相邻比值对 + mediant 严格内部)已内联于主引理。教训:
+  冻结陈述也要小样例 sanity-check。
+- 实际用 δ=9/40;annihilator 成员证明走 AddCircle.coe_zsmul/zsmul_eq_mul。
