@@ -101,3 +101,32 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   C) n=6(Renault 简化)与 n=7(B-S 正题)规模评估 + 查重
 - 本地初查:mathlib 有 ClosedSubgroup 机器,无多维 Kronecker、
   无子环面分类、无同步 Dirichlet——M3 的分析件基本要自建。
+
+## 2026-09-17 侦察情报汇总(2/3 已回)
+
+### mathlib 生态盘点(关键发现)
+- **同步 Dirichlet 已在 mathlib 门口**:`NormedAddCommGroup.exists_norm_nsmul_le`
+  (WellApproximable.lean:322) 直接用于 `UnitAddTorus (Fin d)`,~100-200 行可得
+  `∃j∈Icc 1 n, ∀i, ‖j•ξᵢ‖ ≤ (n+1)^{-1/d}`。
+- **外部现成件**:ElVec1o/five-distance-sharp 有 `SimultaneousDirichlet.lean`(纯鸽巢
+  ~120行,已克隆到 _external/ 核实,sorry-free,v4.30 需移植)。
+- **ergodic_add_left_iff_denseRange_zsmul**(OfMinimal.lean:215):ℤ-轨道稠密↔遍历,
+  接上 mFourierBasis 正交基即可证 n 维 Kronecker(~400-800行,mathlib 缺失)。
+- **轨道闭包=关系格零化子**(Kronecker-Perron 子环面):MEDIUM-HARD ~800-1500行;
+  有初等路线(关系格补基→子环面参数化→拉回独立情形)。
+- **关键省事**:等坐标构造把4速降到≤3个非零整数速,lrc5_int 已覆盖
+  card≤4——不需要单独形式化 n=4 定理!
+- 闭子群分类/Pontryagin 全对偶 mathlib 缺失,但走直接路线可绕开。
+
+### 抬档项评估
+- n=6 via BHK:~12-20k行,❌不做。via Renault(Discrete Math 2004,9页):
+  ~2000-3500行,模6同余类有限枚举——中等可做。
+- n=7 via B-S正题:~5500-8000行,需离散层全面 p-参数化重构 +
+  隐藏依赖 lrc6_int(它内部引用 n≤6 情形)。排序:n=6 → n=7。
+- κ(V) 有限检查公式:~800-1500行,最便宜且最"mathlib 形状",
+  自带"每实例可判定"推论。
+- **查重终判**:n=6、n=7 在所有证明助手中零形式化——做任何一个都是世界首次。
+- 计算验证线(k=7..13)全部靠未验证的 C++ 输出,无内核可检证书——
+  我们的内核验证不与它们重复。
+
+### 待回:文献 agent(BHK Lemma 8 完整重建 + n=4 证明)
