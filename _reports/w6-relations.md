@@ -98,3 +98,68 @@ B-coordinate φ(c_i)=1 at index i — contradiction via B.repr support ⊆ B⁻�
 thm2: u ∈ span σ(kerSpanRat) ⇒ u = Σ c_s σ(s) finite; r = Σ q_s s for rational q_s ≈ c_s;
 r ∈ kerSpanRat (submodule closed); positivity open ⇒ preserved for |q_s−c_s| small.
 thm3: contrapositive — if kerSpanRat ⊆ ℚ∙r then u ∈ ℝ∙σr contradicting h.
+
+## 2026-09-17 — FINAL STATE (all provable targets proved; thm4 confirmed FALSE, fix proved alongside)
+
+### Build / verification status
+
+- `lake env lean Research07/M3/Relations.lean` → **exit 0, zero errors**.
+  Single remaining warning: `declaration uses sorry` at
+  `kernel_coords_linearIndependent` (line ~435) — **the frozen statement is FALSE**
+  and cannot be proved; the `sorry` is intentional pending orchestrator ruling.
+- `lake env lean Research07/W6Scratch.lean` → **exit 0** (compiled countermodel, see below).
+- `#print axioms` on all four *proved* theorems →
+  `[propext, Classical.choice, Quot.sound]` only. ✅ gate-clean.
+
+### What is proved in `Relations.lean`
+
+1. `kerSpan_eq_span_rat` ✅ — kerSpan = ℝ-span of cast(kerSpanRat). Proved via
+   `ratCastLM` linear map + `Submodule.dualCoannihilator`/finrank equality:
+   both sides are annihilators of `span ℝ (cast '' relLattice)` etc.; equality by
+   mutual inclusion + equal `finrank` over ℝ vs ℚ (rank of a ℚ-matrix is
+   base-change invariant).
+2. `exists_pos_rat_kerSpan` ✅ — finite ℚ-spanning representation of `u`,
+   rational approximation of the real coefficients (`exists_rat_btwn`), positivity
+   preserved by small perturbation bounded by `Σ |ρ ℓ i|`.
+3. `exists_kerSpanRat_not_parallel` ✅ — contrapositive: if every rational kernel
+   vector is a rational multiple of `r`, `kerSpanRat ⊆ ℚ·r` ⇒ `u ∈ ℝ·r`.
+4. **`kernel_coords_linearIndependent` — FALSE as frozen** (see below). Left with
+   `sorry` + warning docstring. **Corrected replacement proved** as
+   `kernel_coords_linearIndependent_of_basis` (Relations.lean ~line 448):
+   ```lean
+   (hρmem : ∀ ℓ, ρ ℓ ∈ kerSpanRat u)
+   (hρind : LinearIndependent ℚ ρ)
+   (c : Fin d → ℝ) (hc : ∀ i, u i = ∑ ℓ, c ℓ * (ρ ℓ i : ℝ)) :
+     LinearIndependent ℚ c
+   ```
+   (`hρspan` dropped — unneeded.) Proof: rational relation `∑ g•c = 0`, `g ℓ ≠ 0`
+   ⇒ `u ∈ ℝ·span{ρ' j}`, `ρ' j = ρ j − (g j/g ℓ)•ρ ℓ`. `ρ ℓ ∉ span ρ'` (else
+   `ρ` ℚ-dependent, contra `hρind`) ⇒ ∃ ℚ-functional `f`, `f(ρ ℓ) ≠ 0`,
+   `span ρ' ≤ ker f` ⇒ `k i := f(e_i)` gives `∑ kᵢ uᵢ = 0`; clearing denominators
+   (`N = ∏ (k i).den`) yields `k' ∈ relLattice u`; then `ρ ℓ ∈ kerSpanRat` forces
+   `N·f(ρ ℓ) = 0` — contradiction.
+
+### The countermodel (compiled, W6Scratch.lean)
+
+`n=1, d=2, u=(1), ρ=((1),(1))` (duplicates — spanning but ℚ-dependent),
+`c=(1/2,1/2)`. `kerSpanRat u = ⊤ ⊆ span ρ`, `u = ∑ c•ρ`, but
+`1•c₀ + (−1)•c₁ = 0` ⇒ `¬LinearIndependent ℚ c`. So `hρspan` alone does **not**
+pin down coordinates; `ρ` must be a genuine basis (membership + independence).
+
+### Downstream viability of the fix (checked OrbitClosure.lean:156)
+
+Caller builds `ρQ` from a `Module.Basis` of `kerSpanInt u`:
+`hinj : LinearIndependent ℤ ρ`, `hmem : ρ ℓ ∈ kerSpanInt u`. To apply
+`_of_basis` it needs two small cast lemmas:
+- `ρ ℓ ∈ kerSpanInt u ⇒ ρQ ℓ ∈ kerSpanRat u` (push `Int.cast` through the sum, ~4 lines);
+- `LinearIndependent ℤ ρ ⇒ LinearIndependent ℚ ρQ` (clear denominators of a ℚ-relation
+  to an ℤ-relation, ~30 lines, or `linearIndependent_algebraMap_comp_iff`-style API).
+Both are standard; the corrected statement is usable as-is downstream.
+
+### ORCHESTRATOR DECISION REQUIRED (frozen-statement rule)
+
+`kernel_coords_linearIndependent` is **false**; countermodel compiled. Request
+approval to **delete or replace** it with the proved
+`kernel_coords_linearIndependent_of_basis` signature (add `hρmem`+`hρind`, drop
+`hρspan`). Until approved, the file keeps `sorry` on the false statement only —
+everything else is proved and axiom-clean.

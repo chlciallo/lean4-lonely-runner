@@ -421,23 +421,6 @@ theorem exists_kerSpanRat_not_parallel {n : ℕ} (u : Fin n → ℝ) (r : Fin n 
         Finset.sum_congr rfl fun a _ => by ring
     _ = (∑ a ∈ t, f a * (q a : ℝ)) * (r i : ℝ) := (Finset.sum_mul _ _ _).symm⟩
 
-/-- **Minimality lemma.** Write `u` in a `ℚ`-basis `ρ` of `kerSpanRat u`:
-`u i = ∑ ℓ, c ℓ * ρ ℓ i`. The coefficient tuple `c` is `ℚ`-linearly independent —
-a relation among the `c ℓ` would put `u` in the `ℝ`-span of fewer rational vectors,
-i.e. a strictly smaller rationally-defined subspace, contradicting the definition of
-`kerSpan u` as the annihilator of *all* relations.
-
-**WARNING — this statement is FALSE as frozen** (W6, see `_reports/w6-relations.md`
-and the compiling countermodel `Research07/W6Scratch.lean`): `hρspan` only assumes
-`kerSpanRat u ⊆ span ρ`, so `ρ` may contain redundant vectors and the coordinates
-`c` need not be unique. The corrected version
-`kernel_coords_linearIndependent_of_basis` below is proved instead. -/
-theorem kernel_coords_linearIndependent {n d : ℕ} (u : Fin n → ℝ) (ρ : Fin d → Fin n → ℚ)
-    (hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u → x ∈ Submodule.span ℚ (Set.range ρ))
-    (c : Fin d → ℝ) (hc : ∀ i, u i = ∑ ℓ, c ℓ * (ρ ℓ i : ℝ)) :
-    LinearIndependent ℚ c := by
-  sorry
-
 /-- **Corrected minimality lemma.** `ρ` must be a `ℚ`-linearly independent family of
 kernel vectors (with `hρspan`-style covering, a `ℚ`-basis of `kerSpanRat u`), not
 merely a spanning set. Then the real coordinates `c` of `u` are `ℚ`-linearly

@@ -164,7 +164,7 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
         fun i => ((t * u i : ℝ) : UnitAddCircle) := by
     intro t
     funext i
-    show (∑ ℓ, (ρ ℓ i) • ((t * c ℓ : ℝ) : UnitAddCircle)) = _
+    change (∑ ℓ, (ρ ℓ i) • ((t * c ℓ : ℝ) : UnitAddCircle)) = _
     have term : ∀ ℓ : Fin d, (ρ ℓ i) • ((t * c ℓ : ℝ) : UnitAddCircle) =
         (((ρ ℓ i : ℝ) * (t * c ℓ) : ℝ) : UnitAddCircle) := by
       intro ℓ

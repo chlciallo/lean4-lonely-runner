@@ -174,3 +174,10 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   kerSpan_eq_span_rat。
 - W6 正在重构 Relations.lean(626行膨胀中,中途编译破损正常)。
 - 重启第三次:W7c=2c701ed0(带前代归约笔记), W8=dbfd3a65。
+
+## 2026-09-17 W6 交付 + 第二个冻结错误裁决
+
+- c5d0b176: Relations.lean 3/4 证毕;kernel_coords_linearIndependent 原陈述
+  被证伪(hρspan 不含独立性,坐标不唯一)——批准删除,以修正版
+  kernel_coords_linearIndependent_of_basis(hρmem+hρind)替代,已证。
+- 下游适配:W8 需两小引理(kerSpanInt→kerSpanRat 提升,ℤ-独立→ℚ-独立)。

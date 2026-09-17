@@ -88,3 +88,27 @@ Toolchain: leanprover/lean4:v4.34.0, mathlib v4.34.0.
   `lake build Research07.M3.OrbitClosure` still blocked on upstream — will retry.
 - `#print axioms` pending upstream (currently would show sorryAx from W6/W7a
   sorries — expected, allowed).
+
+## W8 session 3c — ACCEPTANCE MET
+
+- `lake build Research07.M3.OrbitClosure` → **Build completed successfully
+  (8929 jobs)** at ~15:33 — zero errors, zero warnings, zero sorries in
+  OrbitClosure.lean. (Relations.olean 15:24+, Subtorus.olean real W7a build,
+  FlowDense.olean — all compiled in the same run.)
+- `#print axioms orbit_dense_annihilator` →
+  `[propext, sorryAx, Classical.choice, Quot.sound]` — `sorryAx` is ONLY from
+  upstream sorries: `kernel_coords_linearIndependent` (Relations:435, W6 active)
+  and `flow_orbit_dense` (FlowDense:24, W7c active). My file adds no axioms;
+  once W6/W7c finish, axiom set should be exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- Fixed one cosmetic linter (`show`→`change` at :167) — file now warning-free.
+- Proof shape (all in `OrbitClosure.lean`, frozen statement unchanged):
+  `Submodule.basisOfPid` ℤ-basis `ρ`; `ρQ := Int.cast ∘ ρ` ℚ-spans `kerSpanRat`
+  via common denominator `m := ∏ (x i).den`, `y i := num * ↑(m/den)`; `u` expands
+  in `ℝ`-span via `kerSpan_eq_span_rat` ⇒ coords `c`, `hc2`; `LinearIndependent ℚ c`
+  via `kernel_coords_linearIndependent`; pointwise orbit = `subtorusMap ρ (t·c)`
+  via `AddCircle.coe_zsmul`+`zsmul_eq_mul`+`Rat.cast_intCast`+`coe_sum_unitAddCircle`;
+  final `image_closure_subset_closure_image`+`Dense`+`Set.range_comp`.
+- Scratch kept: `Research07/W8Scratch.lean` (self-contained dev proof),
+  `W8overlay/{SubtorusStub,AxiomCheck}.lean` (stub sigs + axiom checker).
+  Removed `W8overlay/{src,lib}` fake-module tree.

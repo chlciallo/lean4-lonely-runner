@@ -95,9 +95,18 @@ theorem kerSpan_eq_span_rat {n : ℕ} (u : Fin n → ℝ) :
       (kerSpanRat u : Set (Fin n → ℚ))) := by
   sorry
 
-/-- Minimality lemma. (W6, sorried) -/
+/-- Minimality lemma — FALSE as frozen (W6 countermodel), kept sorried. -/
 theorem kernel_coords_linearIndependent {n d : ℕ} (u : Fin n → ℝ) (ρ : Fin d → Fin n → ℚ)
     (hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u → x ∈ Submodule.span ℚ (Set.range ρ))
+    (c : Fin d → ℝ) (hc : ∀ i, u i = ∑ ℓ, c ℓ * (ρ ℓ i : ℝ)) :
+    LinearIndependent ℚ c := by
+  sorry
+
+/-- Corrected minimality lemma (W6, proved upstream). -/
+theorem kernel_coords_linearIndependent_of_basis {n d : ℕ} (u : Fin n → ℝ)
+    (ρ : Fin d → Fin n → ℚ)
+    (hρmem : ∀ ℓ, ρ ℓ ∈ kerSpanRat u)
+    (hρind : LinearIndependent ℚ ρ)
     (c : Fin d → ℝ) (hc : ∀ i, u i = ∑ ℓ, c ℓ * (ρ ℓ i : ℝ)) :
     LinearIndependent ℚ c := by
   sorry
@@ -130,6 +139,19 @@ private theorem coe_sum_unitAddCircle {ι : Type*} (s : Finset ι) (f : ι → �
     rw [Finset.sum_insert ha, Finset.sum_insert ha, ← ih]
     rfl
 
+/-- The `ℤ`-linear map `ℤⁿ → ℚⁿ` casting each coordinate. -/
+private def intCastLM {n : ℕ} : (Fin n → ℤ) →ₗ[ℤ] (Fin n → ℚ) where
+  toFun x i := (x i : ℚ)
+  map_add' x y := funext fun i => Int.cast_add ..
+  map_smul' c x := funext fun i => by
+    simp only [Pi.smul_apply, smul_eq_mul, zsmul_eq_mul, Int.cast_mul]
+
+private theorem intCastLM_ker {n : ℕ} : LinearMap.ker (intCastLM (n := n)) = ⊥ := by
+  rw [LinearMap.ker_eq_bot]
+  intro x y h
+  funext i
+  exact_mod_cast congr_fun h i
+
 /-- Every annihilator point is approximable by the real orbit of `u`. -/
 theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     annihilator u ⊆
@@ -161,6 +183,18 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     rwa [Submodule.map_span, ← hrange] at hmap
   -- Step 2: the same basis, cast to `ℚ`, spans `kerSpanRat u` (clear denominators).
   set ρQ : Fin d → Fin n → ℚ := fun ℓ i => (ρ ℓ i : ℚ) with hρQdef
+  have hρmem : ∀ ℓ, ρQ ℓ ∈ kerSpanRat u := by
+    intro ℓ k hk
+    have h := hmem ℓ k hk
+    have hQ : ((∑ i, k i * ρ ℓ i : ℤ) : ℚ) = 0 := by
+      rw [h]
+      norm_cast
+    rw [Int.cast_sum] at hQ
+    simp only [Int.cast_mul] at hQ
+    exact hQ
+  have hρind : LinearIndependent ℚ ρQ := by
+    have h := hinj.map' intCastLM intCastLM_ker
+    exact h
   have hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u →
       x ∈ Submodule.span ℚ (Set.range ρQ) := by
     intro x hx
@@ -254,7 +288,8 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     intro i
     have := congr_fun hc i
     simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using this.symm
-  have hLI : LinearIndependent ℚ c := kernel_coords_linearIndependent u ρQ hρspan c hc2
+  have hLI : LinearIndependent ℚ c :=
+    kernel_coords_linearIndependent_of_basis u ρQ hρmem hρind c hc2
   -- Step 4: pointwise identity of the orbit with the subtorus map.
   have hdense : Dense (Set.range fun t : ℝ =>
       fun i => ((t * c i : ℝ) : UnitAddCircle)) := flow_orbit_dense hLI
