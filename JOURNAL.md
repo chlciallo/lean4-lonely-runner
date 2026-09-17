@@ -181,3 +181,12 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
   被证伪(hρspan 不含独立性,坐标不唯一)——批准删除,以修正版
   kernel_coords_linearIndependent_of_basis(hρmem+hρind)替代,已证。
 - 下游适配:W8 需两小引理(kerSpanInt→kerSpanRat 提升,ℤ-独立→ℚ-独立)。
+
+## 2026-09-17 W7c+W8 交付(最难件落地)
+
+- W7c 流版 Kronecker 证毕(339行):遍历论路线——
+  ergodic_add_left_iff_denseRange_zsmul + mFourier L² 论证(离散Kronecker)
+  + 截面返回映射(d≥1 取非零分量j, t₀=r/c_j 命中截面, 子环面离散密度)。
+  mFourier 局部测度实例陷阱已记录。
+- W8 orbit_dense_annihilator 证毕,公理三件套。
+- **M3 全链只剩 W5 (lrc4_int/lrc4_rat)。**

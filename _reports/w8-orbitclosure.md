@@ -112,3 +112,62 @@ Toolchain: leanprover/lean4:v4.34.0, mathlib v4.34.0.
 - Scratch kept: `Research07/W8Scratch.lean` (self-contained dev proof),
   `W8overlay/{SubtorusStub,AxiomCheck}.lean` (stub sigs + axiom checker).
   Removed `W8overlay/{src,lib}` fake-module tree.
+
+## W8 session 3d — CRITICAL: frozen `kernel_coords_linearIndependent` is FALSE
+
+- Relations.lean:431 documents W6's countermodel: frozen
+  `kernel_coords_linearIndependent` is FALSE (hρspan permits redundant ρ ⇒
+  coordinates not unique ⇒ c need not be ℚ-LI). W6 proved replacement
+  `kernel_coords_linearIndependent_of_basis` (Relations.lean:448) with stronger
+  hypotheses `(hρmem : ∀ ℓ, ρ ℓ ∈ kerSpanRat u)` + `(hρind : LinearIndependent ℚ ρ)`
+  (no spanning hypothesis needed). Frozen decl stays sorried at :435.
+- My ρQ IS a genuine basis (ℤ-basis ⇒ ℚ-LI), so I switched to `_of_basis`:
+  added `hρmem` (pointwise Int.cast of `hmem`) and `hρind` (new private
+  `linearIndependent_intCast` — denominator clearing on the coefficient side:
+  `D := ∏ (g ℓ).den`, `m ℓ := num * ↑(D/den)`, `↑(m ℓ) = D * g ℓ`, integer
+  relation ⇒ `m ℓ = 0` ⇒ `g ℓ = 0`). `hρspan` retained for the u-expansion.
+- Re-verified: `lake env lean OrbitClosure.lean` exit 0 (zero errors/warnings)
+  vs real Relations.olean; full `lake build` passed at ~15:33 BEFORE the
+  `_of_basis` switch; now rebuilding blocked only by W7c mid-edit
+  (FlowDense.lean errors :42,:52,:116 — `zmultiples` + isDefEq timeout).
+- STATUS: proof complete + compile-verified; waiting on upstream stability for
+  final `lake build` re-confirmation.
+
+## W8 session 3e — DONE: build green, axioms clean
+
+- Upstream converged ~15:48: W6 removed the FALSE frozen
+  `kernel_coords_linearIndependent` (proved `_of_basis` instead — my call site
+  already switched), W7a finished Subtorus (0 sorries), W7c finished
+  `flow_orbit_dense` (0 sorries). Zero sorries remain in the whole dep chain.
+- FINAL `lake build Research07.M3.OrbitClosure` →
+  **Build completed successfully (8930 jobs)**, zero errors/warnings/sorries in
+  OrbitClosure.lean.
+- FINAL `#print axioms orbit_dense_annihilator` →
+  **`[propext, Classical.choice, Quot.sound]`** — exactly the permitted set.
+- `OrbitClosure.lean` content: private `coe_sum_unitAddCircle` (Finset induction
+  on `AddCircle.coe_add`/`coe_zero`), private `linearIndependent_intCast`
+  (ℤ-LI ⇒ ℚ-LI by clearing coefficient denominators), then the 5-step proof:
+  basisOfPid ℤ-basis → ρQ basis of kerSpanRat (hρmem/hρind/hρspan) → u-coords c
+  via kerSpan_eq_span_rat → LI via kernel_coords_linearIndependent_of_basis →
+  pointwise orbit=subtorusMap → image_closure_subset_closure_image+Dense.
+- Frozen statement unchanged; file is warning-free (one `show`→`change` fix).
+- Dev artifacts kept (outside import tree, per convention): `Research07/
+  W8Scratch.lean`, `W8overlay/{SubtorusStub,AxiomCheck}.lean`.
+- NO edits to foreign files at any point (only read). Stub Subtorus.olean I had
+  compiled into the build dir was overwritten by W7a's real build — clean.
+
+## FINAL STATE (W8 complete)
+
+- `lake build Research07.M3.OrbitClosure` → Build completed successfully
+  (8930 jobs). OrbitClosure.lean: zero errors, zero warnings, zero sorries.
+- `#print axioms orbit_dense_annihilator` →
+  `[propext, Classical.choice, Quot.sound]` (permitted set; whole dep tree
+  sorry-free as of ~15:48 — W6, W7a, W7c all landed).
+- Files delivered: `Research07/M3/OrbitClosure.lean` (272 lines; frozen
+  statement unchanged). Dev artifacts outside import tree:
+  `Research07/W8Scratch.lean`, `W8overlay/{SubtorusStub,AxiomCheck}.lean`.
+- Upstream note for orchestrator: frozen `kernel_coords_linearIndependent` was
+  FALSE (W6 countermodel); W6 removed it and proved
+  `kernel_coords_linearIndependent_of_basis` — my proof consumes the latter
+  (ρQ is a genuine ℚ-basis of kerSpanRat, so it applies). Any other consumer
+  of the old signature must switch likewise.

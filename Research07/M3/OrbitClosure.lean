@@ -13,7 +13,8 @@ import Research07.M3.FlowDense
 
 Every point of the annihilator subtorus is a limit of orbit points `t·u mod ℤⁿ`:
 pull `flow_orbit_dense` back through `subtorusMap` (basis of `kerSpanInt u`,
-coordinates `c` of `u` are `ℚ`-independent by `kernel_coords_linearIndependent`).
+coordinates `c` of `u` are `ℚ`-independent by
+`kernel_coords_linearIndependent_of_basis`).
 Owned by agent W8 — fill the `sorry`s.
 -/
 
@@ -28,6 +29,60 @@ private theorem coe_sum_unitAddCircle {ι : Type*} (s : Finset ι) (f : ι → �
   | insert a s ha ih =>
     rw [Finset.sum_insert ha, Finset.sum_insert ha, ← ih]
     rfl
+
+/-- `ℤ`-linear independence upgrades to `ℚ`-linear independence under `Int.cast`:
+clear denominators in a putative rational relation. -/
+private theorem linearIndependent_intCast {n d : ℕ} {ρ : Fin d → Fin n → ℤ}
+    (h : LinearIndependent ℤ ρ) : LinearIndependent ℚ (fun ℓ i => (ρ ℓ i : ℚ)) := by
+  rw [Fintype.linearIndependent_iff] at h ⊢
+  intro g hg ℓ₀
+  set D : ℕ := ∏ ℓ, (g ℓ).den with hDdef
+  have hD : 0 < D := Finset.prod_pos fun _ _ => Rat.pos _
+  have hDQ : (D : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hD.ne'
+  set m : Fin d → ℤ := fun ℓ => (g ℓ).num * ((D / (g ℓ).den : ℕ) : ℤ) with hmdef
+  have hdvd : ∀ ℓ, (g ℓ).den ∣ D := fun ℓ =>
+    Finset.dvd_prod_of_mem _ (Finset.mem_univ ℓ)
+  have hm : ∀ ℓ, ((m ℓ : ℤ) : ℚ) = (D : ℚ) * g ℓ := by
+    intro ℓ
+    have hden : ((g ℓ).den : ℚ) ≠ 0 := by exact_mod_cast (Rat.den_nz (g ℓ))
+    have hcast : (((D / (g ℓ).den : ℕ) : ℤ) : ℚ) = (D : ℚ) / ((g ℓ).den : ℚ) := by
+      rw [Int.cast_natCast, Nat.cast_div (hdvd ℓ) hden]
+    calc ((m ℓ : ℤ) : ℚ)
+        = ((g ℓ).num : ℚ) * (((D / (g ℓ).den : ℕ) : ℤ) : ℚ) := by
+          rw [Int.cast_mul]
+      _ = ((g ℓ).num : ℚ) * ((D : ℚ) / ((g ℓ).den : ℚ)) := by
+          rw [hcast]
+      _ = (D : ℚ) * (((g ℓ).num : ℚ) / ((g ℓ).den : ℚ)) := by
+          rw [← mul_div_assoc, ← mul_div_assoc, mul_comm ((g ℓ).num : ℚ) (D : ℚ)]
+      _ = (D : ℚ) * g ℓ := by
+          rw [Rat.num_div_den]
+  -- the integer relation `∑ m ℓ • ρ ℓ = 0`
+  have hsum : ∑ ℓ, m ℓ • ρ ℓ = 0 := by
+    funext i
+    have hgi : ∑ ℓ, (g ℓ : ℚ) * ((ρ ℓ i : ℤ) : ℚ) = 0 := by
+      have := congr_fun hg i
+      simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using this
+    have h0 : ((∑ ℓ, m ℓ * ρ ℓ i : ℤ) : ℚ) = 0 := by
+      have e : ((∑ ℓ, m ℓ * ρ ℓ i : ℤ) : ℚ) =
+          ∑ ℓ, ((m ℓ : ℤ) : ℚ) * ((ρ ℓ i : ℤ) : ℚ) := by
+        rw [Int.cast_sum]
+        apply Finset.sum_congr rfl
+        intro ℓ _
+        rw [Int.cast_mul]
+      rw [e]
+      have e2 : ∀ ℓ, ((m ℓ : ℤ) : ℚ) * ((ρ ℓ i : ℤ) : ℚ) =
+          (D : ℚ) * ((g ℓ : ℚ) * ((ρ ℓ i : ℤ) : ℚ)) := by
+        intro ℓ
+        rw [hm ℓ]
+        ring
+      rw [Finset.sum_congr rfl (fun ℓ _ => e2 ℓ), ← Finset.mul_sum, hgi, mul_zero]
+    have h0' : ∑ ℓ, m ℓ * ρ ℓ i = 0 := by exact_mod_cast h0
+    simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using h0'
+  have hm0 : m ℓ₀ = 0 := h m hsum ℓ₀
+  have hD0 : (D : ℚ) * g ℓ₀ = 0 := by
+    rw [← hm ℓ₀]
+    exact_mod_cast hm0
+  exact (mul_eq_zero.mp hD0).resolve_left hDQ
 
 /-- Every annihilator point is approximable by the real orbit of `u`. -/
 theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
@@ -58,8 +113,19 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     have hmap : x ∈ (Submodule.span ℤ (Set.range ⇑b)).map (kerSpanInt u).subtype :=
       ⟨⟨x, hx⟩, hb, rfl⟩
     rwa [Submodule.map_span, ← hrange] at hmap
-  -- Step 2: the same basis, cast to `ℚ`, spans `kerSpanRat u` (clear denominators).
+  -- Step 2: the same basis, cast to `ℚ`, is a `ℚ`-basis of `kerSpanRat u`
+  -- (membership + ℚ-independence + spanning; the last by clearing denominators).
   set ρQ : Fin d → Fin n → ℚ := fun ℓ i => (ρ ℓ i : ℚ) with hρQdef
+  have hρmem : ∀ ℓ, ρQ ℓ ∈ kerSpanRat u := by
+    intro ℓ k hk
+    have h := hmem ℓ k hk
+    have hQ : ((∑ i, k i * ρ ℓ i : ℤ) : ℚ) = 0 := by
+      rw [h]
+      norm_cast
+    rw [Int.cast_sum] at hQ
+    simp only [Int.cast_mul] at hQ
+    exact hQ
+  have hρind : LinearIndependent ℚ ρQ := linearIndependent_intCast hinj
   have hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u →
       x ∈ Submodule.span ℚ (Set.range ρQ) := by
     intro x hx
@@ -153,7 +219,11 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     intro i
     have := congr_fun hc i
     simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using this.symm
-  have hLI : LinearIndependent ℚ c := kernel_coords_linearIndependent u ρQ hρspan c hc2
+  -- NOTE: frozen `kernel_coords_linearIndependent` is false as stated (W6
+  -- countermodel — spanning ρ may be redundant); our ρQ is a genuine basis, so
+  -- the proved replacement `kernel_coords_linearIndependent_of_basis` applies.
+  have hLI : LinearIndependent ℚ c :=
+    kernel_coords_linearIndependent_of_basis u ρQ hρmem hρind c hc2
   -- Step 4: pointwise identity of the orbit with the subtorus map.
   have hdense : Dense (Set.range fun t : ℝ =>
       fun i => ((t * c i : ℝ) : UnitAddCircle)) := flow_orbit_dense hLI

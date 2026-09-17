@@ -139,18 +139,59 @@ private theorem coe_sum_unitAddCircle {ι : Type*} (s : Finset ι) (f : ι → �
     rw [Finset.sum_insert ha, Finset.sum_insert ha, ← ih]
     rfl
 
-/-- The `ℤ`-linear map `ℤⁿ → ℚⁿ` casting each coordinate. -/
-private def intCastLM {n : ℕ} : (Fin n → ℤ) →ₗ[ℤ] (Fin n → ℚ) where
-  toFun x i := (x i : ℚ)
-  map_add' x y := funext fun i => Int.cast_add ..
-  map_smul' c x := funext fun i => by
-    simp only [Pi.smul_apply, smul_eq_mul, zsmul_eq_mul, Int.cast_mul]
-
-private theorem intCastLM_ker {n : ℕ} : LinearMap.ker (intCastLM (n := n)) = ⊥ := by
-  rw [LinearMap.ker_eq_bot]
-  intro x y h
-  funext i
-  exact_mod_cast congr_fun h i
+/-- `ℤ`-linear independence upgrades to `ℚ`-linear independence under `Int.cast`:
+clear denominators in a putative rational relation. -/
+private theorem linearIndependent_intCast {n d : ℕ} {ρ : Fin d → Fin n → ℤ}
+    (h : LinearIndependent ℤ ρ) : LinearIndependent ℚ (fun ℓ i => (ρ ℓ i : ℚ)) := by
+  rw [Fintype.linearIndependent_iff] at h ⊢
+  intro g hg ℓ₀
+  set D : ℕ := ∏ ℓ, (g ℓ).den with hDdef
+  have hD : 0 < D := Finset.prod_pos fun _ _ => Rat.pos _
+  have hDQ : (D : ℚ) ≠ 0 := Nat.cast_ne_zero.mpr hD.ne'
+  set m : Fin d → ℤ := fun ℓ => (g ℓ).num * ((D / (g ℓ).den : ℕ) : ℤ) with hmdef
+  have hdvd : ∀ ℓ, (g ℓ).den ∣ D := fun ℓ =>
+    Finset.dvd_prod_of_mem _ (Finset.mem_univ ℓ)
+  have hm : ∀ ℓ, ((m ℓ : ℤ) : ℚ) = (D : ℚ) * g ℓ := by
+    intro ℓ
+    have hden : ((g ℓ).den : ℚ) ≠ 0 := by exact_mod_cast (Rat.den_nz (g ℓ))
+    have hcast : (((D / (g ℓ).den : ℕ) : ℤ) : ℚ) = (D : ℚ) / ((g ℓ).den : ℚ) := by
+      rw [Int.cast_natCast, Nat.cast_div (hdvd ℓ) hden]
+    calc ((m ℓ : ℤ) : ℚ)
+        = ((g ℓ).num : ℚ) * (((D / (g ℓ).den : ℕ) : ℤ) : ℚ) := by
+          rw [Int.cast_mul]
+      _ = ((g ℓ).num : ℚ) * ((D : ℚ) / ((g ℓ).den : ℚ)) := by
+          rw [hcast]
+      _ = (D : ℚ) * (((g ℓ).num : ℚ) / ((g ℓ).den : ℚ)) := by
+          rw [← mul_div_assoc, ← mul_div_assoc, mul_comm ((g ℓ).num : ℚ) (D : ℚ)]
+      _ = (D : ℚ) * g ℓ := by
+          rw [Rat.num_div_den]
+  -- the integer relation `∑ m ℓ • ρ ℓ = 0`
+  have hsum : ∑ ℓ, m ℓ • ρ ℓ = 0 := by
+    funext i
+    have hgi : ∑ ℓ, (g ℓ : ℚ) * ((ρ ℓ i : ℤ) : ℚ) = 0 := by
+      have := congr_fun hg i
+      simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using this
+    have h0 : ((∑ ℓ, m ℓ * ρ ℓ i : ℤ) : ℚ) = 0 := by
+      have e : ((∑ ℓ, m ℓ * ρ ℓ i : ℤ) : ℚ) =
+          ∑ ℓ, ((m ℓ : ℤ) : ℚ) * ((ρ ℓ i : ℤ) : ℚ) := by
+        rw [Int.cast_sum]
+        apply Finset.sum_congr rfl
+        intro ℓ _
+        rw [Int.cast_mul]
+      rw [e]
+      have e2 : ∀ ℓ, ((m ℓ : ℤ) : ℚ) * ((ρ ℓ i : ℤ) : ℚ) =
+          (D : ℚ) * ((g ℓ : ℚ) * ((ρ ℓ i : ℤ) : ℚ)) := by
+        intro ℓ
+        rw [hm ℓ]
+        ring
+      rw [Finset.sum_congr rfl (fun ℓ _ => e2 ℓ), ← Finset.mul_sum, hgi, mul_zero]
+    have h0' : ∑ ℓ, m ℓ * ρ ℓ i = 0 := by exact_mod_cast h0
+    simpa [Pi.smul_apply, Finset.sum_apply, smul_eq_mul] using h0'
+  have hm0 : m ℓ₀ = 0 := h m hsum ℓ₀
+  have hD0 : (D : ℚ) * g ℓ₀ = 0 := by
+    rw [← hm ℓ₀]
+    exact_mod_cast hm0
+  exact (mul_eq_zero.mp hD0).resolve_left hDQ
 
 /-- Every annihilator point is approximable by the real orbit of `u`. -/
 theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
@@ -193,7 +234,7 @@ theorem orbit_dense_annihilator {n : ℕ} (u : Fin n → ℝ) :
     simp only [Int.cast_mul] at hQ
     exact hQ
   have hρind : LinearIndependent ℚ ρQ := by
-    have h := hinj.map' intCastLM intCastLM_ker
+    have h := linearIndependent_intCast hinj
     exact h
   have hρspan : ∀ x : Fin n → ℚ, x ∈ kerSpanRat u →
       x ∈ Submodule.span ℚ (Set.range ρQ) := by
