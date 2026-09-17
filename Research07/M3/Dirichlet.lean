@@ -152,7 +152,8 @@ theorem exists_delta_lt (α : Fin d → ℝ) {ε : ℝ} (hε : 0 < ε) :
 
 /-- Every point of `UnitAddCircle` is the image of a real representative. -/
 theorem exists_coe_eq (x : UnitAddCircle) : ∃ a : ℝ, (a : UnitAddCircle) = x := by
-  obtain ⟨a, ha⟩ := QuotientAddGroup.mk'_surjective (zmultiples (1 : ℝ)) x
+  obtain ⟨a, ha⟩ :=
+    QuotientAddGroup.mk'_surjective (AddSubgroup.zmultiples (1 : ℝ)) x
   exact ⟨a, by simpa using ha⟩
 
 /-- Each coordinate of `(q : ℤ) • x` on `UnitAddCircle` has norm bounded by the defect:

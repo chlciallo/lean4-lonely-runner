@@ -147,3 +147,12 @@ Append-only，倒序（新的在最上）。每条 ≤5 行，写清"做了什�
 - 并行 agent:W5=6d65c149, W7b=d6180ae5, W6=c5d0b176, W7a=edd850e4,
   W7c=cd46338e, W8=300919df, W9=198ca837, W10=78f41dce
 - 文献侦察:24e5010e(Renault s=3), 39d7801e(Henze-Malikiosis)
+
+## 2026-09-17 W10 交付(首个完成包)
+
+- e4265da0: lrc5_rel_real + lonely_runner_five 证毕(零 sorry),
+  axioms 暂含 sorryAx(来自上游未填的 frozen 引理,收敛后自清)。
+- 跨文件修复:Dirichlet.lean zmultiples→AddSubgroup.zmultiples(v4.34 限定符)。
+- 已知散件:Research07/W6Scratch.lean(W6 反模型草稿,不被 import)。
+- 连接错误阵亡4路已重启:W7c=cdd7aaee, W8=75e8b127, W9=d65d9e46。
+  仍在跑:W5=6d65c149, W7b=d6180ae5, W6=c5d0b176, W7a=edd850e4。
