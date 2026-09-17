@@ -1,2 +1,4 @@
 /.lake
 _external/
+.playwright-mcp/
+_dev/

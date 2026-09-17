@@ -1,6 +1,8 @@
-# Statement Fidelity — LRC(n=3)
+# Statement Fidelity — LRC(n=3, 4, 5)
 
 防幻觉闸口：Lean 只保证"证明 ↔ 陈述"一致。"陈述 ↔ 想证的数学"在此审查。
+
+# n=3 陈述保真档案
 
 ## 非形式化命题（定稿）
 
@@ -65,7 +67,59 @@ theorem lonely_runner_five_rat (v : Fin 5 → ℚ) (hv : Function.Injective v) :
 - 与 formal-conjectures 的 ℝ 版差异:仅限有理速度(M3 才到 ℝ)
 - 签名微调:(v i : ℚ) 先升 ℝ 再进 UnitAddCircle
 
-## 已知缺口(M3 待办)
+## 已知缺口(已闭合,M3 交付)
 
 实数版需 BHK Lemma 8:Kronecker–Perron 子环面密度 + n=4 情形黑箱。
 边界 1/5 本质(紧实例 {1,2,3,4}),朴素逼近不可行——dossier 已证伪。
+**以上缺口已全部填上**——见下方 n=4 / n=5 实数版档案。
+
+# n=4 陈述保真档案(M3 前置件)
+
+## lrc4_int
+
+```lean
+theorem lrc4_int (D : Finset ℕ) (hpos : ∀ d ∈ D, 0 < d) (hcard : D.card ≤ 3) :
+    ∃ t : ℝ, 0 < t ∧ ∀ d ∈ D, (1/4 : ℝ) ≤ circ (t * d)
+```
+
+- Renault 2004 附录论证的完整形式化:有限边界集取极值 + 半整数偏移再进入
+- `card ≤ 3` 动跑者 + 1 静止 = n=4,阈值 1/4 ✓
+- 强归纳于速度总和:全偶 ⇒ 减半递归;否则 mod 4 剩余分情形,
+  `a ≡ 0 (mod 4)` 者进 Renault driver
+
+## lrc4_rat_finset / lrc4_rel_rat
+
+有理版经公共分母清分归约到 `lrc4_int`(与 lrc5 同模式)。
+
+# n=5 实数版档案(M3 主交付)
+
+## lonely_runner_five(最终定理)
+
+```lean
+theorem lonely_runner_five (v : Fin 5 → ℝ) (hv : Function.Injective v) :
+    ∀ i : Fin 5, ∃ t ≥ 0, ∀ j : Fin 5, j ≠ i →
+      (1/5 : ℝ) ≤ dist ((t * v i : ℝ) : UnitAddCircle) ((t * v j : ℝ) : UnitAddCircle)
+```
+
+- 与 formal-conjectures 的 LRC 条目同型(`Fin 5 → ℝ` 单射、`UnitAddCircle` dist)
+- 速度为任意实数(含负),每个跑者可有各自的孤独时刻
+- 归约:`lrc5_rel_real` 对 4 个非零相对速度两分——
+  ① 存在公共比例 c>0 使所有 |wᵢ| = c·qᵢ(qᵢ∈ℚ):缩放到 `lrc5_int`
+  ② 否则:ℚ-线性无关 ⇒ 子环面轨道稠密 ⇒ BHK 再进入论证
+- 文献对标:BHK Lemma 8 的两分结构与原文逐行核对(含 OCR `≠`/`=` 勘误)
+
+## 支撑件(M3/)
+
+`flow_orbit_dense`(ℚ-无关 ⇒ 一参轨道稠密,遍历论+mFourier L²)、
+`subtorusMap_range_eq_annihilator`(`M̄(u) = Ker(A)+ℤᵈ`)、
+`orbit_dense_annihilator`(Kronecker–Perron 闭包刻画)、
+`SimDirichlet.exists_delta_lt*`(同步 Dirichlet,自包含鸽巢)。
+
+# 反模型修正记录(陈述保真闸口的实际捕获)
+
+| 原陈述 | 捕获方式 | 修正 |
+|---|---|---|
+| `kernel_coords_linearIndependent`(缺"ρ 是核基"前提) | 编译出 n=1 反模型(重复基向量) | 删除假陈述,替换为 `kernel_coords_linearIndependent_of_basis` |
+| `exists_k_all_good`(缺正性前提) | 协议审查 | 补正性前提(冻结陈述修正先例) |
+| `bhk_w_ne_zero`(前提自相矛盾的空引理) | 终审审计 | 标注未使用;真实非零性在 `hwne` 内联证明 |
+| 无条件 `off a (-t) = -off a t`(at≡1/2 反例) | 编译失败 + 反例分析 | 加 `\|off a t\| < 1/4` 前提 |

@@ -30,12 +30,18 @@ report contract they physically could not fulfill.)
 - Scratch files must live outside the import tree (`Research07/Scratch.lean`,
   `LRC5/DiscreteWork.lean` are dev-only).
 
-## Project state cheat-sheet (2026-09-17)
+## Project state cheat-sheet (2026-09-17, final)
 
-- DONE + audited: `lonely_runner_three` (real speeds), `lrc5_int`,
-  `lrc5_rel_rat`, `lonely_runner_five_rat` (integer/rational n=5). See `Audit.lean`.
-- NEXT: Phase M3 = full real-speeds `lonely_runner_five` via BHK Lemma 8 —
-  blueprint in `PLAN_M3.md`. Tier-up roadmap (κ(V) formula, p-generalization,
-  n=6 Renault, n=7 Barajas–Serra) in §3 of same file.
+- ALL DONE + audited: `lonely_runner_three`, `lrc4_int`/`lrc4_rat_finset`,
+  `lrc5_int`, `lonely_runner_five_rat`, and **`lonely_runner_five`**
+  (full real-speeds n=5 via BHK Lemma 8). Zero sorry; axiom gate
+  `[propext, Classical.choice, Quot.sound]` enforced by `Audit.lean`
+  (imported from the umbrella `Research07.lean`).
+- Full build: `lake build` = 8945 jobs clean.
+- Tier-up roadmap (κ(V) formula, p-generalization, n=6 Renault,
+  n=7 Barajas–Serra) in `PLAN_M3.md` §3 — none started.
 - `_external/` holds reference clones (five-distance-sharp, bhk.pdf/bhk.txt) —
   reference only, not part of the package.
+- `_dev/` holds scratch/dev files (gitignored): `scratch/`, `W8overlay/`.
+- `_reports/` = agent work logs; `STATEMENT.md` = statement-fidelity audit
+  including the countermodel correction table.
