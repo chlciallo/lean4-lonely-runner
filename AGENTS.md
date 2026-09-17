@@ -21,6 +21,14 @@ with reporting duties MUST be `subagent_general`. If an explore agent is used an
 `_reports/` on receipt. (Rule added after 24e5010e/39d7801e were dispatched with a
 report contract they physically could not fulfill.)
 
+## Failure ledger (STANDING RULE)
+
+On every build failure, false/oversized statement, dead subagent, or
+notable rework, append ONE line to `_dev/failures.md` (gitignored, local):
+`date | component | what failed | root-cause tag | fix`.
+Reuse existing tags when possible; invent new ones sparingly.
+When asked, summarize the ledger as a frequency table by tag.
+
 ## Verification gates (apply to every Lean change)
 
 - `lake build` clean; zero `sorry`/`admit`/`native_decide`/`unsafe`.
