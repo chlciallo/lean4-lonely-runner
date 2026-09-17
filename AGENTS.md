@@ -52,3 +52,6 @@ When asked, summarize the ledger as a frequency table by tag.
 - `_dev/` holds scratch/dev files (gitignored): `scratch/`, `W8overlay/`.
 - `_reports/` = agent work logs; `STATEMENT.md` = statement-fidelity audit
   including the countermodel correction table.
+- Literature fetching: follow `_dev/docs/FETCH-FALLBACK.md` (L1 direct →
+  L2 mirrors → L3 playwright browser → L4 ask user for captcha/login).
+  Never declare a source "unobtainable" before L3/L4 are actually tried.
