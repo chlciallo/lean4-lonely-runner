@@ -5,6 +5,7 @@ Authors: Research07 contributors
 -/
 import Research07.M3.Main
 import Research07.LRC4.Main
+import Research07.LRC6.Main
 
 /-!
 # Audit
@@ -16,7 +17,8 @@ leftover `sorry`, `Lean.ofReduceBool` from `native_decide`, custom axioms)
 shows up here.
 
 Coverage: LRC n=3 (real), LRC n=4 (integer + rational wrappers),
-LRC n=5 (integer + rational + **full real speeds** via BHK), and every
+LRC n=5 (integer + rational + **full real speeds** via BHK),
+LRC n=6 (integer + rational wrappers via Renault's case split), and every
 load-bearing M3 intermediate theorem.
 -/
 
@@ -30,6 +32,13 @@ load-bearing M3 intermediate theorem.
 #print axioms lonely_runner_five_rat
 #print axioms lrc5_rel_real
 #print axioms lonely_runner_five
+#print axioms lrc6_int
+#print axioms lrc6_rel_rat
+#print axioms lonely_runner_six_rat
+#print axioms prop3_1
+#print axioms prop4_1
+#print axioms prop5_4
+#print axioms prop6_6
 
 -- ============ M3 intermediate layer ============
 #print axioms SimDirichlet.exists_delta_lt_inv

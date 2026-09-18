@@ -115,6 +115,53 @@ theorem lonely_runner_five (v : Fin 5 → ℝ) (hv : Function.Injective v) :
 `orbit_dense_annihilator`(Kronecker–Perron 闭包刻画)、
 `SimDirichlet.exists_delta_lt*`(同步 Dirichlet,自包含鸽巢)。
 
+# n=6 陈述保真档案(T3 交付,独立审计通过 2026-09-18)
+
+## 非形式化命题(定稿)
+
+5 个正整数速度 v₁,…,v₅,存在实数 t 使 ⟨tvᵢ⟩ ∈ [1/6,5/6] ∀i
+(Renault 2004, Thm 1.1;静止 runner + 5 动 = 6 跑者,阈值 1/6)。
+等价 moving-runner 版:6 个两两不同速度的跑者,每人某时刻距他人 ≥ 1/6。
+
+## lrc6_int(主交付)
+
+```lean
+theorem lrc6_int (D : Finset ℕ) (hpos : ∀ d ∈ D, 0 < d) (hcard : D.card ≤ 5) :
+    ∃ t : ℝ, 0 < t ∧ ∀ d ∈ D, (1/6 : ℝ) ≤ circ (t * d)
+```
+
+- Finset 自带互异;`card ≤ 5`(card<5 经 lrc5_int,1/5 ≥ 1/6)
+- `t > 0` 强于 Renault 的 ∃t∈ℝ(带对称 ⇒ 等价)
+- `circ(t·d)` = ‖td‖ UnitAddCircle 范数 = ⟨td⟩ 到 {0,1} 距离
+  ⟺ `safe6`:fract ∈ Icc(1/6,5/6) = Renault 的闭区间 ✓
+- 结构:hfail(D=∅) ⇒ gcd 归约(安全时刻 t ↦ t/g 方向,已手推)⇒
+  gcd=1 下剩余类分派:mult3∈{1,2,3} 穷尽;mult3=1 时 ±2-guards ∈{0,1,2}
+  (even_le_three 恰好压到 2)→ prop5_4/prop6_6/prop4_1;mult3=2→prop3_1;
+  mult3=3→lemma2_3
+
+## lrc6_rel_rat / lonely_runner_six_rat
+
+- `lrc6_rel_rat`:Fin 5 非零 ℚ 相对速度 ⇒ 公分母 B=∏den 清分到 ℤ ⇒
+  |aᵢ| 进 lrc6_int ⇒ t = t₀·B(方向与 lrc5_rel_rat 同款)
+- `lonely_runner_six_rat`:Fin 6 ↪ ℚ,∀i,∃t≥0,∀j≠i,
+  dist(t·vᵢ, t·vⱼ) ≥ 1/6 —— 与 formal-conjectures
+  `lonely_runner_conjecture` n=6 特例同构(仅速度域 ℚ⊂ℝ)
+- 相对速度 wⱼ=vⱼ−vᵢ 非零(单射);dist=circ(t·w) 经
+  `dist_unitAddCircle_eq_circ` + `circ_neg`
+
+## 与 formal-conjectures / Renault 的逐符号对照
+
+| 对象 | 锚点 | 本仓 | 判定 |
+|---|---|---|---|
+| 量词 | ∀r ∃t≥0 ∀r2≠r | ∀i ∃t,0≤t ∧ ∀j≠i | ✓ |
+| 阈值 | 1/n(n=6 ⇒ 1/6) | (1/6:ℝ) 非严格 ≤ | ✓ |
+| 距离 | dist on UnitAddCircle | dist(runner 版)/ circ(静止版) | ✓ |
+| 整数版 | v_i 正整数,⟨tv⟩∈[1/6,5/6] | Finset ℕ 正元素,safe6 = Icc | ✓ |
+
+## 已知缺口(范围声明,非 bug)
+
+速度域限于 ℚ(整数核 + 通分)。实数版 n=6 需 BHK 式延伸,未声明、未声称。
+
 # 反模型修正记录(陈述保真闸口的实际捕获)
 
 | 原陈述 | 捕获方式 | 修正 |
