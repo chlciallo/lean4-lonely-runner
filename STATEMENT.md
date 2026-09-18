@@ -115,7 +115,7 @@ theorem lonely_runner_five (v : Fin 5 → ℝ) (hv : Function.Injective v) :
 `orbit_dense_annihilator`(Kronecker–Perron 闭包刻画)、
 `SimDirichlet.exists_delta_lt*`(同步 Dirichlet,自包含鸽巢)。
 
-# n=6 陈述保真档案(T3 交付,独立审计通过 2026-09-18)
+# n=6 陈述保真档案(独立审计通过 2026-09-18)
 
 ## 非形式化命题(定稿)
 
@@ -160,7 +160,32 @@ theorem lrc6_int (D : Finset ℕ) (hpos : ∀ d ∈ D, 0 < d) (hcard : D.card �
 
 ## 已知缺口(范围声明,非 bug)
 
-速度域限于 ℚ(整数核 + 通分)。实数版 n=6 需 BHK 式延伸,未声明、未声称。
+~~速度域限于 ℚ~~ —— 已于 2026-10-01 闭合:实数版 n=6 经 BHK Lemma 8
+延伸落地(见下节)。
+
+## lrc6_rel_real / lonely_runner_six(实数版,2026-10-01)
+
+```lean
+theorem lonely_runner_six (v : Fin 6 → ℝ) (hv : Function.Injective v) :
+    ∀ i : Fin 6, ∃ t ≥ 0, ∀ j : Fin 6, j ≠ i →
+      (1/6 : ℝ) ≤ dist ((t * v i : ℝ) : UnitAddCircle) ((t * v j : ℝ) : UnitAddCircle)
+```
+
+- 与 formal-conjectures 的 LRC 条目在 n=6 完全同型(`Fin 6 → ℝ` 单射、
+  `UnitAddCircle` dist、阈值 1/6、∃t≥0)——不再有速度域限制
+- 归约:`lrc6_rel_real` 对 5 个非零实相对速度两分(与 `lrc5_rel_real` 同款)——
+  ① 存在公共 c 使所有 |wᵢ| = c·qᵢ:缩放到 `lrc6_rel_rat`
+  ② 否则:`lrc6_real_of_irrational_ratio`(BHK Lemma 8 @ n=6,
+     `LRC6/RealCase.lean`,移植自 `M3/BHK.lean` 的 n=5 实例化)
+- BHK 步:`w ∈ kerSpanRat u` 等坐标碰撞(wᵢ=−wⱼ)⇒ |w| ≤ 4 个不同值 ⇒
+  `lrc5_rat_finset`(≤4 正有理数,阈值 1/5,经 `lrc5_int`)⇒
+  t·w ∈ annihilator ⇒ `orbit_dense_annihilator` 逼近进开立方体,
+  δ = 11/60 ∈ (1/6, 1/5),得严格 `> 1/6`
+- 文献对标:bhk.txt §4 行 619 原文:"the irrational case of Conjecture 1
+  for n = 6 follows from the rational case of the conjecture for n = 5"——
+  本仓的 `lrc5_int`(n=5 有理情形)正是该输入
+- `t > 0`(`lrc6_rel_real`)强于官方 ∃t≥0;无理分支为严格 `> 1/6`,
+  有理分支 `≥ 1/6`,合并 `≥ 1/6` ✓
 
 # 反模型修正记录(陈述保真闸口的实际捕获)
 

@@ -18,7 +18,8 @@ shows up here.
 
 Coverage: LRC n=3 (real), LRC n=4 (integer + rational wrappers),
 LRC n=5 (integer + rational + **full real speeds** via BHK),
-LRC n=6 (integer + rational wrappers via Renault's case split), and every
+LRC n=6 (integer + rational + **full real speeds**: Renault's case split for
+the integer case, BHK Lemma 8 for the irrational-ratio case), and every
 load-bearing M3 intermediate theorem.
 -/
 
@@ -35,6 +36,8 @@ load-bearing M3 intermediate theorem.
 #print axioms lrc6_int
 #print axioms lrc6_rel_rat
 #print axioms lonely_runner_six_rat
+#print axioms lrc6_rel_real
+#print axioms lonely_runner_six
 #print axioms prop3_1
 #print axioms prop4_1
 #print axioms prop5_4
@@ -51,6 +54,8 @@ load-bearing M3 intermediate theorem.
 #print axioms flow_orbit_dense
 #print axioms orbit_dense_annihilator
 #print axioms lrc5_real_of_irrational_ratio
+#print axioms lrc5_rat_finset
+#print axioms lrc6_real_of_irrational_ratio
 
 -- ============ supporting APIs used downstream ============
 #print axioms circ_ge_quarter_fract
