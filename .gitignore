@@ -2,3 +2,4 @@
 _external/
 .playwright-mcp/
 _dev/
+_reports/
