@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using these metadata."
+title: "Verified Lonely Runner Conjecture for n = 3-7 in Lean 4"
+authors:
+  - family-names: Chen
+    given-names: Honglu
+    affiliation: "Nanjing University"
+version: "1.0.0"
+date-released: "2026-09-20"
+license: Apache-2.0
+type: software
+repository-code: "https://github.com/chlciallo/lean4-lonely-runner"
+abstract: >-
+  Kernel-checked Lean 4 + Mathlib formalization of the Lonely Runner
+  Conjecture for up to seven runners, including arbitrary real speeds
+  for n = 5, 6, 7.
+keywords:
+  - Lean 4
+  - Mathlib
+  - formal verification
+  - lonely runner conjecture
+  - Diophantine approximation
