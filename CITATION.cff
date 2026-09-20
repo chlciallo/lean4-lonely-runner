@@ -10,6 +10,14 @@ date-released: "2026-09-20"
 license: Apache-2.0
 type: software
 repository-code: "https://github.com/chlciallo/lean4-lonely-runner"
+doi: "10.5281/zenodo.22851977"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22851977"
+    description: "Zenodo archived release v1.0.0"
+  - type: swh
+    value: "swh:1:snp:8e220024403049ac000bde7c29a3f23151054eb2"
+    description: "Software Heritage snapshot (2026-09-20)"
 abstract: >-
   Kernel-checked Lean 4 + Mathlib formalization of the Lonely Runner
   Conjecture for up to seven runners, including arbitrary real speeds

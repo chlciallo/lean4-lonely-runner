@@ -1,5 +1,8 @@
 # Verified Lonely Runner Conjecture — n = 3, 4, 5, 6, 7
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22851977.svg)](https://doi.org/10.5281/zenodo.22851977)
+[![SWH](https://archive.softwareheritage.org/badge/swh:1:snp:8e220024403049ac000bde7c29a3f23151054eb2/)](https://archive.softwareheritage.org/swh:1:snp:8e220024403049ac000bde7c29a3f23151054eb2)
+
 Kernel-checked Lean 4 + Mathlib formalization of the Lonely Runner
 Conjecture (LRC) for up to seven runners — including, to our knowledge,
 the largest verified instance of a full LRC case over **arbitrary real
@@ -105,5 +108,8 @@ Bohman–Holzman–Kleitman 2004; Barajas–Serra 2008).
 
 ## Citing
 
-If you use this work, please cite the repository and note the Lean
-toolchain version (`leanprover/lean4:v4.34.0`) for reproducibility.
+Archived on Zenodo: <https://doi.org/10.5281/zenodo.22851977>
+(concept DOI resolves to the latest release). If you use this work,
+please cite the DOI and note the Lean toolchain version
+(`leanprover/lean4:v4.34.0`) for reproducibility; see `CITATION.cff`
+for full metadata.
