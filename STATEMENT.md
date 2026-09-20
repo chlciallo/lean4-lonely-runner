@@ -244,8 +244,29 @@ theorem lrc7_int (D : Finset ℕ) (hpos : ∀ d ∈ D, 0 < d) (hcard : D.card �
 
 ## 已知缺口(范围声明,非 bug)
 
-速度域限于 ℚ —— 实数版(`lonely_runner_seven`)是后续 BHK
-实例化任务,**不在本任务范围**(需先补 `lrc6_rat_finset`)。
+~~速度域限于 ℚ~~ —— 已于 2026-09-20 闭合:实数版 n=7 经 BHK Lemma 8
+延伸落地(见下节),`lrc6_rat_finset` 前提已补。
+
+## lrc7_rel_real / lonely_runner_seven(实数版,2026-09-20)
+
+```lean
+theorem lonely_runner_seven (v : Fin 7 → ℝ) (hv : Function.Injective v) :
+    ∀ i : Fin 7, ∃ t ≥ 0, ∀ j : Fin 7, j ≠ i →
+      (1/7 : ℝ) ≤ dist ((t * v i : ℝ) : UnitAddCircle) ((t * v j : ℝ) : UnitAddCircle)
+```
+
+- 与 formal-conjectures 的 LRC 条目在 n=7 完全同型(`Fin 7 → ℝ` 单射、
+  `UnitAddCircle` dist、阈值 1/7、∃t≥0)——不再有速度域限制
+- 归约:`lrc7_rel_real` 对 6 个非零实相对速度两分(与 `lrc6_rel_real` 同款)——
+  ① 存在公共 c 使所有 |wᵢ| = c·qᵢ:缩放到 `lrc7_rel_rat`
+  ② 否则:`lrc7_real_of_irrational_ratio`(BHK Lemma 8 @ n=7,
+     `LRC7/RealCase.lean`,移植自 `LRC6/RealCase.lean` 的 n=6 实例化)
+- BHK 步:`w ∈ kerSpanRat u` 等坐标碰撞(wᵢ=−wⱼ)⇒ |w| ≤ 5 个不同值 ⇒
+  `lrc6_rat_finset`(≤5 正有理数,阈值 1/6,经 `lrc6_int`)⇒
+  t·w ∈ annihilator ⇒ `orbit_dense_annihilator` 逼近进开立方体,
+  δ = 2/13 ∈ (1/7, 1/6),得严格 `> 1/7`
+- `t > 0`(`lrc7_rel_real`)强于官方 ∃t≥0;无理分支为严格 `> 1/7`,
+  有理分支 `≥ 1/7`,合并 `≥ 1/7` ✓
 
 ## 陈述保真要点(形式化中捕获的 BS 细节)
 

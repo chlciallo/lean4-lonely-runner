@@ -7,6 +7,8 @@ import Research07.LRC7.IntCase
 import Research07.LRC7.Case4Int
 import Research07.LRC7.Case5mTop
 import Research07.LRC7.Case5m
+import Research07.LRC7.RealCase
+import Research07.LRC6.Main
 import Research07.LRC3.Main
 
 /-!
@@ -18,11 +20,19 @@ Frozen deliverables:
   common time `t > 0` with `circ (t·d) ≥ 1/7` for all `d ∈ D`.
 * `lrc7_rel_rat` — six nonzero rational relative speeds.
 * `lonely_runner_seven_rat` — seven rational speeds, lonely time per runner.
+* `lrc7_rel_real` — six nonzero real relative speeds.
+* `lonely_runner_seven` — seven real speeds (full LRC at `n = 7`).
 
 The integer theorem is assembled by `lrc7_int_of_leaves` (see `IntCase.lean`)
 from the §5 leaf `lrc7_case4` (`Case4Int.lean`, the `|D₇(0)| = 4` case) and
 the §6 leaf `lrc7_hc6` (`Case5mTop.lean`, the `|D₇(0)| = 5` case, `m > 1`).
 The remaining finite case `m = 1` is `lrc7_m1` inside `IntCase`'s tree.
+
+For real speeds, `lrc7_rel_real` splits on commensurability exactly as
+`lrc6_rel_real` does: the rationally-proportional case scales `lrc7_rel_rat`,
+and the irrational-ratio case is `lrc7_real_of_irrational_ratio`
+(`RealCase.lean`, BHK Lemma 8 at `n = 7`, consuming the `n = 6` rational case
+`lrc6_rat_finset`).
 -/
 
 /-- **Lonely Runner Conjecture, integer speeds, `n = 7`** (Barajas–Serra). -/
@@ -99,5 +109,114 @@ theorem lonely_runner_seven_rat (v : Fin 7 → ℚ)
       = -(t * ((v (i.succAbove j') - v i : ℚ) : ℝ)) := by
     push_cast
     ring
+  rw [hsub, circ_neg]
+  exact hwt j'
+
+/-- Finset form (≤6 positive rationals) — the `n = 7` analog of
+`lrc6_rat_finset`. -/
+theorem lrc7_rat_finset (S : Finset ℚ) (hpos : ∀ q ∈ S, 0 < q) (hcard : S.card ≤ 6) :
+    ∃ t : ℝ, 0 < t ∧ ∀ q ∈ S, (1 / 7 : ℝ) ≤ circ (t * q) := by
+  -- `B`, the product of the denominators over `S`, clears every `q ∈ S`.
+  set B : ℕ := ∏ q ∈ S, q.den with hB
+  have hBpos : 0 < B := Finset.prod_pos fun q _ => q.den_pos
+  have hdvd : ∀ q ∈ S, q.den ∣ B := fun q hq => Finset.dvd_prod_of_mem _ hq
+  -- `n q` is the natural number `q * B` (positive since `q > 0`).
+  set n : ℚ → ℕ := fun q => q.num.natAbs * (B / q.den) with hn
+  have hqa : ∀ q ∈ S, q * (B : ℚ) = (n q : ℚ) := by
+    intro q hq
+    obtain ⟨k, hk⟩ := hdvd q hq
+    have hdiv : B / q.den = k := by
+      rw [hk]; exact Nat.mul_div_cancel_left _ q.den_pos
+    simp only [hn, hdiv]
+    rw [hk]
+    push_cast
+    rw [Nat.cast_natAbs, Int.cast_abs,
+      abs_of_pos (show (0 : ℚ) < q.num by
+        exact_mod_cast Rat.num_pos.mpr (hpos q hq)),
+      ← mul_assoc, Rat.mul_den_eq_num]
+  have hnpos : ∀ q ∈ S, 0 < n q := by
+    intro q hq
+    simp only [hn]
+    exact Nat.mul_pos (Int.natAbs_pos.mpr (Rat.num_ne_zero.mpr (hpos q hq).ne'))
+      (Nat.div_pos (Nat.le_of_dvd hBpos (hdvd q hq)) q.den_pos)
+  set D : Finset ℕ := S.image n with hD
+  have hDpos : ∀ d ∈ D, 0 < d := by
+    intro d hd
+    rw [hD, Finset.mem_image] at hd
+    obtain ⟨q, hq, rfl⟩ := hd
+    exact hnpos q hq
+  have hDcard : D.card ≤ 6 := Finset.card_image_le.trans hcard
+  obtain ⟨t₀, ht₀, hDt⟩ := lrc7_int D hDpos hDcard
+  refine ⟨t₀ * (B : ℝ), mul_pos ht₀ (by exact_mod_cast hBpos), fun q hq => ?_⟩
+  have hmem : n q ∈ D := Finset.mem_image.mpr ⟨q, hq, rfl⟩
+  have hcast : (q : ℝ) * (B : ℝ) = (n q : ℝ) := by
+    exact_mod_cast hqa q hq
+  rw [show t₀ * (B : ℝ) * (q : ℝ) = t₀ * ((q : ℝ) * (B : ℝ)) from by ring,
+    hcast]
+  exact hDt _ hmem
+
+/-- Six nonzero real relative speeds: ∃ t > 0 with all `circ (t·wᵢ) ≥ 1/7`.
+Mirrors `lrc6_rel_real`: rational case via `lrc7_rel_rat`, irrational case via
+BHK Lemma 8 at `n = 7` (`lrc7_real_of_irrational_ratio`). -/
+theorem lrc7_rel_real (w : Fin 6 → ℝ) (hw : ∀ i, w i ≠ 0) :
+    ∃ t : ℝ, 0 < t ∧ ∀ i, (1 / 7 : ℝ) ≤ circ (t * w i) := by
+  -- Work with the positive speeds `|w i|`; `circ` forgets the sign of `w i`.
+  have hupos : ∀ i, 0 < |w i| := fun i => abs_pos.mpr (hw i)
+  have hcirc : ∀ t : ℝ, 0 ≤ t → ∀ i, circ (t * w i) = circ (t * |w i|) := by
+    intro t ht i
+    rw [← circ_abs, abs_mul, abs_of_nonneg ht]
+  -- Dichotomy: either `|w|` is a real multiple of a rational tuple, or not.
+  by_cases hrat : ∃ c : ℝ, ∀ i, ∃ q : ℚ, |w i| = c * q
+  · -- Rational case: `|w i| = c * q i` with `c ≠ 0`; if `s` is the rational lonely
+    -- time for `q`, then `t = s / |c|` works — `circ` absorbs the sign of `c`.
+    obtain ⟨c, hc⟩ := hrat
+    choose q hq using hc
+    have hc0 : c ≠ 0 := by
+      intro h0
+      have h := hupos 0
+      rw [hq 0, h0, zero_mul] at h
+      exact h.ne rfl
+    have hq0 : ∀ i, q i ≠ 0 := by
+      intro i h0
+      have h := hupos i
+      rw [hq i, h0, Rat.cast_zero, mul_zero] at h
+      exact h.ne rfl
+    obtain ⟨s, hs, hsv⟩ := lrc7_rel_rat q hq0
+    -- `|s / |c| * c| = s`, so `|t * |w i|| = |s * q i|`.
+    have hsc : |s / |c| * c| = s := by
+      rw [abs_mul, abs_div, abs_of_pos hs, abs_abs]
+      exact div_mul_cancel₀ s (abs_ne_zero.mpr hc0)
+    have habs : ∀ i, abs (s / |c| * |w i|) = |s * (q i : ℝ)| := by
+      intro i
+      rw [hq i, ← mul_assoc, abs_mul, hsc, abs_mul, abs_of_pos hs]
+    have key : ∀ i, circ (s / |c| * |w i|) = circ (s * (q i : ℝ)) := by
+      intro i
+      rw [← circ_abs (s / |c| * |w i|), ← circ_abs (s * (q i : ℝ)), habs i]
+    refine ⟨s / |c|, div_pos hs (abs_pos.mpr hc0), fun i => ?_⟩
+    rw [hcirc _ (div_pos hs (abs_pos.mpr hc0)).le i, key i]
+    exact hsv i
+  · -- Irrational case: BHK Lemma 8 at `n = 7`, using `lrc6` on ≤5 rationals.
+    obtain ⟨t, ht, hwt⟩ := lrc7_real_of_irrational_ratio lrc6_rat_finset hupos hrat
+    exact ⟨t, ht, fun i => by rw [hcirc t ht.le i]; exact (hwt i).le⟩
+
+/-- **The Lonely Runner Conjecture for seven runners** (real speeds): for every
+injective speed tuple `v : Fin 7 → ℝ` and every runner `i`, there is a time
+`t ≥ 0` at which `i` is at circular distance `≥ 1/7` from every other runner. -/
+theorem lonely_runner_seven (v : Fin 7 → ℝ) (hv : Function.Injective v) :
+    ∀ i : Fin 7, ∃ t : ℝ, 0 ≤ t ∧
+      ∀ j : Fin 7, j ≠ i →
+        (1 / 7 : ℝ) ≤
+          dist ((t * (v i : ℝ) : UnitAddCircle) : UnitAddCircle)
+               ((t * (v j : ℝ) : UnitAddCircle) : UnitAddCircle) := by
+  intro i
+  -- The six relative speeds `v j − v i` for `j ≠ i`, indexed by `Fin 6`.
+  have hwnz : ∀ j' : Fin 6, v (i.succAbove j') - v i ≠ 0 := fun j' =>
+    sub_ne_zero.mpr fun e => Fin.succAbove_ne i j' (hv e)
+  obtain ⟨t, ht, hwt⟩ := lrc7_rel_real (fun j' => v (i.succAbove j') - v i) hwnz
+  refine ⟨t, ht.le, fun j hj => ?_⟩
+  obtain ⟨j', rfl⟩ := Fin.exists_succAbove_eq hj
+  rw [dist_unitAddCircle_eq_circ]
+  have hsub : t * v i - t * v (i.succAbove j')
+      = -(t * (v (i.succAbove j') - v i)) := by ring
   rw [hsub, circ_neg]
   exact hwt j'
