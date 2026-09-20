@@ -6,6 +6,7 @@ Authors: Research07 contributors
 import Research07.M3.Main
 import Research07.LRC4.Main
 import Research07.LRC6.Main
+import Research07.LRC7.Main
 
 /-!
 # Audit
@@ -19,7 +20,8 @@ shows up here.
 Coverage: LRC n=3 (real), LRC n=4 (integer + rational wrappers),
 LRC n=5 (integer + rational + **full real speeds** via BHK),
 LRC n=6 (integer + rational + **full real speeds**: Renault's case split for
-the integer case, BHK Lemma 8 for the irrational-ratio case), and every
+the integer case, BHK Lemma 8 for the irrational-ratio case),
+LRC n=7 (integer + rational wrappers: Barajas–Serra), and every
 load-bearing M3 intermediate theorem.
 -/
 
@@ -38,6 +40,9 @@ load-bearing M3 intermediate theorem.
 #print axioms lonely_runner_six_rat
 #print axioms lrc6_rel_real
 #print axioms lonely_runner_six
+#print axioms lrc7_int
+#print axioms lrc7_rel_rat
+#print axioms lonely_runner_seven_rat
 #print axioms prop3_1
 #print axioms prop4_1
 #print axioms prop5_4
@@ -56,6 +61,7 @@ load-bearing M3 intermediate theorem.
 #print axioms lrc5_real_of_irrational_ratio
 #print axioms lrc5_rat_finset
 #print axioms lrc6_real_of_irrational_ratio
+#print axioms lrc6_rat_finset
 
 -- ============ supporting APIs used downstream ============
 #print axioms circ_ge_quarter_fract

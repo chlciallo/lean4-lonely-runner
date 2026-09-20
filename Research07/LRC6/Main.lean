@@ -71,6 +71,49 @@ theorem lrc6_rel_rat (w : Fin 5 → ℚ) (hw : ∀ i, w i ≠ 0) :
     hcast, hsign]
   exact hDt _ hmem
 
+/-- Finset form (≤5 positive rationals) — the shape `LRC7/RealCase.lean`
+consumes as the `n − 1 = 6` rational input of the BHK reduction. -/
+theorem lrc6_rat_finset (S : Finset ℚ) (hpos : ∀ q ∈ S, 0 < q) (hcard : S.card ≤ 5) :
+    ∃ t : ℝ, 0 < t ∧ ∀ q ∈ S, (1 / 6 : ℝ) ≤ circ (t * q) := by
+  -- `B`, the product of the denominators over `S`, clears every `q ∈ S`.
+  set B : ℕ := ∏ q ∈ S, q.den with hB
+  have hBpos : 0 < B := Finset.prod_pos fun q _ => q.den_pos
+  have hdvd : ∀ q ∈ S, q.den ∣ B := fun q hq => Finset.dvd_prod_of_mem _ hq
+  -- `n q` is the natural number `q * B` (positive since `q > 0`).
+  set n : ℚ → ℕ := fun q => q.num.natAbs * (B / q.den) with hn
+  have hqa : ∀ q ∈ S, q * (B : ℚ) = (n q : ℚ) := by
+    intro q hq
+    obtain ⟨k, hk⟩ := hdvd q hq
+    have hdiv : B / q.den = k := by
+      rw [hk]; exact Nat.mul_div_cancel_left _ q.den_pos
+    simp only [hn, hdiv]
+    rw [hk]
+    push_cast
+    rw [Nat.cast_natAbs, Int.cast_abs,
+      abs_of_pos (show (0 : ℚ) < q.num by
+        exact_mod_cast Rat.num_pos.mpr (hpos q hq)),
+      ← mul_assoc, Rat.mul_den_eq_num]
+  have hnpos : ∀ q ∈ S, 0 < n q := by
+    intro q hq
+    simp only [hn]
+    exact Nat.mul_pos (Int.natAbs_pos.mpr (Rat.num_ne_zero.mpr (hpos q hq).ne'))
+      (Nat.div_pos (Nat.le_of_dvd hBpos (hdvd q hq)) q.den_pos)
+  set D : Finset ℕ := S.image n with hD
+  have hDpos : ∀ d ∈ D, 0 < d := by
+    intro d hd
+    rw [hD, Finset.mem_image] at hd
+    obtain ⟨q, hq, rfl⟩ := hd
+    exact hnpos q hq
+  have hDcard : D.card ≤ 5 := Finset.card_image_le.trans hcard
+  obtain ⟨t₀, ht₀, hDt⟩ := lrc6_int D hDpos hDcard
+  refine ⟨t₀ * (B : ℝ), mul_pos ht₀ (by exact_mod_cast hBpos), fun q hq => ?_⟩
+  have hmem : n q ∈ D := Finset.mem_image.mpr ⟨q, hq, rfl⟩
+  have hcast : (q : ℝ) * (B : ℝ) = (n q : ℝ) := by
+    exact_mod_cast hqa q hq
+  rw [show t₀ * (B : ℝ) * (q : ℝ) = t₀ * ((q : ℝ) * (B : ℝ)) from by ring,
+    hcast]
+  exact hDt _ hmem
+
 /-- **Lonely Runner Conjecture, `n = 6`, rational speeds.** -/
 theorem lonely_runner_six_rat (v : Fin 6 → ℚ) (hv : Function.Injective v) :
     ∀ i : Fin 6, ∃ t : ℝ, 0 ≤ t ∧ ∀ j : Fin 6, j ≠ i →

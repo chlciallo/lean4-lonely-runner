@@ -195,3 +195,67 @@ theorem lonely_runner_six (v : Fin 6 → ℝ) (hv : Function.Injective v) :
 | `exists_k_all_good`(缺正性前提) | 协议审查 | 补正性前提(冻结陈述修正先例) |
 | `bhk_w_ne_zero`(前提自相矛盾的空引理) | 终审审计 | 标注未使用;真实非零性在 `hwne` 内联证明 |
 | 无条件 `off a (-t) = -off a t`(at≡1/2 反例) | 编译失败 + 反例分析 | 加 `\|off a t\| < 1/4` 前提 |
+
+# n=7 陈述保真档案(Barajas–Serra 2008,arXiv:0710.4495,EJC 15(1) R48)
+
+## 非形式化命题(定稿)
+
+6 个正整数速度 v₁,…,v₆,存在实数 t 使 ⟨tvᵢ⟩ ∈ [1/7,6/7] ∀i
+(Barajas–Serra 2008;静止 runner + 6 动 = 7 跑者,阈值 1/7)。
+等价 moving-runner 版:7 个两两不同速度的跑者,每人某时刻距他人 ≥ 1/7。
+
+## lrc7_int(主交付,冻结)
+
+```lean
+theorem lrc7_int (D : Finset ℕ) (hpos : ∀ d ∈ D, 0 < d) (hcard : D.card ≤ 6) :
+    ∃ t : ℝ, 0 < t ∧ ∀ d ∈ D, (1 / 7 : ℝ) ≤ circ (t * d)
+```
+
+- Finset 自带互异;`card ≤ 6`(card<6 经 lrc6_int,1/6 ≥ 1/7)
+- `t > 0` 强于 BS 的 ∃t∈ℝ(带对称 ⇒ 等价)
+- `circ(t·d)` = ‖td‖ UnitAddCircle 范数 = ⟨td⟩ 到 {0,1} 距离
+  ⟺ `safe7`:fract ∈ Icc(1/7,6/7) = BS 的闭区间 ✓
+- 结构(BS §2–§7):7-adic 赋值分层 level7,m=max ν;
+  |A₀|≤3 → Λ₀-滤波(§7 Finite,`lrc7_m1`);
+  |A₀|=4 → §5 `hc4`=`lrc7_case4`(λ'ⱼ=j·u'(1+7^{m−i₀}) 乘子,
+    eq.8 中间元下界 + eq.9 进位链 + eq.10 multLow;
+    |A_s|∈{2,3,4} 三分支 — 平移 prop4x/prop3ax/prop3bx/prop2ix/prop2iix
+    有限证书 + `case4_finish` 统一收尾);
+  |A₀|=5 → §6 `hc6`=`lrc7_case5m`(3-压缩 Lemma 9 + 编号 10/11 +
+    分情形 case61–66 + normU7 QR-翻转);
+  m=1 归约到有限 `decide` 证书
+
+## lrc7_rel_rat / lonely_runner_seven_rat(冻结)
+
+- `lrc7_rel_rat`:Fin 6 非零 ℚ 相对速度 ⇒ 公分母 B=∏den 清分到 ℤ ⇒
+  |aᵢ| 进 lrc7_int ⇒ t = t₀·B(与 lrc6_rel_rat 同款)
+- `lonely_runner_seven_rat`:Fin 7 ↪ ℚ,∀i,∃t≥0,∀j≠i,
+  dist(t·vᵢ,t·vⱼ) ≥ 1/7 —— 与 formal-conjectures
+  `lonely_runner_conjecture` n=7 特例同构(仅速度域 ℚ⊂ℝ)
+
+## 与 Barajas–Serra / formal-conjectures 的逐符号对照
+
+| 对象 | BS7 锚点 | 本仓 | 判定 |
+|---|---|---|---|
+| 量词 | ∃t ∀i ⟨tvᵢ⟩∈[1/7,6/7] | ∃t>0 ∀d∈D circ(t·d)≥1/7 | ✓ |
+| 阈值 | 1/7 | (1/7:ℝ) 非严格 ≤ | ✓ |
+| 距离 | ⟨·⟩ mod 1 | circ / dist | ✓ |
+| 乘子 | λ=1+k·s⁻¹·7^m(Lemma 5) | lamP/lam 乘子 ∃ 式 | ✓ |
+
+## 已知缺口(范围声明,非 bug)
+
+速度域限于 ℚ —— 实数版(`lonely_runner_seven`)是后续 BHK
+实例化任务,**不在本任务范围**(需先补 `lrc6_rat_finset`)。
+
+## 陈述保真要点(形式化中捕获的 BS 细节)
+
+- **`hc4` 的 attainment 前提**:`hc4`/`lrc7_case4` 显式假设
+  `∃d∈D, ν(d)=m` —— 这使"≤1 中间层元素"由计数
+  (4+2+1 或 4+1+1+1 ≥ 7 > 6)自动成立,叶范围恰等于论文 §5。
+- **|A_s|=2 的 (4,4) 陷阱**:extras 类对为 (4,4) 时,4-连续移位
+  **不能**同时避开两个 extras(已用 Python 枚举验证)——论文
+  WLOG 重选 `s:=4s` 将 (2,0,2) 类分布变为 (2,2,0),装配中
+  显式执行 `¬(c₁=4 ∧ c₂=4)` 后调用 `quad_point_avoid`。
+- **`hc6` 的 QR 规范化**:hc6 接口只给 `¬7∣d`;`runit7∈{1,2,4}`
+  (QR(7))由叶内 `normU7` 符号翻转完成(r∉QR ⇒ −r∈QR,
+  `absModN` 不变量经 `normU7_absModN` 传递)。

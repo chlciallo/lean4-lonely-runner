@@ -11,4 +11,5 @@ import Research07.M3.OrbitClosure
 import Research07.M3.BHK
 import Research07.M3.Main
 import Research07.LRC4.Main
+import Research07.LRC7.Main
 import Research07.Audit
