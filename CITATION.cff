@@ -5,6 +5,7 @@ authors:
   - family-names: Chen
     given-names: Honglu
     affiliation: "Nanjing University"
+    orcid: "https://orcid.org/0009-0008-8174-5085"
 version: "1.0.0"
 date-released: "2026-09-20"
 license: Apache-2.0
