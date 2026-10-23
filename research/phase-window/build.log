@@ -1,0 +1,13 @@
+ℹ [996/997] Replayed PhaseWindow
+info: PhaseWindow.lean:4:0: 'PhaseWindow.safe_stable' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:5:0: 'PhaseWindow.two_speed_escape_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:6:0: 'PhaseWindow.two_speed_escape_small' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:7:0: 'PhaseWindow.delete_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:8:0: 'PhaseWindow.uniform_radius_iff_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:9:0: 'PhaseWindow.one_fifth_obstruction' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:10:0: 'PhaseWindow.frozen_phase_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:11:0: 'PhaseWindow.relation_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:12:0: 'PhaseWindow.relation_delete' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:13:0: 'PhaseWindow.drift_allowance_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: PhaseWindow.lean:14:0: 'PhaseWindow.relation_delete_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully (997 jobs).

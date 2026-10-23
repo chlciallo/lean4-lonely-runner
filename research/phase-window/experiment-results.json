@@ -1,0 +1,14 @@
+{
+  "exact_parameter_cases": 45144,
+  "largest_observed_ratio_to_bound": "80/81",
+  "equal_threshold_1_5_counterexample_component": [
+    "-7/50",
+    "7/50"
+  ],
+  "fixed_core_phase_counterexample": [
+    3,
+    5,
+    8
+  ],
+  "scope": "Finite exact rational cross-checks; the general theorem and optimality are proved separately in Lean."
+}

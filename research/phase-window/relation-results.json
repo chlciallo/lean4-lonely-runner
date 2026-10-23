@@ -1,0 +1,25 @@
+{
+  "parameter_cases": 80784,
+  "cases_satisfying_relation_guard": 25812,
+  "witness_example": {
+    "speeds": [
+      1,
+      2,
+      3,
+      6,
+      8
+    ],
+    "core_time": "1/4",
+    "lifted_time": "11/48"
+  },
+  "drift_term_counterexample": {
+    "speeds": [
+      2,
+      5
+    ],
+    "time": "1/2",
+    "delta": "1/6",
+    "radius": "1/12"
+  },
+  "scope": "Exact finite cross-check; general relation escape and descent are proved in Lean."
+}
