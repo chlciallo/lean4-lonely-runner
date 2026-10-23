@@ -9,3 +9,7 @@
 'PhaseWindow.relation_delete' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PhaseWindow.drift_allowance_needed' depends on axioms: [propext, Classical.choice, Quot.sound]
 'PhaseWindow.relation_delete_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhaseWindow.triple_escape' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhaseWindow.uniform_triple_radius_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhaseWindow.delete_sum_triple' depends on axioms: [propext, Classical.choice, Quot.sound]
+'PhaseWindow.incompatible_triple_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]

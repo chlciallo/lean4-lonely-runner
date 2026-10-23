@@ -1,0 +1,268 @@
+{
+  "layers": 20,
+  "final_number_of_speeds": 64,
+  "all_lifts_exactly_verified": true,
+  "records": [
+    {
+      "k": 7,
+      "triple": [
+        17,
+        18,
+        35
+      ],
+      "core_max": 4,
+      "old_witness": "1/5",
+      "lifted_witness": "11/56",
+      "candidate_times_tested": 7,
+      "minimum_distance": "1/8"
+    },
+    {
+      "k": 10,
+      "triple": [
+        234,
+        235,
+        469
+      ],
+      "core_max": 35,
+      "old_witness": "11/56",
+      "lifted_witness": "13/66",
+      "candidate_times_tested": 8,
+      "minimum_distance": "1/11"
+    },
+    {
+      "k": 13,
+      "triple": [
+        4300,
+        4301,
+        8601
+      ],
+      "core_max": 469,
+      "old_witness": "13/66",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 8,
+      "minimum_distance": "1/14"
+    },
+    {
+      "k": 16,
+      "triple": [
+        100345,
+        100346,
+        200691
+      ],
+      "core_max": 8601,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "1/14"
+    },
+    {
+      "k": 19,
+      "triple": [
+        2843123,
+        2843124,
+        5686247
+      ],
+      "core_max": 200691,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "1/14"
+    },
+    {
+      "k": 22,
+      "triple": [
+        94770784,
+        94770785,
+        189541569
+      ],
+      "core_max": 5686247,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "737/12040"
+    },
+    {
+      "k": 25,
+      "triple": [
+        3632880073,
+        3632880074,
+        7265760147
+      ],
+      "core_max": 189541569,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "737/12040"
+    },
+    {
+      "k": 28,
+      "triple": [
+        157424803185,
+        157424803186,
+        314849606371
+      ],
+      "core_max": 7265760147,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "737/12040"
+    },
+    {
+      "k": 31,
+      "triple": [
+        7608865487300,
+        7608865487301,
+        15217730974601
+      ],
+      "core_max": 314849606371,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 4,
+      "minimum_distance": "737/12040"
+    },
+    {
+      "k": 34,
+      "triple": [
+        405806159322694,
+        405806159322695,
+        811612318645389
+      ],
+      "core_max": 15217730974601,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "1073/30100"
+    },
+    {
+      "k": 37,
+      "triple": [
+        23672025960490513,
+        23672025960490514,
+        47344051920981027
+      ],
+      "core_max": 811612318645389,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "1073/30100"
+    },
+    {
+      "k": 40,
+      "triple": [
+        1499228310831065855,
+        1499228310831065856,
+        2998456621662131711
+      ],
+      "core_max": 47344051920981027,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "1073/30100"
+    },
+    {
+      "k": 43,
+      "triple": [
+        102447267906789500126,
+        102447267906789500127,
+        204894535813579000253
+      ],
+      "core_max": 2998456621662131711,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "1073/30100"
+    },
+    {
+      "k": 46,
+      "triple": [
+        7512799646497896675944,
+        7512799646497896675945,
+        15025599292995793351889
+      ],
+      "core_max": 204894535813579000253,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "1949/60200"
+    },
+    {
+      "k": 49,
+      "triple": [
+        588502638975668572948986,
+        588502638975668572948987,
+        1177005277951337145897973
+      ],
+      "core_max": 15025599292995793351889,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 5,
+      "minimum_distance": "1949/60200"
+    },
+    {
+      "k": 52,
+      "triple": [
+        49041886581305714412415542,
+        49041886581305714412415543,
+        98083773162611428824831085
+      ],
+      "core_max": 1177005277951337145897973,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "1949/60200"
+    },
+    {
+      "k": 55,
+      "triple": [
+        4332033314682004773096706255,
+        4332033314682004773096706256,
+        8664066629364009546193412511
+      ],
+      "core_max": 98083773162611428824831085,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 4,
+      "minimum_distance": "1949/60200"
+    },
+    {
+      "k": 58,
+      "triple": [
+        404323109370320445489025917180,
+        404323109370320445489025917181,
+        808646218740640890978051834361
+      ],
+      "core_max": 8664066629364009546193412511,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 4,
+      "minimum_distance": "13/430"
+    },
+    {
+      "k": 61,
+      "triple": [
+        39758439088081510473087548522750,
+        39758439088081510473087548522751,
+        79516878176163020946175097045501
+      ],
+      "core_max": 808646218740640890978051834361,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "13/430"
+    },
+    {
+      "k": 64,
+      "triple": [
+        4108372039101756082219046680684219,
+        4108372039101756082219046680684220,
+        8216744078203512164438093361368439
+      ],
+      "core_max": 79516878176163020946175097045501,
+      "old_witness": "11859/60200",
+      "lifted_witness": "11859/60200",
+      "candidate_times_tested": 3,
+      "minimum_distance": "13/430"
+    }
+  ],
+  "scope": "Recursive separated sum-triple family; no assertion for unstructured speed sets."
+}

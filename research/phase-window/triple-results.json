@@ -1,0 +1,102 @@
+{
+  "exact_parameter_cases": 21888,
+  "largest_observed_ratio_to_bound": "64/65",
+  "near_sharp_families": [
+    {
+      "delta": "1/6",
+      "N": 10,
+      "ratio_to_optimum": "10/11"
+    },
+    {
+      "delta": "1/6",
+      "N": 100,
+      "ratio_to_optimum": "100/101"
+    },
+    {
+      "delta": "1/6",
+      "N": 1000,
+      "ratio_to_optimum": "1000/1001"
+    },
+    {
+      "delta": "1/7",
+      "N": 10,
+      "ratio_to_optimum": "15/16"
+    },
+    {
+      "delta": "1/7",
+      "N": 100,
+      "ratio_to_optimum": "150/151"
+    },
+    {
+      "delta": "1/7",
+      "N": 1000,
+      "ratio_to_optimum": "1500/1501"
+    },
+    {
+      "delta": "1/8",
+      "N": 10,
+      "ratio_to_optimum": "20/21"
+    },
+    {
+      "delta": "1/8",
+      "N": 100,
+      "ratio_to_optimum": "200/201"
+    },
+    {
+      "delta": "1/8",
+      "N": 1000,
+      "ratio_to_optimum": "2000/2001"
+    },
+    {
+      "delta": "1/12",
+      "N": 10,
+      "ratio_to_optimum": "49/50"
+    },
+    {
+      "delta": "1/12",
+      "N": 100,
+      "ratio_to_optimum": "499/500"
+    },
+    {
+      "delta": "1/12",
+      "N": 1000,
+      "ratio_to_optimum": "4999/5000"
+    },
+    {
+      "delta": "1/24",
+      "N": 10,
+      "ratio_to_optimum": "49/50"
+    },
+    {
+      "delta": "1/24",
+      "N": 100,
+      "ratio_to_optimum": "499/500"
+    },
+    {
+      "delta": "1/24",
+      "N": 1000,
+      "ratio_to_optimum": "4999/5000"
+    }
+  ],
+  "incompatible_phase_counterexample": {
+    "delta": "1/9",
+    "speeds": [
+      "1",
+      "9/8",
+      "17/8"
+    ],
+    "phases": [
+      "0",
+      "1/12",
+      "7/12"
+    ],
+    "bad_component": [
+      "94/153",
+      "182/153"
+    ],
+    "reference_time": "46/51",
+    "half_width": "44/153",
+    "invalid_proposed_radius": "5/18"
+  },
+  "scope": "Exact open-interval union on (-2,2); grid checks are finite. Universal optimum is separately proved in Lean."
+}

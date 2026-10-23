@@ -21,3 +21,23 @@ Formalization rework consisted of implicit phase-argument inference, an unnecess
 The user's publication-level objective is still active. This checkpoint does not meet a promise of a Q2 paper. The immediate research issue is **existence of a core witness satisfying the stronger relative-phase guard**, without assuming the desired full-instance conclusion. General LRC(k−2) alone supplies only a weaker uniform margin. A useful next theorem must produce the guard for a substantial structured family, relax the separation using phase constraints, or establish a genuinely new classification. Merely parameterizing another finite-person proof, relabeling BHK, or increasing an experiment range would not resolve that issue.
 
 No subagents were used. No messages were sent to researchers or maintainers. The checkpoint is published on an isolated research branch of the user's repository.
+
+## Second checkpoint, 2026-10-24: compatible sum triples
+
+The guard-existence issue above is bypassed for a separated sum triple, not solved for all cores. New theorem: the exact local constant for `(1,ρ,ρ+1)` with phases `(x,y,x+y)` is `max(5δ/2,δ(1+2δ)/(1−4δ))` for `0<δ≤1/6`. Both directions are proved in Lean. The proof constructs jointly safe endpoints using a ceiling integer and a shared fast phase; no interval-component finiteness or numerical enumeration is assumed.
+
+The new `delete_sum_triple` removes three speeds for every k≥7 under `d≥5(k−2)M/6`, using only the ordinary lower-dimensional core witness. The exact independent-phase counterexample is formalized too. See TRIPLE_NOTE.md for full hypotheses and proof.
+
+| Task | Result |
+|---|---|
+| Optional marked-core search | Preserved in probe_core.py; it searches a relaxed mixed-threshold question, not the full guarded premise |
+| First coarse sum-triple bound | 4δ/d follows from a two-step guard construction; replaced by the sharp envelope |
+| Sharp compatible sum-triple envelope | Upper bound and both lower mechanisms kernel-checked |
+| Drop phase compatibility | False at δ=1/9, ratios 1,9/8,17/8, phases 0,1/12,7/12; all-real window countermodel proved |
+| Exact cross-check | 21,888 grid choices passed; 15 near-sharp samples; independent-phase failure recovered |
+| Recursive application | 20 certified lifts from 4 to 64 speeds, each outside the separation criteria of the two prior pair lemmas |
+| Prior art | Rechecked BHK interval argument; found and recorded 2026 shifted counterexamples and Hu–Jing's AI-assisted general-n lower-bound preprint |
+
+Formal rework: missing real FloorRing import; one redundant tactic after field_simp closed its goal. No mathematical weakening was needed. The second checkpoint passes the complete verification script with 15 principal axiom reports and 40 theorem declarations across eight modules.
+
+The publication objective is still active. The next substantive question is whether the sharp compatible-window classification extends to other short relations or yields a broad application beyond separated towers. The unbounded tower is deliberately not presented as a new unrestricted-n theorem. No communication with researchers or journal submission has been performed.

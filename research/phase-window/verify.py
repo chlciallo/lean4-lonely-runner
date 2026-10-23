@@ -35,8 +35,8 @@ def main():
     audit=run([lake,'env','lean','PhaseWindow.lean'],'axioms.log')
     allowed={'propext','Classical.choice','Quot.sound'}
     reports=re.findall(r'depends on axioms: \[([^\]]*)\]',audit)
-    if len(reports)!=11:
-        raise SystemExit(f'Expected 11 axiom reports, found {len(reports)}')
+    if len(reports)!=15:
+        raise SystemExit(f'Expected 15 axiom reports, found {len(reports)}')
     for report in reports:
         if set(report.split(', '))-allowed:
             raise SystemExit('Unexpected axiom in audit')
@@ -44,7 +44,11 @@ def main():
     json.loads(result)
     result=run([sys.executable,'probe_relation.py'],'relation-results.json')
     json.loads(result)
-    print('PASS: build, 11 exported axiom audits, and exact rational experiments.')
+    result=run([sys.executable,'probe_triple.py'],'triple-results.json')
+    json.loads(result)
+    result=run([sys.executable,'probe_descent.py'],'descent-results.json')
+    json.loads(result)
+    print('PASS: build, 15 exported axiom audits, and exact rational experiments.')
 
 if __name__=='__main__':
     main()

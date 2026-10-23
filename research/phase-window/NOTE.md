@@ -192,10 +192,14 @@ The candidate contribution is the **sharp mixed-threshold local envelope, its fo
 
 ## 7. Evidence
 
-The standalone package passes `lake build` (997 jobs including dependency tasks). Eleven exported results have axiom reports containing only `propext`, `Classical.choice`, and `Quot.sound`. No proof holes, added axioms, native decision shortcuts, or unsafe declarations are used.
+The updated standalone package passes `lake build` (1013 jobs including dependency tasks). Fifteen exported results have axiom reports containing only `propext`, `Classical.choice`, and `Quot.sound`. No proof holes, added axioms, native decision shortcuts, or unsafe declarations are used.
 
 `probe_windows.py` checks 45,144 exact rational parameter choices, including unequal thresholds and near-degenerate configurations. The largest observed ratio of a bad-component length to the proved bound is 80/81. These experiments helped reject false extensions; the general conclusions and optimality rely on the Lean proofs, not on finite sampling.
 
 `probe_relation.py` scans 80,784 rational phase/ratio/threshold choices. Exactly 25,812 meet the stated relative-phase guard; all have an exact local witness. The script also checks the drift counterexample and the `(1,2,3,6,8)` descent example. The other choices are outside the sufficient hypothesis, not alleged counterexamples to LRC.
 
 Only the new standalone research package was built. The upstream fixed-person-count proof tree was not modified or rebuilt for this checkpoint.
+
+## 8. Second checkpoint: closing the guard by deleting a sum triple
+
+The earlier guarded pair theorem remains valid but its extra core condition is not automatic. The new [sum-triple theorem](TRIPLE_NOTE.md) instead removes the retained difference speed together with its pair. It gives the exact compatible-phase radius `max(5δ/2,δ(1+2δ)/(1−4δ))/d` for speeds `d,a,a+d`, and a guard-free `k→k−3` corollary for k≥7 under `d≥5(k−2)M/6`. Upper bound, both sharpness mechanisms, the actual deletion theorem, and a counterexample to independent phases are now proved in Lean. See the separate note for complete proofs and current literature checks.

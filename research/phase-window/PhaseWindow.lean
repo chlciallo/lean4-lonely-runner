@@ -1,5 +1,6 @@
 import PhaseWindow.Counterexamples
 import PhaseWindow.Relation
+import PhaseWindow.TripleSharpness
 
 #print axioms PhaseWindow.safe_stable
 #print axioms PhaseWindow.two_speed_escape_explicit
@@ -12,3 +13,7 @@ import PhaseWindow.Relation
 #print axioms PhaseWindow.relation_delete
 #print axioms PhaseWindow.drift_allowance_needed
 #print axioms PhaseWindow.relation_delete_two
+#print axioms PhaseWindow.triple_escape
+#print axioms PhaseWindow.uniform_triple_radius_iff
+#print axioms PhaseWindow.delete_sum_triple
+#print axioms PhaseWindow.incompatible_triple_counterexample
