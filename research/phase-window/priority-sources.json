@@ -1,0 +1,61 @@
+{
+  "audit_date": "2026-10-24",
+  "scope": "Selected original statements and relevant proof sections; not an exhaustive bibliography or novelty certificate",
+  "sources": [
+    {
+      "url": "https://arxiv.org/html/2111.13688v2",
+      "cached_filename": "rifford.html",
+      "sha256": "6acda566f1b82f891233221e05257a20cc08d48c42ce86730e8fbd4ff9fd5dd6",
+      "inspection": "Proposition 5; Theorem 3; sections 2.2 and 5.3"
+    },
+    {
+      "url": "https://arxiv.org/html/2306.10417v2",
+      "cached_filename": "fan-sun.html",
+      "sha256": "a7fc5993964e13c973ba0b66a5ac91de450f44a31b0f560f6da8e10367e5ed03",
+      "inspection": "Lemma 3.4; sections 5.2 and 5.3"
+    },
+    {
+      "url": "https://arxiv.org/html/2609.06259v2",
+      "cached_filename": "beck-everett.html",
+      "sha256": "78d42914432aa7c1db5b6766f9d52130fe974543f3778889e029f1680a7b1f76",
+      "inspection": "Theorems 2.1 and 3.2; section 3"
+    },
+    {
+      "url": "https://arxiv.org/html/2605.27941v1",
+      "cached_filename": "jensen.html",
+      "sha256": "965662d8e0c279704af0e212d94b3317c54737fa30c33333d2b2a63e2423ebcd",
+      "inspection": "Theorem A; section 4"
+    },
+    {
+      "url": "https://web.math.pmf.unizg.hr/glasnik/46.1/46%281%29-05.pdf",
+      "cached_filename": "dubickas.pdf",
+      "sha256": "50bd60cc8b4b188367bd530c8fc12b7b9582d986a90615077d4d3cc45edea2ad",
+      "inspection": "Theorem 1.1; printed pages 26-28"
+    },
+    {
+      "url": "https://arxiv.org/html/1606.01783v4",
+      "cached_filename": "polyhedra.html",
+      "sha256": "d383e79e4e8adcf4961596e4263a0bfcf9b19c0233e0e707933b6c0f961d8eca",
+      "inspection": "Theorems 7 and 8; sections 4 and 5"
+    },
+    {
+      "url": "https://arxiv.org/html/1912.06034v1",
+      "cached_filename": "kravitz.html",
+      "sha256": "fc24e00271093a58e99d4a13e068f14108bf7a7be7af7821e25e449d0bdb170f",
+      "inspection": "Propositions 8.1 and 8.2"
+    },
+    {
+      "url": "https://arxiv.org/html/2411.12684v2",
+      "cached_filename": "relative-spectra.html",
+      "sha256": "1f3bf75ef6486c33f768c5d6852251f736415eefd8844d8ded61b75a5b75d87e",
+      "inspection": "Main statements; sections 1.2-1.3 and 2"
+    },
+    {
+      "url": "https://www.combinatorics.org/ojs/index.php/eljc/article/view/v8i2r3",
+      "cached_filename": "bhk.pdf",
+      "sha256": "938609cf0788eb54bcebed849f3adbf1dedbf104c95fe86516cd552e4b7a029e",
+      "inspection": "Existing local original copy and extracted text; Lemma 4, Proposition 11, Lemma 14",
+      "provenance": "Existing local reference; not downloaded in this audit"
+    }
+  ]
+}

@@ -41,3 +41,13 @@ The new `delete_sum_triple` removes three speeds for every k≥7 under `d≥5(k�
 Formal rework: missing real FloorRing import; one redundant tactic after field_simp closed its goal. No mathematical weakening was needed. The second checkpoint passes the complete verification script with 15 principal axiom reports and 40 theorem declarations across eight modules.
 
 The publication objective is still active. The next substantive question is whether the sharp compatible-window classification extends to other short relations or yields a broad application beyond separated towers. The unbounded tower is deliberately not presented as a new unrestricted-n theorem. No communication with researchers or journal submission has been performed.
+
+## Priority audit, 2026-10-24
+
+The user requested priority checking before further theorem expansion. Nine primary sources were compared at selected original statements and relevant proof sections; see PRIORITY_AUDIT.zh-CN.md and priority-sources.json. This is a bounded audit, not an exhaustive novelty certificate.
+
+Confirmed: BHK contains both the two-block estimate and explicit treatment of sum relations; Kravitz Proposition 8.1 already implements local margin transfer; Fan–Sun uses two-fast-runner transfer and relative-speed reductions. These methods must not be claimed as original.
+
+New adverse finding: the recursive example family satisfies `vᵢ₊₃≥4vᵢ`. An analytic argument shows that every such instance with n≥494 meets the condition of Dubickas (2011), Theorem 1.1. The earlier recursive family therefore supplies no new asymptotic global-existence class. Exact premise checks for 200 layers are in prior-art-checks.json. The primary source uses floor((n+1)/(12e)), which must not be replaced by a ceiling from a secondary paraphrase.
+
+No exact duplicate of C₃'s full compatible-phase local radius was identified in the inspected results. Its originality remains unconfirmed, and the elementary deletion corollary is not counted as an independent main contribution. No Lean source changed in this audit; its mathematical validation is the existing clean build. The new exact prior-art premise checker was run separately. No researchers were contacted.

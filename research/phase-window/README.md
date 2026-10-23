@@ -2,6 +2,8 @@
 
 Status: second proved checkpoint, 2026-10-24. Sharp two-speed and compatible sum-triple local theorems, their optimality, and actual deletion corollaries are kernel-checked. This is not a proof of the general Lonely Runner Conjecture and not yet a submission-ready paper.
 
+**Priority audit:** [the source-by-source audit](PRIORITY_AUDIT.zh-CN.md) leaves the exact sum-triple formula as an unconfirmed originality candidate. The general margin-transfer method has clear prior art, and the recursive example family's large-size existence conclusion is already implied by Dubickas (2011). The deletion corollary is an application of the local theorem, not a separate primary novelty claim.
+
 **New:** for speeds `d,a,a+d`, `0<d≤a`, compatible phases `x,y,x+y`, and `0<δ≤1/6`, the exact phase-uniform local radius is
 
 `max(5δ/2, δ(1+2δ)/(1−4δ)) / d`.

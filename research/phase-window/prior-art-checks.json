@@ -1,0 +1,1159 @@
+{
+  "primary_source": "https://web.math.pmf.unizg.hr/glasnik/46.1/46(1)-05.pdf",
+  "source_location": "Theorem 1.1, printed page 26; floor, not ceiling",
+  "constructed_layers": 200,
+  "largest_checked_k": 604,
+  "first_covered_k_in_scan": 295,
+  "last_uncovered_k_in_scan": 292,
+  "analytic_sufficient_cutoff": 494,
+  "e_upper_bound_below_11_over_4": true,
+  "records": [
+    {
+      "k": 34,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 37,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 40,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 43,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 46,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 49,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 52,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 55,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 58,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 61,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 64,
+      "h": 1,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 67,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 70,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 73,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 76,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 79,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 82,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 85,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 88,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 91,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 94,
+      "h": 2,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 97,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 100,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 103,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 106,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 109,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 112,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 115,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 118,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 121,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 124,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 127,
+      "h": 3,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 130,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 133,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 136,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 139,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 142,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 145,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 148,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 151,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 154,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 157,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 160,
+      "h": 4,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 163,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 166,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 169,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 172,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 175,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 178,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 181,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 184,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 187,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 190,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 193,
+      "h": 5,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 196,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 199,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 202,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 205,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 208,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 211,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 214,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 217,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 220,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 223,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 226,
+      "h": 6,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 229,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 2
+    },
+    {
+      "k": 232,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 2
+    },
+    {
+      "k": 235,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 238,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 241,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 244,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 247,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 250,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 253,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 256,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 259,
+      "h": 7,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 262,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 265,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 268,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 271,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 274,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 277,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 280,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 283,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 286,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 289,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 292,
+      "h": 8,
+      "meets_Dubickas_2011": false,
+      "first_failing_index": 1
+    },
+    {
+      "k": 295,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 298,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 301,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 304,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 307,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 310,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 313,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 316,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 319,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 322,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 325,
+      "h": 9,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 328,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 331,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 334,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 337,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 340,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 343,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 346,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 349,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 352,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 355,
+      "h": 10,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 358,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 361,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 364,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 367,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 370,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 373,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 376,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 379,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 382,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 385,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 388,
+      "h": 11,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 391,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 394,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 397,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 400,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 403,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 406,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 409,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 412,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 415,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 418,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 421,
+      "h": 12,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 424,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 427,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 430,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 433,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 436,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 439,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 442,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 445,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 448,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 451,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 454,
+      "h": 13,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 457,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 460,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 463,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 466,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 469,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 472,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 475,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 478,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 481,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 484,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 487,
+      "h": 14,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 490,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 493,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 496,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 499,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 502,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 505,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 508,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 511,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 514,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 517,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 520,
+      "h": 15,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 523,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 526,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 529,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 532,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 535,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 538,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 541,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 544,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 547,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 550,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 553,
+      "h": 16,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 556,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 559,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 562,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 565,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 568,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 571,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 574,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 577,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 580,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 583,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 586,
+      "h": 17,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 589,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 592,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 595,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 598,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 601,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    },
+    {
+      "k": 604,
+      "h": 18,
+      "meets_Dubickas_2011": true,
+      "first_failing_index": null
+    }
+  ],
+  "scope": "Finite exact premise checks support a separate analytic inclusion proof. No claim of exhaustive priority coverage."
+}

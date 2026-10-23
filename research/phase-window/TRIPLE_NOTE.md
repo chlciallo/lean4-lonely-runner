@@ -133,6 +133,8 @@ d=\left\lceil\frac{5(m+1)M}{6}\right\rceil,\quad a=d+1,\quad b=2d+1.
 
 The new size is k=m+3, and the separation inequality holds by construction. Since m≥4, these are three new, distinct, larger positive integers. Induction using `delete_sum_triple` therefore gives the LRC conclusion for every depth of this construction, not just the first few sizes. This recursive-family induction is described mathematically here; the standalone quantified deletion theorem is the Lean-checked component.
 
+**Priority correction:** the large-size global existence conclusion of this particular recursive family is already covered by Dubickas (2011), Theorem 1.1. The family satisfies `vᵢ₊₃≥4vᵢ`; for every size n≥494 this implies his spaced-index growth condition. The [priority audit](PRIORITY_AUDIT.zh-CN.md) gives the analytic inclusion proof. This example family is not a new asymptotic LRC application; it remains a demonstration of the local lifting interface.
+
 `probe_descent.py` constructs the first 20 layers (ending with 64 nonzero speeds), finds exact rational lifts, and independently checks every speed at every layer. The small example is followed by `(234,235,469)` and `(4300,4301,8601)`. Each layer fails the separation part of both previous pair criteria. The experiment is an application certificate, not evidence that arbitrary 64-speed sets satisfy LRC.
 
 For a sorted positive instance satisfying this separation, the removed triple must be the three largest speeds. Thus recognizing successive admissible deletions needs only a linear number of relation/separation checks after sorting. This statement counts arithmetic comparisons; it is not a bit-complexity claim for arbitrary LRC. The dimension decreases by three at each accepted step. General configurations need not admit any step.
@@ -155,6 +157,8 @@ Its half-width is 44/153, strictly larger than C₃(1/9)=5/18. At reference time
 - Hu–Jing's 16 October 2026 preprint [*Near optimal gap in the Lonely Runner Conjecture*](https://arxiv.org/abs/2610.23790) claims a uniform improvement `(1+c)/(2n)` over the union-bound scale. It includes a detailed AI-assistance statement. That is a different general-n objective from exact local lifting; this checkpoint must not be marketed as the first AI-assisted arbitrary-n advance. We have not independently audited their entire proof.
 
 The remaining publication question is whether the sharp local classification plus its structural applications is sufficiently new and substantial. The elementary separated tower is an illustration, not by itself a strong new class theorem. A broad reduction for comparable speeds, a classification of more general short relations, or a significant optimality extension would strengthen the case. No Q2 acceptance guarantee is warranted.
+
+The subsequent [detailed priority audit](PRIORITY_AUDIT.zh-CN.md) further narrows the candidate contribution: C₃'s complete local parameter formula and optimality remain unconfirmed as original; margin transfer and the asymptotic example family have identifiable prior art. No claim that priority has been established is made.
 
 ## 9. Reproducibility
 
